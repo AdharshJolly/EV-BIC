@@ -29,19 +29,24 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
-        scrolled 
-          ? "bg-brand-primary/80 backdrop-blur-lg border-b border-brand-secondary/50 py-2" 
-          : "bg-transparent py-4"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex justify-center px-4",
+        scrolled ? "pt-4" : "pt-6"
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div
+        className={cn(
+          "w-full max-w-6xl transition-all duration-500 ease-in-out border border-brand-secondary/50",
+          scrolled 
+            ? "bg-brand-primary/60 backdrop-blur-xl rounded-full px-6 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-brand-accent/20" 
+            : "bg-transparent rounded-2xl px-4 py-3 border-transparent"
+        )}
+      >
+        <div className="flex items-center justify-between h-14">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-brand-accent blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <BatteryCharging className="h-8 w-8 text-brand-accent relative z-10" />
+                <BatteryCharging className="h-7 w-7 text-brand-accent relative z-10" />
               </div>
               <span className="text-xl font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors">EV BIC</span>
             </Link>
@@ -62,7 +67,7 @@ const Navbar = () => {
                   {location.pathname === item.path && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute inset-0 bg-brand-secondary/50 rounded-full -z-10"
+                      className="absolute inset-0 bg-brand-secondary/40 rounded-full -z-10"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
@@ -73,7 +78,7 @@ const Navbar = () => {
                 to="/register"
                 className="ml-4 bg-brand-accent text-brand-dark px-5 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:shadow-[0_0_20px_-5px_rgba(0,220,130,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                Register Now
+                Register
               </Link>
             </div>
           </div>
@@ -92,19 +97,19 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-brand-primary/95 backdrop-blur-xl border-b border-brand-secondary overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            className="absolute top-full left-4 right-4 mt-4 bg-brand-primary/95 backdrop-blur-2xl border border-brand-secondary rounded-3xl overflow-hidden shadow-2xl md:hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="px-4 pt-4 pb-6 space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "block px-3 py-2 rounded-md text-base font-medium",
+                    "block px-4 py-3 rounded-xl text-base font-medium transition-colors",
                     location.pathname === item.path
                       ? "text-brand-accent bg-brand-secondary/30"
                       : "text-brand-muted hover:text-white hover:bg-brand-secondary/20"
@@ -116,7 +121,7 @@ const Navbar = () => {
               <Link
                 to="/register"
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-center mt-4 bg-brand-accent text-brand-dark px-4 py-3 rounded-lg text-base font-bold hover:bg-white transition-colors"
+                className="block w-full text-center mt-6 bg-brand-accent text-brand-dark px-4 py-4 rounded-xl text-base font-bold hover:bg-white transition-colors"
               >
                 Register Now
               </Link>
