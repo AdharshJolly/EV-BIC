@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Mail, BatteryCharging, ArrowRight } from 'lucide-react';
+import { Github, Twitter, Linkedin, Mail, BatteryCharging } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -10,8 +10,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
-          {/* Brand & Newsletter */}
-          <div className="lg:col-span-2 space-y-8">
+          {/* Brand */}
+          <div className="lg:col-span-2 space-y-6">
              <div className="flex items-center space-x-2">
                 <BatteryCharging className="h-8 w-8 text-brand-accent" />
                 <span className="text-xl font-bold text-white tracking-wider">EV BIC</span>
@@ -19,16 +19,6 @@ const Footer = () => {
              <p className="text-brand-muted max-w-md">
                Powering the future of E-Mobility with indigenous compute. Join the challenge to build safe, smart, and sustainable battery systems.
              </p>
-             <div className="relative max-w-sm">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email for updates" 
-                  className="w-full bg-brand-secondary/30 border border-brand-secondary rounded-full py-3 px-5 text-white placeholder:text-brand-muted/50 focus:outline-none focus:border-brand-accent/50 transition-colors"
-                />
-                <button className="absolute right-1.5 top-1.5 bg-brand-accent text-brand-dark p-2 rounded-full hover:bg-white transition-colors">
-                   <ArrowRight className="w-4 h-4" />
-                </button>
-             </div>
           </div>
 
           {/* Quick Links */}
