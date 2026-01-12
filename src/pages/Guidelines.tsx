@@ -74,20 +74,22 @@ const Guidelines = () => {
              </div>
              <p className="text-brand-muted mb-12">Total Prize Pool: ₹2,15,000</p>
              
-             <div className="flex items-end justify-center gap-4 h-80 mb-12">
-                {prizes.map((prize, index) => (
-                    <motion.div 
-                        key={index}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.2 + (index * 0.1) }}
-                        className={`flex flex-col items-center justify-end w-1/3 rounded-t-lg ${prize.color} ${prize.text} p-4 shadow-lg`}
-                        style={{ height: index === 1 ? '16rem' : index === 0 ? '12rem' : '10rem' }}
-                    >
-                        <span className="text-xl font-bold">{prize.place}</span>
-                        <span className="text-2xl font-black">{prize.amount}</span>
-                    </motion.div>
-                ))}
+             <div className="flex items-end justify-center gap-4 h-80 mb-12 border-b border-brand-secondary/30 pb-0">
+                {prizes.map((prize, index) => {
+                    const height = index === 1 ? '16rem' : index === 0 ? '12rem' : '10rem';
+                    return (
+                        <motion.div 
+                            key={index}
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: height, opacity: 1 }}
+                            transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 + (index * 0.1) }}
+                            className={`flex flex-col items-center justify-start w-1/3 rounded-t-xl ${prize.color} ${prize.text} p-4 shadow-lg pt-6`}
+                        >
+                            <span className="text-sm sm:text-lg font-bold uppercase tracking-wider opacity-80 mb-1">{prize.place}</span>
+                            <span className="text-xl sm:text-3xl font-black">{prize.amount}</span>
+                        </motion.div>
+                    );
+                })}
              </div>
 
              <div className="space-y-4">
