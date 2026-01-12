@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import { Activity, Thermometer, BarChart3, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Activity, Thermometer, BarChart3, Target, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Themes = () => {
-  const [activeTheme, setActiveTheme] = useState<number | null>(null);
-
   const themes = [
     {
       id: 1,
@@ -12,15 +9,15 @@ const Themes = () => {
       icon: Activity,
       color: 'text-brand-accent',
       bg: 'bg-brand-accent/10',
-      border: 'border-brand-accent',
-      problem: 'Design a cloud-based system that collects real-time data on EV battery parameters and applies predictive algorithms to forecast battery degradation and remaining useful life (RUL) based on a dataset that is provided.',
-      objective: 'The system should alert users and fleet operators about potential failures before they occur, ensuring safety and reduced downtime.',
+      border: 'border-brand-accent/30',
+      hoverBorder: 'hover:border-brand-accent',
+      problem: 'Design a cloud-based system that collects real-time data on EV battery parameters and applies predictive algorithms to forecast battery degradation and remaining useful life (RUL).',
+      objective: 'Alert users and fleet operators about potential failures before they occur, ensuring safety and reduced downtime.',
       approach: [
-        'Develop real-time data collection and processing pipeline',
-        'Implement predictive algorithms for battery degradation forecasting',
-        'Create alert mechanisms for potential failures',
-        'Design user interfaces for different stakeholders',
-        'Validate against provided datasets'
+        'Real-time data collection pipeline',
+        'Predictive algorithms for degradation',
+        'Alert mechanisms for failures',
+        'Validation against provided datasets'
       ]
     },
     {
@@ -29,15 +26,15 @@ const Themes = () => {
       icon: Thermometer,
       color: 'text-red-400',
       bg: 'bg-red-500/10',
-      border: 'border-red-500',
-      problem: 'Develop a cloud-integrated monitoring solution that detects and analyzes abnormal thermal patterns in EV batteries using IoT sensors. The system should employ anomaly detection models to identify hotspots or irregular heat distribution.',
+      border: 'border-red-500/30',
+      hoverBorder: 'hover:border-red-500',
+      problem: 'Develop a monitoring solution that detects and analyzes abnormal thermal patterns in EV batteries using IoT sensors to identify hotspots and predict thermal runaway.',
       objective: 'Predict thermal runaway and prevent catastrophic failures through real-time monitoring and alerting.',
       approach: [
-        'Build thermal pattern monitoring system',
-        'Implement anomaly detection algorithms',
-        'Develop thermal runaway prediction models',
-        'Create real-time alerting system',
-        'Design dashboard for thermal monitoring'
+        'Thermal pattern monitoring system',
+        'Anomaly detection algorithms',
+        'Thermal runaway prediction models',
+        'Real-time alerting dashboard'
       ]
     },
     {
@@ -46,27 +43,27 @@ const Themes = () => {
       icon: BarChart3,
       color: 'text-blue-400',
       bg: 'bg-blue-500/10',
-      border: 'border-blue-500',
-      problem: 'Create a centralized, cloud-based dashboard for fleet operators that aggregates battery performance data from multiple EVs in real time. Provide insights into energy usage trends, charging behavior, and inefficiencies.',
+      border: 'border-blue-500/30',
+      hoverBorder: 'hover:border-blue-500',
+      problem: 'Create a centralized, cloud-based dashboard for fleet operators that aggregates battery performance data from multiple EVs, providing insights into usage and health.',
       objective: 'Enable data-driven decisions for cost optimization and preventive maintenance across the entire fleet.',
       approach: [
-        'Develop multi-vehicle data aggregation system',
-        'Implement battery performance analytics',
-        'Create comparative analysis tools',
-        'Design intuitive fleet management dashboard',
-        'Build reporting and alerting features'
+        'Multi-vehicle data aggregation',
+        'Battery performance analytics',
+        'Comparative analysis tools',
+        'Intuitive fleet management UI'
       ]
     }
   ];
 
   return (
     <div className="min-h-screen bg-brand-primary py-24 sm:py-32 relative overflow-hidden">
-      {/* Background blobs */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
+      {/* Dynamic Background */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-secondary/10 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center mb-20">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+        <div className="mx-auto max-w-2xl lg:text-center mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -77,79 +74,72 @@ const Themes = () => {
               Choose Your Challenge
             </p>
             <p className="mt-6 text-lg leading-8 text-brand-muted">
-              Select a problem statement that aligns with your skills and interests. Click on a card to explore details.
+              We have defined three critical problem statements. Select the one that challenges you to push the boundaries of EV technology.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="space-y-24">
           {themes.map((theme, index) => (
             <motion.div
               key={theme.id}
-              layout
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              onClick={() => setActiveTheme(activeTheme === theme.id ? null : theme.id)}
-              className={`cursor-pointer glass-panel rounded-2xl p-6 border transition-all duration-300 relative overflow-hidden ${
-                activeTheme === theme.id 
-                  ? `border-opacity-100 ${theme.border} bg-brand-secondary/40 ring-1 ring-${theme.border.replace('border-', '')}` 
-                  : 'border-brand-secondary/50 hover:border-brand-secondary'
-              }`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start p-8 rounded-3xl border ${theme.border} bg-brand-secondary/5 ${theme.hoverBorder} transition-colors duration-500`}
             >
-              {/* Active Indicator Strip */}
-              <div className={`absolute top-0 left-0 w-full h-1 ${activeTheme === theme.id ? theme.bg.replace('/10', '') : 'bg-transparent'} transition-colors`}></div>
+               {/* Decorative background glow on hover */}
+               <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-3xl bg-gradient-to-r from-transparent via-${theme.color.replace('text-', '')}/5 to-transparent`}></div>
 
-              <div className="flex items-center gap-x-4 mb-4">
-                <div className={`h-14 w-14 flex items-center justify-center rounded-xl ${theme.bg}`}>
-                  <theme.icon className={`h-7 w-7 ${theme.color}`} aria-hidden="true" />
-                </div>
-                <h3 className={`text-xl font-bold leading-tight ${activeTheme === theme.id ? 'text-white' : 'text-brand-text'}`}>
-                  {theme.title}
-                </h3>
-              </div>
-              
-              <div className="mb-4">
-                 <p className="text-sm text-brand-muted line-clamp-3">
-                   {theme.problem}
-                 </p>
-              </div>
+               {/* Icon & Title Section */}
+               <div className="lg:col-span-4 flex flex-col gap-6">
+                  <div className={`w-20 h-20 rounded-2xl ${theme.bg} flex items-center justify-center shadow-lg`}>
+                    <theme.icon className={`w-10 h-10 ${theme.color}`} />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white leading-tight">
+                    {theme.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand-muted">
+                    <Target className="w-4 h-4" />
+                    <span>Track {index + 1}</span>
+                  </div>
+               </div>
 
-              <AnimatePresence>
-                {activeTheme === theme.id && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="pt-4 border-t border-brand-secondary/50 mt-4 space-y-4">
-                        <div>
-                            <h4 className={`text-xs font-bold uppercase tracking-wide mb-2 ${theme.color}`}>Core Objective</h4>
-                            <p className="text-sm text-brand-text">{theme.objective}</p>
-                        </div>
-                        
-                        <div>
-                            <h4 className={`text-xs font-bold uppercase tracking-wide mb-2 ${theme.color}`}>Implementation</h4>
-                            <ul className="space-y-2">
-                                {theme.approach.map((item, idx) => (
-                                <li key={idx} className="flex items-start gap-2 text-sm text-brand-muted">
-                                    <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${theme.color}`} />
-                                    {item}
-                                </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              
-              {activeTheme !== theme.id && (
-                 <div className="mt-4 flex items-center text-sm font-medium text-brand-accent group-hover:underline">
-                    View Details <ArrowRight className="w-4 h-4 ml-1" />
-                 </div>
-              )}
+               {/* Content Section */}
+               <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                     <h4 className={`text-lg font-bold ${theme.color} flex items-center gap-2`}>
+                       Problem Statement
+                     </h4>
+                     <p className="text-brand-text leading-relaxed">
+                       {theme.problem}
+                     </p>
+                  </div>
+                  
+                  <div className="space-y-4">
+                     <h4 className="text-lg font-bold text-white flex items-center gap-2">
+                       Core Objective
+                     </h4>
+                     <p className="text-brand-muted leading-relaxed">
+                       {theme.objective}
+                     </p>
+                  </div>
+
+                  <div className="md:col-span-2 pt-6 border-t border-brand-secondary/30">
+                     <h4 className="text-sm font-bold text-brand-muted uppercase tracking-wide mb-4">
+                       Implementation Approach
+                     </h4>
+                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                        {theme.approach.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-3">
+                             <ChevronRight className={`w-4 h-4 mt-1 flex-shrink-0 ${theme.color}`} />
+                             <span className="text-brand-text text-sm">{item}</span>
+                          </div>
+                        ))}
+                     </div>
+                  </div>
+               </div>
             </motion.div>
           ))}
         </div>
