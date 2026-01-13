@@ -1,5 +1,4 @@
 import { ArrowRight, Cpu, Zap, Shield, ChevronRight, BatteryCharging } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Home = () => {
@@ -19,7 +18,7 @@ const Home = () => {
           className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto"
         >
           <div className="mt-10 lg:mt-0">
-            <a href="#" className="inline-flex space-x-6">
+            <a href="#register" className="inline-flex space-x-6">
               <span className="rounded-full bg-brand-secondary/50 px-3 py-1 text-sm font-semibold leading-6 text-brand-accent ring-1 ring-inset ring-brand-accent/20 hover:bg-brand-accent/10 transition-colors">
                 Registration Open
               </span>
@@ -30,20 +29,20 @@ const Home = () => {
             </a>
           </div>
           <h1 className="mt-6 text-5xl font-bold tracking-tight text-white sm:text-6xl leading-tight">
-            Powering the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-400">E-Mobility</span>
+            EV Battery <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-400">Intelligence</span> Challenge
           </h1>
           <p className="mt-6 text-lg leading-8 text-brand-muted">
-            Build cloud-connected, intelligent battery monitoring systems on the VSDSquadron ULTRA. Join India's premier EV Battery Intelligence Challenge.
+            Powering the Future of E-Mobility with <span className="text-white font-semibold">Indigenous Compute</span>
           </p>
           <div className="mt-10 flex items-center gap-x-6">
-            <Link to="/register" className="group relative px-6 py-3 font-semibold text-brand-dark transition-all duration-200 bg-brand-accent rounded-lg hover:bg-white hover:shadow-[0_0_30px_-5px_rgba(0,220,130,0.6)]">
+            <a href="#register" className="group relative px-6 py-3 font-semibold text-brand-dark transition-all duration-200 bg-brand-accent rounded-lg hover:bg-white hover:shadow-[0_0_30px_-5px_rgba(0,220,130,0.6)]">
               <span className="relative z-10 flex items-center gap-2">
                 Register Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
-            </Link>
-            <Link to="/about" className="text-sm font-semibold leading-6 text-white hover:text-brand-accent transition-colors">
+            </a>
+            <a href="#about" className="text-sm font-semibold leading-6 text-white hover:text-brand-accent transition-colors">
               Learn more <span aria-hidden="true">→</span>
-            </Link>
+            </a>
           </div>
         </motion.div>
         

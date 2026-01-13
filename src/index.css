@@ -30,6 +30,10 @@
   color-scheme: dark;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-brand-primary text-brand-text antialiased;
   background-image: 

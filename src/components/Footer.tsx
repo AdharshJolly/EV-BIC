@@ -1,5 +1,4 @@
 import { Github, Twitter, Linkedin, Mail, BatteryCharging } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -14,10 +13,10 @@ const Footer = () => {
           <div className="lg:col-span-2 space-y-6">
              <div className="flex items-center space-x-2">
                 <BatteryCharging className="h-8 w-8 text-brand-accent" />
-                <span className="text-xl font-bold text-white tracking-wider">EV BIC</span>
+                <span className="text-xl font-bold text-white tracking-wider">EV Battery Intelligence Challenge</span>
              </div>
              <p className="text-brand-muted max-w-md">
-               Powering the future of E-Mobility with indigenous compute. Join the challenge to build safe, smart, and sustainable battery systems.
+               Powering the Future of E-Mobility with Indigenous Compute. Join the challenge to build safe, smart, and sustainable battery systems.
              </p>
           </div>
 
@@ -25,11 +24,11 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-bold mb-6">Quick Links</h3>
             <ul className="space-y-4">
-               {['About', 'Themes', 'Guidelines', 'Sponsors', 'Register'].map((item) => (
+               {['About', 'Themes', 'Guidelines', /* 'Sponsors', */ 'Register'].map((item) => (
                  <li key={item}>
-                   <Link to={`/${item.toLowerCase()}`} className="text-brand-muted hover:text-brand-accent transition-colors">
+                   <a href={`#${item.toLowerCase()}`} className="text-brand-muted hover:text-brand-accent transition-colors">
                      {item}
-                   </Link>
+                   </a>
                  </li>
                ))}
             </ul>
