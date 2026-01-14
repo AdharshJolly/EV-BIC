@@ -1,3 +1,5 @@
+"use client";
+
 import { Mail, MapPin, Send, MessageSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
 

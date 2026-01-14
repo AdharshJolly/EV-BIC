@@ -1,3 +1,5 @@
+"use client";
+
 import { Activity, Thermometer, BarChart3, Target, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 

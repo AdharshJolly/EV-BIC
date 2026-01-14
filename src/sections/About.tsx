@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Cpu, Target, Users, Globe, Zap, Shield, Database, LayoutDashboard } from 'lucide-react';
 

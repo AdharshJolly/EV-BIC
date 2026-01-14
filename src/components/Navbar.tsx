@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { Menu, X, BatteryCharging } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';

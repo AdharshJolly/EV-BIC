@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowRight, Cpu, Zap, Shield, ChevronRight, BatteryCharging } from 'lucide-react';
 import { motion } from 'framer-motion';
 
