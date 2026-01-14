@@ -1,7 +1,10 @@
 "use client";
 
-import { ArrowRight, Cpu, Zap, Shield, ChevronRight, BatteryCharging } from 'lucide-react';
+import { ArrowRight, Cpu, Shield, ChevronRight, BatteryCharging } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Countdown from '@/components/Countdown';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 const Home = () => {
   return (
@@ -9,42 +12,52 @@ const Home = () => {
       {/* Dynamic Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
          <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-3xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
+         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-3xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:flex lg:items-center lg:gap-x-16 lg:px-8 lg:py-24">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto"
+          className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto text-center lg:text-left"
         >
-          <div className="mt-10 lg:mt-0">
-            <a href="#register" className="inline-flex space-x-6">
-              <span className="rounded-full bg-brand-secondary/50 px-3 py-1 text-sm font-semibold leading-6 text-brand-accent ring-1 ring-inset ring-brand-accent/20 hover:bg-brand-accent/10 transition-colors">
+          <div className="mb-6 flex justify-center lg:justify-start">
+            <Badge variant="outline" className="px-4 py-1.5 text-sm font-medium text-brand-accent border-brand-accent/50 bg-brand-accent/10 rounded-full animate-pulse">
+              <span className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+                </span>
                 Registration Open
               </span>
-              <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-brand-muted hover:text-white transition-colors">
-                <span>Join the challenge</span>
-                <ChevronRight className="h-4 w-4" />
-              </span>
-            </a>
+            </Badge>
           </div>
-          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight uppercase">
-            EV Battery <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-400">Intelligence</span> Challenge
+          
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight uppercase font-display">
+            EV Battery <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-teal-400">Intelligence</span> Challenge
           </h1>
-          <p className="mt-6 text-lg leading-8 text-brand-muted">
-            Powering the Future of E-Mobility with <span className="text-white font-bold font-heading">Indigenous Compute</span>
+          
+          <p className="mt-6 text-lg leading-8 text-brand-muted max-w-xl mx-auto lg:mx-0">
+            Powering the Future of E-Mobility with <span className="text-white font-bold">Indigenous Compute</span>. Join the revolution to build safer, smarter, and sustainable energy systems.
           </p>
-          <div className="mt-10 flex items-center gap-x-6">
-            <a href="#register" className="group relative px-6 py-3 font-semibold text-brand-dark transition-all duration-200 bg-brand-accent rounded-lg hover:bg-white hover:shadow-[0_0_30px_-5px_rgba(0,220,130,0.6)]">
-              <span className="relative z-10 flex items-center gap-2">
-                Register Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </a>
-            <a href="#about" className="text-sm font-semibold leading-6 text-white hover:text-brand-accent transition-colors">
-              Learn more <span aria-hidden="true">→</span>
-            </a>
+          
+          <div className="my-10">
+            <Countdown />
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <Button asChild size="lg" className="h-12 px-8 text-base font-bold bg-brand-accent text-brand-dark hover:bg-white hover:text-brand-dark hover:scale-105 transition-all duration-300 shadow-[0_0_20px_-5px_rgba(204,255,0,0.5)]">
+              <a href="#register">
+                Register Now <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <Button asChild variant="ghost" size="lg" className="h-12 px-8 text-base font-semibold text-white hover:text-brand-accent hover:bg-brand-secondary/50">
+              <a href="#about">
+                Explore Themes <ChevronRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
           </div>
         </motion.div>
         
@@ -53,52 +66,35 @@ const Home = () => {
            initial={{ opacity: 0, scale: 0.9 }}
            animate={{ opacity: 1, scale: 1 }}
            transition={{ duration: 0.8, delay: 0.2 }}
-           className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow"
+           className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow relative hidden lg:block"
         >
-          <div className="relative -m-2 rounded-xl bg-brand-secondary/10 p-2 ring-1 ring-inset ring-brand-secondary/40 lg:-m-4 lg:rounded-2xl lg:p-4 backdrop-blur-sm max-w-lg mx-auto lg:max-w-none">
-            
-            <div className="absolute -inset-1 bg-gradient-to-r from-brand-accent to-blue-600 rounded-2xl blur opacity-20"></div>
-            
-            <div className="relative rounded-md bg-brand-primary/80 border border-brand-secondary/50 p-6 sm:p-8 shadow-2xl overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <BatteryCharging className="w-64 h-64" />
-              </div>
+          <div className="relative z-10 w-full max-w-lg mx-auto perspective-1000">
+             {/* Abstract Circuit/Battery Visual */}
+             <div className="relative bg-brand-secondary/30 backdrop-blur-xl border border-brand-secondary/50 rounded-2xl p-8 shadow-2xl transform rotate-y-12 hover:rotate-y-0 transition-transform duration-700">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent rounded-2xl pointer-events-none"></div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                   <div className="col-span-2 aspect-video bg-brand-dark/50 rounded-xl border border-brand-secondary flex items-center justify-center relative overflow-hidden group">
+                      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+                      <BatteryCharging className="w-24 h-24 text-brand-accent group-hover:scale-110 transition-transform duration-500" />
+                      <div className="absolute bottom-4 left-4 right-4 h-1 bg-brand-secondary rounded-full overflow-hidden">
+                         <div className="h-full bg-brand-accent w-[85%] animate-pulse"></div>
+                      </div>
+                   </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 relative z-10">
-                <motion.div 
-                  whileHover={{ scale: 1.05 }}
-                  className="glass-panel p-5 rounded-xl border border-brand-secondary/50 hover:border-brand-accent/50 transition-colors"
-                >
-                    <div className="bg-brand-accent/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                      <Cpu className="h-5 w-5 text-brand-accent" />
-                    </div>
-                    <h3 className="text-base font-bold text-white mb-1">Indigenous Compute</h3>
-                    <p className="text-xs text-brand-muted">Powered by THEJAS32 RISC-V processor.</p>
-                </motion.div>
-                
-                <motion.div 
-                  whileHover={{ scale: 1.05 }}
-                  className="glass-panel p-5 rounded-xl border border-brand-secondary/50 hover:border-brand-accent/50 transition-colors"
-                >
-                    <div className="bg-blue-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                      <Zap className="h-5 w-5 text-blue-400" />
-                    </div>
-                    <h3 className="text-base font-bold text-white mb-1">Smart Energy</h3>
-                    <p className="text-xs text-brand-muted">Real-time health estimation & tracking.</p>
-                </motion.div>
-                
-                <motion.div 
-                  whileHover={{ scale: 1.05 }}
-                  className="sm:col-span-2 glass-panel p-5 rounded-xl border border-brand-secondary/50 hover:border-brand-accent/50 transition-colors"
-                >
-                    <div className="bg-red-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                      <Shield className="h-5 w-5 text-red-400" />
-                    </div>
-                    <h3 className="text-base font-bold text-white mb-1">Safety First</h3>
-                    <p className="text-xs text-brand-muted">Thermal monitoring & predictive analytics.</p>
-                </motion.div>
-              </div>
-            </div>
+                   <div className="bg-brand-dark/50 p-4 rounded-xl border border-brand-secondary hover:border-brand-accent/50 transition-colors">
+                      <Cpu className="w-8 h-8 text-teal-400 mb-2" />
+                      <div className="h-2 w-12 bg-teal-400/20 rounded-full mb-1"></div>
+                      <div className="h-2 w-20 bg-brand-secondary rounded-full"></div>
+                   </div>
+
+                   <div className="bg-brand-dark/50 p-4 rounded-xl border border-brand-secondary hover:border-brand-accent/50 transition-colors">
+                      <Shield className="w-8 h-8 text-brand-accent mb-2" />
+                      <div className="h-2 w-12 bg-brand-accent/20 rounded-full mb-1"></div>
+                      <div className="h-2 w-16 bg-brand-secondary rounded-full"></div>
+                   </div>
+                </div>
+             </div>
           </div>
         </motion.div>
       </div>

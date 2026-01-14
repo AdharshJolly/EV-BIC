@@ -7,12 +7,12 @@ export default {
     extend: {
       colors: {
         brand: {
-          dark: '#02040a', // Almost black blue
-          primary: '#0B1121', // Dark blue background
-          secondary: '#15233E', // Lighter blue for cards
-          accent: '#00DC82', // Vibrant sustainable green
-          text: '#E2E8F0', // Light text
-          muted: '#94A3B8', // Muted text
+          dark: '#020804', // Deepest Organic Dark
+          primary: '#05100a', // Dark Jungle
+          secondary: '#0f2216', // Deep Moss
+          accent: '#ccff00', // Electric Bio-Lime
+          text: '#f0fdf4', // Mint White
+          muted: '#94a3b8', // Muted Slate
         }
       },
       fontFamily: {
