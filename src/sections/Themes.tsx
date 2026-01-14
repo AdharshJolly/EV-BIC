@@ -1,152 +1,160 @@
 "use client";
 
-import { Activity, Thermometer, BarChart3, Target, ChevronRight } from 'lucide-react';
+import { Activity, Thermometer, BarChart3, Database, Zap, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Themes = () => {
   const themes = [
     {
-      id: 1,
-      title: 'Predictive Battery Health Analytics',
+      id: "track-1",
+      title: "Predictive Battery Health Analytics",
       icon: Activity,
-      color: 'text-brand-accent',
-      bg: 'bg-brand-accent/10',
-      border: 'border-brand-accent/30',
-      hoverBorder: 'hover:border-brand-accent',
-      problem: 'Design a cloud-based system that collects real-time data on EV battery parameters and applies predictive algorithms to forecast battery degradation and remaining useful life (RUL).',
-      objective: 'Alert users and fleet operators about potential failures before they occur, ensuring safety and reduced downtime.',
+      summary: "Forecast battery degradation and Remaining Useful Life (RUL) using predictive algorithms.",
+      problem: "Design a cloud-based system that collects real-time data on EV battery parameters and applies predictive algorithms to forecast battery degradation and remaining useful life (RUL).",
+      objective: "Alert users and fleet operators about potential failures before they occur, ensuring safety and reduced downtime.",
       approach: [
-        'Real-time data collection pipeline',
-        'Predictive algorithms for degradation',
-        'Alert mechanisms for failures',
-        'Validation against provided datasets'
+        "Real-time data collection pipeline",
+        "Predictive algorithms for degradation",
+        "Alert mechanisms for failures",
+        "Validation against provided datasets"
       ]
     },
     {
-      id: 2,
-      title: 'Intelligent Thermal Anomaly Detection',
+      id: "track-2",
+      title: "Intelligent Thermal Anomaly Detection",
       icon: Thermometer,
-      color: 'text-red-400',
-      bg: 'bg-red-500/10',
-      border: 'border-red-500/30',
-      hoverBorder: 'hover:border-red-500',
-      problem: 'Develop a monitoring solution that detects and analyzes abnormal thermal patterns in EV batteries using IoT sensors to identify hotspots and predict thermal runaway.',
-      objective: 'Predict thermal runaway and prevent catastrophic failures through real-time monitoring and alerting.',
+      summary: "Detect and analyze abnormal thermal patterns to predict thermal runaway.",
+      problem: "Develop a monitoring solution that detects and analyzes abnormal thermal patterns in EV batteries using IoT sensors to identify hotspots and predict thermal runaway.",
+      objective: "Predict thermal runaway and prevent catastrophic failures through real-time monitoring and alerting.",
       approach: [
-        'Thermal pattern monitoring system',
-        'Anomaly detection algorithms',
-        'Thermal runaway prediction models',
-        'Real-time alerting dashboard'
+        "Thermal pattern monitoring system",
+        "Anomaly detection algorithms",
+        "Thermal runaway prediction models",
+        "Real-time alerting dashboard"
       ]
     },
     {
-      id: 3,
-      title: 'Fleet-Level Battery Performance Dashboard',
+      id: "track-3",
+      title: "Fleet-Level Battery Performance Dashboard",
       icon: BarChart3,
-      color: 'text-blue-400',
-      bg: 'bg-blue-500/10',
-      border: 'border-blue-500/30',
-      hoverBorder: 'hover:border-blue-500',
-      problem: 'Create a centralized, cloud-based dashboard for fleet operators that aggregates battery performance data from multiple EVs, providing insights into usage and health.',
-      objective: 'Enable data-driven decisions for cost optimization and preventive maintenance across the entire fleet.',
+      summary: "Centralized dashboard for fleet operators to aggregate and analyze battery performance.",
+      problem: "Create a centralized, cloud-based dashboard for fleet operators that aggregates battery performance data from multiple EVs, providing insights into usage and health.",
+      objective: "Enable data-driven decisions for cost optimization and preventive maintenance across the entire fleet.",
       approach: [
-        'Multi-vehicle data aggregation',
-        'Battery performance analytics',
-        'Comparative analysis tools',
-        'Intuitive fleet management UI'
+        "Multi-vehicle data aggregation",
+        "Battery performance analytics",
+        "Comparative analysis tools",
+        "Intuitive fleet management UI"
       ]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-brand-primary py-24 sm:py-32 relative overflow-hidden">
-      {/* Dynamic Background */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-secondary/10 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
-
+    <div className="bg-brand-primary py-24 sm:py-32 relative overflow-hidden" id="themes">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-        <div className="mx-auto max-w-2xl lg:text-center mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-base leading-7 text-brand-accent uppercase tracking-widest">Hackathon Tracks</h2>
-            <h3 className="mt-2 text-4xl text-white sm:text-5xl">
-              Choose Your Challenge
-            </h3>
-            <p className="mt-6 text-lg leading-8 text-brand-muted">
+        
+        <div className="text-center mb-20">
+           <Badge variant="outline" className="mb-4 border-brand-accent/30 text-brand-accent bg-brand-accent/5 tracking-widest uppercase">
+              Hackathon Tracks
+           </Badge>
+           <h2 className="text-4xl sm:text-5xl font-black text-white font-display uppercase tracking-tight mb-4">
+              Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-white">Challenge</span>
+           </h2>
+           <p className="text-lg text-brand-muted max-w-2xl mx-auto">
               We have defined three critical problem statements. Select the one that challenges you to push the boundaries of EV technology.
-            </p>
-          </motion.div>
+           </p>
         </div>
 
-        <div className="space-y-24">
-          {themes.map((theme, index) => (
-            <motion.div
-              key={theme.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <Card className={`group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start p-8 rounded-3xl border ${theme.border} bg-brand-secondary/5 ${theme.hoverBorder} transition-colors duration-500`}>
-                 {/* Decorative background glow on hover */}
-                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-3xl bg-gradient-to-r from-transparent via-${theme.color.replace('text-', '')}/5 to-transparent`}></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+           {themes.map((theme, index) => (
+             <motion.div
+               key={theme.id}
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: index * 0.1 }}
+             >
+               <div className="h-full bg-brand-secondary/10 border border-brand-secondary hover:border-brand-accent/50 transition-all duration-300 rounded-2xl p-8 flex flex-col items-center text-center group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                  
+                  <div className="w-16 h-16 bg-brand-secondary/50 rounded-2xl flex items-center justify-center mb-6 border border-brand-secondary group-hover:border-brand-accent/30 group-hover:bg-brand-accent/10 transition-colors">
+                     <theme.icon className="w-8 h-8 text-white group-hover:text-brand-accent transition-colors" />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-white font-display uppercase mb-4 leading-tight">{theme.title}</h3>
+                  <p className="text-brand-muted mb-8 text-sm leading-relaxed">{theme.summary}</p>
+                  
+                  <div className="mt-auto relative z-10">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          type="button"
+                          variant="outline" 
+                          className="cursor-pointer border-brand-accent/30 text-brand-accent hover:bg-brand-accent hover:text-brand-dark transition-all"
+                        >
+                           View Details <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="bg-brand-secondary border-brand-secondary text-white sm:max-w-lg max-h-[90vh] overflow-y-auto z-[100]">
+                        <DialogHeader className="text-left">
+                          <DialogTitle className="text-2xl font-display uppercase flex items-start gap-3">
+                             <theme.icon className="w-6 h-6 text-brand-accent flex-shrink-0 mt-1" />
+                             {theme.title}
+                          </DialogTitle>
+                          <DialogDescription className="text-brand-muted">
+                             Full Problem Statement & Objectives
+                          </DialogDescription>
+                        </DialogHeader>
+                        
+                        <div className="space-y-6 pt-4 text-left">
+                           <div>
+                              <h4 className="text-sm font-bold text-brand-accent uppercase mb-2 flex items-center gap-2">
+                                 <Database className="w-4 h-4" /> Problem Statement
+                              </h4>
+                              <p className="text-brand-text text-sm leading-relaxed border-l-2 border-brand-secondary pl-4">
+                                 {theme.problem}
+                              </p>
+                           </div>
+                           
+                           <div>
+                              <h4 className="text-sm font-bold text-brand-accent uppercase mb-2 flex items-center gap-2">
+                                 <Zap className="w-4 h-4" /> Core Objective
+                              </h4>
+                              <p className="text-brand-text text-sm leading-relaxed border-l-2 border-brand-secondary pl-4">
+                                 {theme.objective}
+                              </p>
+                           </div>
 
-                 {/* Icon & Title Section */}
-                 <div className="lg:col-span-4 flex flex-col gap-6 relative z-10">
-                    <div className={`w-20 h-20 rounded-2xl ${theme.bg} flex items-center justify-center shadow-lg`}>
-                      <theme.icon className={`w-10 h-10 ${theme.color}`} />
-                    </div>
-                    <h3 className="text-3xl font-bold text-white leading-tight">
-                      {theme.title}
-                    </h3>
-                    <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand-muted">
-                      <Target className="w-4 h-4" />
-                      <span>Track {index + 1}</span>
-                    </div>
-                 </div>
-
-                 {/* Content Section */}
-                 <CardContent className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8 p-0 relative z-10">
-                    <div className="space-y-4">
-                       <h4 className={`text-lg font-bold ${theme.color} flex items-center gap-2`}>
-                         Problem Statement
-                       </h4>
-                       <p className="text-brand-text leading-relaxed">
-                         {theme.problem}
-                       </p>
-                    </div>
-                    
-                    <div className="space-y-4">
-                       <h4 className="text-lg font-bold text-white flex items-center gap-2">
-                         Core Objective
-                       </h4>
-                       <p className="text-brand-muted leading-relaxed">
-                         {theme.objective}
-                       </p>
-                    </div>
-
-                    <div className="md:col-span-2 pt-6 border-t border-brand-secondary/30">
-                       <h4 className="text-sm font-bold text-brand-muted uppercase tracking-wide mb-4">
-                         Implementation Approach
-                       </h4>
-                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-                          {theme.approach.map((item, idx) => (
-                            <div key={idx} className="flex items-start gap-3">
-                               <ChevronRight className={`w-4 h-4 mt-1 flex-shrink-0 ${theme.color}`} />
-                               <span className="text-brand-text text-sm">{item}</span>
-                            </div>
-                          ))}
-                       </div>
-                    </div>
-                 </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                           <div className="bg-brand-primary/50 p-4 rounded-lg border border-brand-secondary">
+                              <h4 className="text-xs font-bold text-brand-muted uppercase mb-3">Implementation Approach</h4>
+                              <div className="flex flex-col gap-2">
+                                 {theme.approach.map((item, i) => (
+                                    <div key={i} className="flex items-start gap-2 text-sm text-brand-text">
+                                       <CheckCircle2 className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" />
+                                       {item}
+                                    </div>
+                                 ))}
+                              </div>
+                           </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+               </div>
+             </motion.div>
+           ))}
         </div>
+
       </div>
     </div>
   );
