@@ -2,7 +2,7 @@ import { Github, Twitter, Linkedin, Mail, BatteryCharging } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-primary border-t border-brand-secondary/50 pt-16 pb-8 mt-auto relative overflow-hidden">
+    <footer className="bg-transparent border-t border-brand-secondary/50 pt-16 pb-8 mt-auto relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-brand-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
 

@@ -1,29 +1,37 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { Menu, BatteryCharging } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { cn } from '../lib/utils';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from "react";
+import { Menu, BatteryCharging } from "lucide-react";
+import { motion } from "framer-motion";
+import { cn } from "../lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetTitle,
   SheetDescription,
-} from '@/components/ui/sheet';
+} from "@/components/ui/sheet";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
       // Simple scroll spy
-      const sections = ['home', 'about', 'themes', 'timeline', 'prizes', 'faq', 'contact'];
+      const sections = [
+        "home",
+        "about",
+        "themes",
+        "timeline",
+        "prizes",
+        "faq",
+        "contact",
+      ];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -35,18 +43,18 @@ const Navbar = () => {
         }
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', path: '#home' },
-    { name: 'About', path: '#about' },
-    { name: 'Themes', path: '#themes' },
-    { name: 'Timeline', path: '#timeline' },
-    { name: 'Prizes', path: '#prizes' },
-    { name: 'FAQ', path: '#faq' },
-    { name: 'Contact', path: '#contact' },
+    { name: "Home", path: "#home" },
+    { name: "About", path: "#about" },
+    { name: "Themes", path: "#themes" },
+    { name: "Timeline", path: "#timeline" },
+    { name: "Prizes", path: "#prizes" },
+    { name: "FAQ", path: "#faq" },
+    { name: "Contact", path: "#contact" },
   ];
 
   const handleNavClick = () => {
@@ -64,8 +72,8 @@ const Navbar = () => {
       <div
         className={cn(
           "w-full max-w-6xl transition-all duration-500 ease-in-out border border-brand-secondary/50",
-          scrolled 
-            ? "bg-brand-primary/60 backdrop-blur-xl rounded-full px-6 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-brand-accent/20" 
+          scrolled
+            ? "bg-brand-primary/60 backdrop-blur-xl rounded-full px-6 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-brand-accent/20"
             : "bg-transparent rounded-2xl px-4 py-3 border-transparent"
         )}
       >
@@ -77,7 +85,10 @@ const Navbar = () => {
                 <BatteryCharging className="h-7 w-7 text-brand-accent relative z-10" />
               </div>
               <span className="text-xl font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors">
-                EV <span className="hidden sm:inline">Battery Intelligence Challenge</span>
+                EV{" "}
+                <span className="hidden sm:inline">
+                  Battery Intelligence Challenge
+                </span>
                 <span className="sm:hidden">BIC</span>
               </span>
             </a>
@@ -85,8 +96,8 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-1">
               {navItems.map((item) => {
-                 const isActive = activeSection === item.path.substring(1);
-                 return (
+                const isActive = activeSection === item.path.substring(1);
+                return (
                   <a
                     key={item.name}
                     href={item.path}
@@ -101,7 +112,11 @@ const Navbar = () => {
                       <motion.div
                         layoutId="navbar-indicator"
                         className="absolute inset-0 bg-brand-secondary/40 rounded-full -z-10"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                        transition={{
+                          type: "spring",
+                          bounce: 0.2,
+                          duration: 0.6,
+                        }}
                       />
                     )}
                     {item.name}
@@ -127,7 +142,10 @@ const Navbar = () => {
                   <Menu className="block h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="top" className="bg-brand-primary/95 backdrop-blur-2xl border-brand-secondary rounded-b-3xl">
+              <SheetContent
+                side="top"
+                className="bg-brand-primary/95 backdrop-blur-2xl border-brand-secondary rounded-b-3xl"
+              >
                 <SheetTitle className="hidden">Navigation Menu</SheetTitle>
                 <SheetDescription className="hidden">
                   Mobile navigation menu for EV BIC website

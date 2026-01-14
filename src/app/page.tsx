@@ -1,5 +1,6 @@
 import Home from '../sections/Home';
 import About from '../sections/About';
+import Squadron from '../sections/Squadron';
 import Themes from '../sections/Themes';
 import Timeline from '../sections/Timeline';
 import Prizes from '../sections/Prizes';
@@ -11,29 +12,34 @@ import Marquee from '../sections/Marquee';
 export default function Page() {
   return (
     <>
-      <section id="home">
+      <section id="home" className="relative z-10">
         <Home />
       </section>
-      <Marquee />
-      <section id="about">
+      <div className="relative z-10">
+        <Marquee />
+      </div>
+      <section id="about" className="relative z-10">
         <About />
       </section>
-      <section id="themes">
+      <section id="squadron" className="relative z-10">
+        <Squadron />
+      </section>
+      <section id="themes" className="relative z-10">
         <Themes />
       </section>
-      <section id="timeline">
+      <section id="timeline" className="relative z-10">
         <Timeline />
       </section>
-      <section id="prizes">
+      <section id="prizes" className="relative z-10">
         <Prizes />
       </section>
-      <section id="faq">
+      <section id="faq" className="relative z-10">
         <FAQ />
       </section>
-      <section id="register">
+      <section id="register" className="relative z-10">
         <Register />
       </section>
-      <section id="contact">
+      <section id="contact" className="relative z-10">
         <Contact />
       </section>
     </>

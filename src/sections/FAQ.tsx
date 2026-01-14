@@ -32,7 +32,7 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="bg-transparent py-24 sm:py-32">
+    <div className="bg-transparent py-24 sm:py-32 relative z-10">
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-extrabold text-white mb-4 font-display">Frequently Asked Questions</h2>
@@ -41,7 +41,11 @@ const FAQ = () => {
 
         <Accordion type="single" collapsible className="w-full space-y-4">
           {items.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border-brand-secondary/50 bg-brand-secondary/10 px-6 rounded-xl data-[state=open]:bg-brand-secondary/20 transition-colors">
+            <AccordionItem 
+              key={index} 
+              value={`item-${index}`} 
+              className="border border-brand-secondary/50 bg-brand-secondary/20 px-6 rounded-xl data-[state=open]:bg-brand-secondary/40 transition-colors"
+            >
               <AccordionTrigger className="text-white hover:text-brand-accent hover:no-underline py-6 text-left font-medium text-lg">
                 {item.q}
               </AccordionTrigger>
