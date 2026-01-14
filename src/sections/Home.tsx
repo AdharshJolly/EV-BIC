@@ -1,103 +1,133 @@
 "use client";
 
-import { ArrowRight, Cpu, Shield, ChevronRight, BatteryCharging } from 'lucide-react';
-import { motion } from 'framer-motion';
-import Countdown from '@/components/Countdown';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { ArrowRight, Cpu, Zap, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import Countdown from "@/components/Countdown";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const Home = () => {
   return (
-    <div className="relative isolate overflow-hidden min-h-screen flex flex-col justify-center">
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-         <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-3xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
+    <div className="relative min-h-screen flex flex-col justify-center items-center bg-brand-primary overflow-hidden pt-32 lg:pt-40">
+      {/* --- Immersive Background Environment --- */}
+      {/* Dynamic Grid Floor with Perspective */}
+      <div className="absolute inset-0 perspective-1000 pointer-events-none">
+        <div className="absolute bottom-[-20%] left-[-20%] w-[140%] h-[80%] bg-[linear-gradient(transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px)] bg-[size:60px_60px] transform rotate-x-[60deg] opacity-30 animate-[pulse_8s_ease-in-out_infinite]"></div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:flex lg:items-center lg:gap-x-16 lg:px-8 lg:py-24">
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto text-center lg:text-left"
+      {/* Central "Reactor" Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      {/* Scanline Effect */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(204,255,0,0.02)_50%,transparent_51%)] bg-[length:100%_8px] pointer-events-none opacity-20"></div>
+
+      {/* --- Holographic Central Interface --- */}
+      <div className="relative z-10 w-full max-w-7xl px-4 flex flex-col items-center">
+        {/* Top Tech Decoration */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="w-full flex justify-between items-center text-brand-muted/40 font-mono text-[10px] sm:text-xs tracking-[0.2em] mb-8 sm:mb-12 select-none"
         >
-          <div className="mb-6 flex justify-center lg:justify-start">
-            <Badge variant="outline" className="px-4 py-1.5 text-sm font-medium text-brand-accent border-brand-accent/50 bg-brand-accent/10 rounded-full animate-pulse">
-              <span className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
-                </span>
-                Registration Open
+          <span>SYS.VER.2026.4</span>
+          <span className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-brand-accent rounded-full animate-pulse"></span>
+            ONLINE
+          </span>
+          <span>SECURE_CONN_ESTABLISHED</span>
+        </motion.div>
+
+        {/* Central "Reactor Ring" Visualization */}
+        <div className="relative mb-12 group">
+          {/* Rotating Outer Rings */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] border border-brand-accent/10 rounded-full animate-[spin_20s_linear_infinite]"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] border border-dashed border-brand-accent/20 rounded-full animate-[spin_30s_linear_infinite_reverse]"></div>
+
+          {/* Center Content Group */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative z-10 text-center"
+          >
+            <div className="mb-6 flex justify-center">
+              <Badge
+                variant="outline"
+                className="bg-brand-secondary/50 backdrop-blur-sm border-brand-accent/30 text-brand-accent tracking-widest px-4 py-1.5 uppercase font-mono text-xs"
+              >
+                Challenge Active
+              </Badge>
+            </div>
+
+            {/* Main Typography - Layered & Glitchy */}
+            <h1 className="relative text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter leading-[0.85] font-display text-white mb-6 select-none">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white/10 to-transparent absolute top-0 left-0 -z-10 blur-sm transform scale-105">
+                EV BATTERY
               </span>
-            </Badge>
-          </div>
-          
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight uppercase font-display">
-            EV Battery <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-teal-400">Intelligence</span> Challenge
-          </h1>
-          
-          <p className="mt-6 text-lg leading-8 text-brand-muted max-w-xl mx-auto lg:mx-0">
-            Powering the Future of E-Mobility with <span className="text-white font-bold">Indigenous Compute</span>. Join the revolution to build safer, smarter, and sustainable energy systems.
-          </p>
-          
-          <div className="my-10">
-            <Countdown />
-          </div>
+              EV BATTERY
+              <br />
+              <span className="text-brand-accent relative inline-block">
+                INTELLIGENCE
+                <span className="absolute -inset-1 bg-brand-accent/20 blur-xl opacity-50"></span>
+              </span>
+            </h1>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <Button asChild size="lg" className="h-12 px-8 text-base font-bold bg-brand-accent text-brand-dark hover:bg-white hover:text-brand-dark hover:scale-105 transition-all duration-300 shadow-[0_0_20px_-5px_rgba(204,255,0,0.5)]">
-              <a href="#register">
-                Register Now <ArrowRight className="ml-2 w-4 h-4" />
+            <p className="max-w-xl mx-auto text-lg sm:text-xl text-brand-muted/80 font-medium leading-relaxed mb-8">
+              <span className="text-white">
+                {" "}
+                Powering the Future of E-Mobility with Indigenous Compute
+              </span>
+            </p>
+
+            {/* Interactive Countdown "Chip" */}
+            <div className="inline-flex flex-col items-center bg-brand-secondary/30 backdrop-blur-md border border-brand-accent/20 rounded-2xl p-6 sm:px-10 shadow-[0_0_40px_-10px_rgba(204,255,0,0.1)] mb-10 group-hover:border-brand-accent/40 transition-colors duration-500">
+              <div className="text-[10px] font-mono text-brand-accent/60 mb-2 tracking-widest uppercase">
+                Time Remaining To Launch
+              </div>
+              <Countdown />
+            </div>
+
+            {/* Primary Actions */}
+            <div className="flex flex-col sm:flex-row items-center gap-6 justify-center">
+              <Button className="h-14 px-8 text-lg font-bold bg-brand-accent text-brand-dark hover:bg-white hover:scale-105 transition-all duration-300 rounded-none skew-x-[-10deg] border-0 relative overflow-hidden group">
+                <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                <span className="skew-x-[10deg] flex items-center gap-2">
+                  INITIATE_REGISTRATION <ArrowRight className="w-5 h-5" />
+                </span>
+              </Button>
+
+              <a
+                href="#about"
+                className="group flex items-center gap-2 text-brand-muted hover:text-white transition-colors text-sm font-mono tracking-widest uppercase"
+              >
+                <span>Explore_Data</span>
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
-            </Button>
-            <Button asChild variant="ghost" size="lg" className="h-12 px-8 text-base font-semibold text-white hover:text-brand-accent hover:bg-brand-secondary/50">
-              <a href="#about">
-                Explore Themes <ChevronRight className="ml-2 w-4 h-4" />
-              </a>
-            </Button>
-          </div>
-        </motion.div>
-        
-        {/* Hero Visual */}
-        <motion.div 
-           initial={{ opacity: 0, scale: 0.9 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 0.8, delay: 0.2 }}
-           className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow relative hidden lg:block"
-        >
-          <div className="relative z-10 w-full max-w-lg mx-auto perspective-1000">
-             {/* Abstract Circuit/Battery Visual */}
-             <div className="relative bg-brand-secondary/30 backdrop-blur-xl border border-brand-secondary/50 rounded-2xl p-8 shadow-2xl transform rotate-y-12 hover:rotate-y-0 transition-transform duration-700">
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent rounded-2xl pointer-events-none"></div>
-                
-                <div className="grid grid-cols-2 gap-4">
-                   <div className="col-span-2 aspect-video bg-brand-dark/50 rounded-xl border border-brand-secondary flex items-center justify-center relative overflow-hidden group">
-                      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-                      <BatteryCharging className="w-24 h-24 text-brand-accent group-hover:scale-110 transition-transform duration-500" />
-                      <div className="absolute bottom-4 left-4 right-4 h-1 bg-brand-secondary rounded-full overflow-hidden">
-                         <div className="h-full bg-brand-accent w-[85%] animate-pulse"></div>
-                      </div>
-                   </div>
+            </div>
+          </motion.div>
+        </div>
 
-                   <div className="bg-brand-dark/50 p-4 rounded-xl border border-brand-secondary hover:border-brand-accent/50 transition-colors">
-                      <Cpu className="w-8 h-8 text-teal-400 mb-2" />
-                      <div className="h-2 w-12 bg-teal-400/20 rounded-full mb-1"></div>
-                      <div className="h-2 w-20 bg-brand-secondary rounded-full"></div>
-                   </div>
-
-                   <div className="bg-brand-dark/50 p-4 rounded-xl border border-brand-secondary hover:border-brand-accent/50 transition-colors">
-                      <Shield className="w-8 h-8 text-brand-accent mb-2" />
-                      <div className="h-2 w-12 bg-brand-accent/20 rounded-full mb-1"></div>
-                      <div className="h-2 w-16 bg-brand-secondary rounded-full"></div>
-                   </div>
-                </div>
-             </div>
+        {/* Floating Data Artifacts */}
+        <div className="absolute bottom-10 left-10 hidden lg:block">
+          <div className="flex items-center gap-4 text-brand-accent/40 font-mono text-xs">
+            <Cpu className="w-4 h-4" />
+            <span>CORE: RISC-V 64-BIT</span>
           </div>
-        </motion.div>
+        </div>
+        <div className="absolute bottom-10 right-10 hidden lg:block">
+          <div className="flex items-center gap-4 text-brand-accent/40 font-mono text-xs text-right">
+            <span>STATUS: OPTIMAL</span>
+            <Zap className="w-4 h-4" />
+          </div>
+        </div>
       </div>
+
+      {/* Corner Brackets */}
+      <div className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-brand-accent/20 rounded-tl-3xl pointer-events-none"></div>
+      <div className="absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-brand-accent/20 rounded-tr-3xl pointer-events-none"></div>
+      <div className="absolute bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-brand-accent/20 rounded-bl-3xl pointer-events-none"></div>
+      <div className="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-brand-accent/20 rounded-br-3xl pointer-events-none"></div>
     </div>
   );
 };
