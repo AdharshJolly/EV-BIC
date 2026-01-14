@@ -2,6 +2,7 @@
 
 import { Activity, Thermometer, BarChart3, Target, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Themes = () => {
   const themes = [
@@ -89,59 +90,60 @@ const Themes = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start p-8 rounded-3xl border ${theme.border} bg-brand-secondary/5 ${theme.hoverBorder} transition-colors duration-500`}
             >
-               {/* Decorative background glow on hover */}
-               <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-3xl bg-gradient-to-r from-transparent via-${theme.color.replace('text-', '')}/5 to-transparent`}></div>
+              <Card className={`group relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start p-8 rounded-3xl border ${theme.border} bg-brand-secondary/5 ${theme.hoverBorder} transition-colors duration-500`}>
+                 {/* Decorative background glow on hover */}
+                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-3xl bg-gradient-to-r from-transparent via-${theme.color.replace('text-', '')}/5 to-transparent`}></div>
 
-               {/* Icon & Title Section */}
-               <div className="lg:col-span-4 flex flex-col gap-6">
-                  <div className={`w-20 h-20 rounded-2xl ${theme.bg} flex items-center justify-center shadow-lg`}>
-                    <theme.icon className={`w-10 h-10 ${theme.color}`} />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white leading-tight">
-                    {theme.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand-muted">
-                    <Target className="w-4 h-4" />
-                    <span>Track {index + 1}</span>
-                  </div>
-               </div>
+                 {/* Icon & Title Section */}
+                 <div className="lg:col-span-4 flex flex-col gap-6 relative z-10">
+                    <div className={`w-20 h-20 rounded-2xl ${theme.bg} flex items-center justify-center shadow-lg`}>
+                      <theme.icon className={`w-10 h-10 ${theme.color}`} />
+                    </div>
+                    <h3 className="text-3xl font-bold text-white leading-tight">
+                      {theme.title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand-muted">
+                      <Target className="w-4 h-4" />
+                      <span>Track {index + 1}</span>
+                    </div>
+                 </div>
 
-               {/* Content Section */}
-               <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                     <h4 className={`text-lg font-bold ${theme.color} flex items-center gap-2`}>
-                       Problem Statement
-                     </h4>
-                     <p className="text-brand-text leading-relaxed">
-                       {theme.problem}
-                     </p>
-                  </div>
-                  
-                  <div className="space-y-4">
-                     <h4 className="text-lg font-bold text-white flex items-center gap-2">
-                       Core Objective
-                     </h4>
-                     <p className="text-brand-muted leading-relaxed">
-                       {theme.objective}
-                     </p>
-                  </div>
+                 {/* Content Section */}
+                 <CardContent className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8 p-0 relative z-10">
+                    <div className="space-y-4">
+                       <h4 className={`text-lg font-bold ${theme.color} flex items-center gap-2`}>
+                         Problem Statement
+                       </h4>
+                       <p className="text-brand-text leading-relaxed">
+                         {theme.problem}
+                       </p>
+                    </div>
+                    
+                    <div className="space-y-4">
+                       <h4 className="text-lg font-bold text-white flex items-center gap-2">
+                         Core Objective
+                       </h4>
+                       <p className="text-brand-muted leading-relaxed">
+                         {theme.objective}
+                       </p>
+                    </div>
 
-                  <div className="md:col-span-2 pt-6 border-t border-brand-secondary/30">
-                     <h4 className="text-sm font-bold text-brand-muted uppercase tracking-wide mb-4">
-                       Implementation Approach
-                     </h4>
-                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-                        {theme.approach.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-3">
-                             <ChevronRight className={`w-4 h-4 mt-1 flex-shrink-0 ${theme.color}`} />
-                             <span className="text-brand-text text-sm">{item}</span>
-                          </div>
-                        ))}
-                     </div>
-                  </div>
-               </div>
+                    <div className="md:col-span-2 pt-6 border-t border-brand-secondary/30">
+                       <h4 className="text-sm font-bold text-brand-muted uppercase tracking-wide mb-4">
+                         Implementation Approach
+                       </h4>
+                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                          {theme.approach.map((item, idx) => (
+                            <div key={idx} className="flex items-start gap-3">
+                               <ChevronRight className={`w-4 h-4 mt-1 flex-shrink-0 ${theme.color}`} />
+                               <span className="text-brand-text text-sm">{item}</span>
+                            </div>
+                          ))}
+                       </div>
+                    </div>
+                 </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>

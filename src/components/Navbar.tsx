@@ -1,9 +1,17 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Menu, X, BatteryCharging } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, BatteryCharging } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,64 +107,63 @@ const Navbar = () => {
                   </a>
                 );
               })}
-              <a
-                href="#register"
+              <Button
+                asChild
                 className="ml-4 bg-brand-accent text-brand-dark px-5 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:shadow-[0_0_20px_-5px_rgba(0,220,130,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                Register
-              </a>
+                <a href="#register">Register</a>
+              </Button>
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-brand-muted hover:text-white hover:bg-brand-secondary/50 focus:outline-none"
-            >
-              {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
-            </button>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-brand-muted hover:text-white hover:bg-brand-secondary/50"
+                >
+                  <Menu className="block h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="top" className="bg-brand-primary/95 backdrop-blur-2xl border-brand-secondary rounded-b-3xl">
+                <SheetTitle className="hidden">Navigation Menu</SheetTitle>
+                <SheetDescription className="hidden">
+                  Mobile navigation menu for EV BIC website
+                </SheetDescription>
+                <div className="px-2 pt-4 pb-6 space-y-2">
+                  {navItems.map((item) => {
+                    const isActive = activeSection === item.path.substring(1);
+                    return (
+                      <a
+                        key={item.name}
+                        href={item.path}
+                        onClick={() => handleNavClick()}
+                        className={cn(
+                          "block px-4 py-3 rounded-xl text-base font-medium transition-colors",
+                          isActive
+                            ? "text-brand-accent bg-brand-secondary/30"
+                            : "text-brand-muted hover:text-white hover:bg-brand-secondary/20"
+                        )}
+                      >
+                        {item.name}
+                      </a>
+                    );
+                  })}
+                  <Button
+                    asChild
+                    className="w-full mt-6 bg-brand-accent text-brand-dark py-6 rounded-xl text-base font-bold hover:bg-white transition-colors"
+                  >
+                    <a href="#register" onClick={() => handleNavClick()}>
+                      Register Now
+                    </a>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            className="absolute top-full left-4 right-4 mt-4 bg-brand-primary/95 backdrop-blur-2xl border border-brand-secondary rounded-3xl overflow-hidden shadow-2xl md:hidden"
-          >
-            <div className="px-4 pt-4 pb-6 space-y-2">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.path.substring(1);
-                return (
-                  <a
-                    key={item.name}
-                    href={item.path}
-                    onClick={() => handleNavClick()}
-                    className={cn(
-                      "block px-4 py-3 rounded-xl text-base font-medium transition-colors",
-                      isActive
-                        ? "text-brand-accent bg-brand-secondary/30"
-                        : "text-brand-muted hover:text-white hover:bg-brand-secondary/20"
-                    )}
-                  >
-                    {item.name}
-                  </a>
-                );
-              })}
-              <a
-                href="#register"
-                onClick={() => handleNavClick()}
-                className="block w-full text-center mt-6 bg-brand-accent text-brand-dark px-4 py-4 rounded-xl text-base font-bold hover:bg-white transition-colors"
-              >
-                Register Now
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 };

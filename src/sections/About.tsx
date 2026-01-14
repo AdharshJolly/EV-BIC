@@ -37,7 +37,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
             className="mt-6 text-lg leading-8 text-brand-muted"
           >
-            India's rapid transition towards electric mobility requires robust battery safety and reliability. 
+            India&apos;s rapid transition towards electric mobility requires robust battery safety and reliability. 
             The EV Battery Intelligence Challenge empowers you to build the future of sustainable transport.
           </motion.p>
         </div>
@@ -96,7 +96,7 @@ const About = () => {
                <h3 className="text-2xl font-bold text-white">The Challenge</h3>
              </div>
              <p className="text-brand-muted leading-relaxed">
-               Current EV battery systems in India largely depend on imported controllers and "black-box" units with limited data access. This dependency stifles innovation and limits optimization.
+               Current EV battery systems in India largely depend on imported controllers and &quot;black-box&quot; units with limited data access. This dependency stifles innovation and limits optimization.
              </p>
            </motion.div>
 
