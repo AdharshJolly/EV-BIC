@@ -26,16 +26,16 @@ const Guidelines = () => {
         <div className="mx-auto max-w-2xl lg:text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            className="text-base font-semibold leading-7 text-brand-accent"
+            className="text-base leading-7 text-brand-accent uppercase tracking-widest"
           >
             Information Center
           </motion.h2>
-          <motion.p 
+          <motion.h3 
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl"
+            className="mt-2 text-4xl text-white sm:text-5xl"
           >
             Guidelines & Schedule
-          </motion.p>
+          </motion.h3>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

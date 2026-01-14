@@ -23,16 +23,16 @@ const About = () => {
         <div className="mx-auto max-w-2xl lg:text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-base font-semibold leading-7 text-brand-accent uppercase tracking-widest"
+            className="text-base leading-7 text-brand-accent uppercase tracking-widest"
           >
             The Mission
           </motion.h2>
-          <motion.p 
+          <motion.h3 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-5xl"
+            className="mt-2 text-3xl text-white sm:text-5xl"
           >
             Driving Innovation in the Indian EV Ecosystem
-          </motion.p>
+          </motion.h3>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
             className="mt-6 text-lg leading-8 text-brand-muted"

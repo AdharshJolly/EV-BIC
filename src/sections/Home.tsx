@@ -30,11 +30,11 @@ const Home = () => {
               </span>
             </a>
           </div>
-          <h1 className="mt-6 text-5xl font-bold tracking-tight text-white sm:text-6xl leading-tight">
+          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight uppercase">
             EV Battery <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-400">Intelligence</span> Challenge
           </h1>
           <p className="mt-6 text-lg leading-8 text-brand-muted">
-            Powering the Future of E-Mobility with <span className="text-white font-semibold">Indigenous Compute</span>
+            Powering the Future of E-Mobility with <span className="text-white font-bold font-heading">Indigenous Compute</span>
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <a href="#register" className="group relative px-6 py-3 font-semibold text-brand-dark transition-all duration-200 bg-brand-accent rounded-lg hover:bg-white hover:shadow-[0_0_30px_-5px_rgba(0,220,130,0.6)]">

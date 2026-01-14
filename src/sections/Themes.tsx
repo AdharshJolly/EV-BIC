@@ -72,10 +72,10 @@ const Themes = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-base font-semibold leading-7 text-brand-accent uppercase tracking-widest">Hackathon Tracks</h2>
-            <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h2 className="text-base leading-7 text-brand-accent uppercase tracking-widest">Hackathon Tracks</h2>
+            <h3 className="mt-2 text-4xl text-white sm:text-5xl">
               Choose Your Challenge
-            </p>
+            </h3>
             <p className="mt-6 text-lg leading-8 text-brand-muted">
               We have defined three critical problem statements. Select the one that challenges you to push the boundaries of EV technology.
             </p>
