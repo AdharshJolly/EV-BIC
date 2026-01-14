@@ -16,7 +16,7 @@ const Timeline = () => {
   ];
 
   return (
-    <div className="bg-brand-primary py-24 sm:py-32 relative">
+    <div className="bg-transparent py-24 sm:py-32 relative">
        <div className="absolute left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-brand-secondary/20 to-transparent -z-10"></div>
 
        <div className="mx-auto max-w-7xl px-6 lg:px-8">

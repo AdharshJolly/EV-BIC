@@ -49,7 +49,7 @@ const Register = () => {
   }
 
   return (
-    <div className="min-h-screen bg-brand-primary py-24 sm:py-32 relative">
+    <div className="min-h-screen bg-transparent py-24 sm:py-32 relative">
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-brand-secondary/20 to-transparent -z-10"></div>
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

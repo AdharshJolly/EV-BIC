@@ -15,7 +15,7 @@ const Marquee = () => {
   ];
 
   return (
-    <div className="relative py-12 bg-brand-primary border-y border-brand-secondary overflow-hidden">
+    <div className="relative py-12 bg-transparent border-y border-brand-secondary overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 bg-brand-accent/5 blur-3xl"></div>
       

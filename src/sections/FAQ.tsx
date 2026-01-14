@@ -32,7 +32,7 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="bg-brand-primary py-24 sm:py-32">
+    <div className="bg-transparent py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-extrabold text-white mb-4 font-display">Frequently Asked Questions</h2>

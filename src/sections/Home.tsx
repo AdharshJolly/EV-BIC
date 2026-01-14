@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 const Home = () => {
   return (
-    <div className="relative min-h-screen flex flex-col justify-center items-center bg-brand-primary overflow-hidden pt-32 lg:pt-40">
+    <div className="relative min-h-screen flex flex-col justify-center items-center bg-transparent overflow-hidden pt-32 lg:pt-40">
       {/* --- Immersive Background Environment --- */}
       {/* Dynamic Grid Floor with Perspective */}
       <div className="absolute inset-0 perspective-1000 pointer-events-none">

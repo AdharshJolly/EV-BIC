@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Prizes = () => {
   return (
-    <div className="bg-brand-primary py-24 sm:py-32 relative overflow-hidden">
+    <div className="bg-transparent py-24 sm:py-32 relative overflow-hidden">
       {/* Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
 

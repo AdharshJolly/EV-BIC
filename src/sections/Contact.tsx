@@ -10,7 +10,7 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-brand-primary py-24 sm:py-32 relative">
+    <div className="min-h-screen bg-transparent py-24 sm:py-32 relative">
        {/* Background */}
        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-secondary/10 to-transparent -z-10"></div>
 

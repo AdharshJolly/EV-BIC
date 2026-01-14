@@ -1,6 +1,7 @@
 import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import BackgroundElements from '../components/BackgroundElements';
 import { Inter, Space_Grotesk, Outfit } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`min-h-screen flex flex-col bg-brand-primary text-brand-text font-sans selection:bg-brand-accent selection:text-brand-dark ${inter.variable} ${spaceGrotesk.variable} ${outfit.variable}`}>
+        <BackgroundElements />
         <Navbar />
         <main className="flex-grow">
           {children}

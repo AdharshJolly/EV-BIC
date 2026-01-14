@@ -60,7 +60,7 @@ const Themes = () => {
   ];
 
   return (
-    <div className="bg-brand-primary py-24 sm:py-32 relative overflow-hidden" id="themes">
+    <div className="bg-transparent py-24 sm:py-32 relative overflow-hidden" id="themes">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         
         <div className="text-center mb-20">
