@@ -28,8 +28,7 @@ const Navbar = () => {
         "about",
         "themes",
         "timeline",
-        "prizes",
-        "faq",
+        "sponsors",
         "contact",
       ];
       for (const section of sections) {
@@ -52,8 +51,7 @@ const Navbar = () => {
     { name: "About", path: "#about" },
     { name: "Themes", path: "#themes" },
     { name: "Timeline", path: "#timeline" },
-    { name: "Prizes", path: "#prizes" },
-    { name: "FAQ", path: "#faq" },
+    { name: "Sponsors", path: "#sponsors" },
     { name: "Contact", path: "#contact" },
   ];
 

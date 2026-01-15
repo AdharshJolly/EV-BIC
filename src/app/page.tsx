@@ -1,13 +1,14 @@
-import Home from '../sections/Home';
-import About from '../sections/About';
-import Squadron from '../sections/Squadron';
-import Themes from '../sections/Themes';
-import Timeline from '../sections/Timeline';
-import Prizes from '../sections/Prizes';
-import FAQ from '../sections/FAQ';
-import Register from '../sections/Register';
-import Contact from '../sections/Contact';
-import Marquee from '../sections/Marquee';
+import Home from "../sections/Home";
+import About from "../sections/About";
+import Squadron from "../sections/Squadron";
+import Themes from "../sections/Themes";
+import Timeline from "../sections/Timeline";
+import Prizes from "../sections/Prizes";
+import FAQ from "../sections/FAQ";
+import Sponsors from "../sections/Sponsors";
+import Register from "../sections/Register";
+import Contact from "../sections/Contact";
+import Marquee from "../sections/Marquee";
 
 export default function Page() {
   return (
@@ -36,6 +37,9 @@ export default function Page() {
       <section id="faq" className="relative z-10">
         <FAQ />
       </section>
+      {/* <section id="sponsors" className="relative z-10">
+        <Sponsors />
+      </section> */}
       <section id="register" className="relative z-10">
         <Register />
       </section>

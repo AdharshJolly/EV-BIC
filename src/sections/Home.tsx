@@ -75,7 +75,8 @@ const Home = () => {
 
             <p className="max-w-xl mx-auto text-lg sm:text-xl text-brand-muted/80 font-medium leading-relaxed mb-8">
               <span className="text-white">
-                Powering the Future of E-Mobility with Indigenous Atmanirbhar Compute
+                Powering the Future of E-Mobility with Indigenous Atmanirbhar
+                Compute
               </span>
             </p>
 
@@ -89,7 +90,10 @@ const Home = () => {
 
             {/* Primary Actions */}
             <div className="flex flex-col sm:flex-row items-center gap-6 justify-center">
-              <Button asChild className="h-14 px-8 text-lg font-bold bg-brand-accent text-brand-dark hover:bg-white hover:scale-105 transition-all duration-300 rounded-none skew-x-[-10deg] border-0 relative overflow-hidden group">
+              <Button
+                asChild
+                className="h-14 px-8 text-lg font-bold bg-brand-accent text-brand-dark hover:bg-white hover:scale-105 transition-all duration-300 rounded-none skew-x-[-10deg] border-0 relative overflow-hidden group"
+              >
                 <a href="#register">
                   <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                   <span className="skew-x-10 flex items-center gap-2">
