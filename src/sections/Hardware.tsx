@@ -6,14 +6,12 @@ import {
   Users,
   Target,
   Box,
-  CheckCircle2,
   Battery,
   Radio,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 
 const Hardware = () => {
   const personnel = [

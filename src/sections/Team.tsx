@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import Image from "next/image";
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
@@ -150,11 +151,11 @@ const Team = () => {
                   <Card className="bg-brand-secondary/10 border-brand-secondary/30 hover:border-brand-accent/50 transition-all duration-300 hover:bg-brand-secondary/20 h-full w-full max-w-sm mx-auto">
                     <CardContent className="p-8 flex flex-col items-center text-center gap-6">
                       <div className="h-24 w-24 rounded-full overflow-hidden border-2 border-brand-accent/30 relative">
-                        {/* @ts-ignore */}
-                        <img
+                        <Image
                           src={member.image}
                           alt={member.name}
-                          className="object-cover w-full h-full"
+                          fill
+                          className="object-cover"
                         />
                       </div>
                       <div className="flex-1">

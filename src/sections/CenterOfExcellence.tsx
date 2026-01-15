@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Lightbulb, Zap, Globe, Users, Target } from "lucide-react";
+import { Lightbulb, Zap, Users, Target } from "lucide-react";
 
 const CenterOfExcellence = () => {
   const coePoints = [
