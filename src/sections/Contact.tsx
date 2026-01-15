@@ -12,7 +12,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-transparent py-24 sm:py-32 relative">
        {/* Background */}
-       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-secondary/10 to-transparent -z-10"></div>
+       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-brand-secondary/10 to-transparent -z-10"></div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center mb-20">
