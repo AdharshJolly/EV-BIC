@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowRight, Cpu, Zap, ChevronRight } from "lucide-react";
+import { ArrowRight, Cpu, Zap, ChevronRight, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Countdown from "@/components/Countdown";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,31 +12,55 @@ const Home = () => {
     <div className="relative min-h-screen flex flex-col justify-center items-center bg-transparent overflow-hidden pt-32 lg:pt-40">
       {/* --- Immersive Background Environment --- */}
       {/* Dynamic Grid Floor with Perspective */}
-      <div className="absolute inset-0 perspective-[1000px] pointer-events-none">
-        <div className="absolute bottom-[-20%] left-[-20%] w-[140%] h-[80%] bg-[linear-gradient(transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px)] bg-size-[60px_60px] transform-[rotateX(60deg)] opacity-30 animate-[pulse_8s_ease-in-out_infinite]"></div>
+      <div className="absolute inset-0 [perspective:1000px] pointer-events-none">
+        <div className="absolute bottom-[-20%] left-[-20%] w-[140%] h-[80%] bg-[linear-gradient(transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px)] bg-[size:60px_60px] [transform:rotateX(60deg)] opacity-30 animate-[pulse_8s_ease-in-out_infinite]"></div>
       </div>
 
       {/* Central "Reactor" Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Scanline Effect */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(204,255,0,0.02)_50%,transparent_51%)] bg-size-[100%_8px] pointer-events-none opacity-20"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(204,255,0,0.02)_50%,transparent_51%)] bg-[length:100%_8px] pointer-events-none opacity-20"></div>
 
       {/* --- Holographic Central Interface --- */}
       <div className="relative z-10 w-full max-w-7xl px-4 flex flex-col items-center">
-        {/* Top Tech Decoration */}
+        {/* Organized By Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="w-full flex justify-between items-center text-brand-muted/40 font-mono text-[10px] sm:text-xs tracking-[0.2em] mb-8 sm:mb-12 select-none"
+          transition={{ delay: 0.1 }}
+          className="flex flex-col items-center gap-2 mb-8"
         >
-          <span>SYS.VER.2026.4</span>
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-brand-accent rounded-full animate-pulse"></span>
-            ONLINE
+          <span className="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em]">
+            Presented By
           </span>
-          <span>SECURE_CONN_ESTABLISHED</span>
+          <div className="flex items-center sm:gap-12 gap-4 -mt-10 -mb-8 ">
+            {/* CHRIST Logo */}
+            <div className="flex items-center justify-center transition-all duration-300 hover:scale-105">
+              <Image
+                src="/images/cu-logo.png"
+                alt="CHRIST University"
+                width={600}
+                height={600}
+                className="object-contain opacity-90 hover:opacity-100 transition-opacity w-56 h-32 sm:w-80 sm:h-48"
+                priority
+              />
+            </div>
+
+            <div className="h-10 w-px bg-white/10"></div>
+
+            {/* VSD Logo */}
+            <div className="flex items-center justify-center transition-all duration-300 hover:scale-105">
+              <Image
+                src="/images/vsd-logo.png"
+                alt="VSD"
+                width={600}
+                height={600}
+                className="object-contain opacity-90 hover:opacity-100 transition-opacity w-40 h-24 sm:w-60 sm:h-36"
+                priority
+              />
+            </div>
+          </div>
         </motion.div>
 
         {/* Central "Reactor Ring" Visualization */}
@@ -51,12 +76,19 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="relative z-10 text-center"
           >
-            <div className="mb-6 flex justify-center">
+            <div className="mb-6 flex justify-center gap-3">
               <Badge
                 variant="outline"
                 className="bg-brand-secondary/50 backdrop-blur-sm border-brand-accent/30 text-brand-accent tracking-widest px-4 py-1.5 uppercase font-mono text-xs"
               >
                 Challenge Active
+              </Badge>
+              <Badge
+                variant="outline"
+                className="bg-brand-accent/10 backdrop-blur-sm border-brand-accent/50 text-brand-accent tracking-widest px-4 py-1.5 uppercase font-mono text-xs animate-pulse"
+              >
+                <Trophy className="w-3 h-3 mr-2 inline" />
+                ₹2,15,000 Pool
               </Badge>
             </div>
 
