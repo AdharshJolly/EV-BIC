@@ -88,7 +88,7 @@ const Navbar = () => {
               alt="VSD"
               width={40}
               height={40}
-              className="h-8 w-auto hidden sm:block opacity-70 hover:opacity-100 transition-opacity"
+              className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
             />
           </div>
 
@@ -153,7 +153,7 @@ const Navbar = () => {
               alt="CHRIST University"
               width={40}
               height={40}
-              className="h-8 w-auto hidden md:block opacity-70 hover:opacity-100 transition-opacity"
+              className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
             />
           </div>
 
