@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Trophy, Gift, Award } from 'lucide-react';
+import { Trophy, Gift, Award, Cpu } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Prizes = () => {
@@ -107,8 +107,5 @@ const Prizes = () => {
     </div>
   );
 };
-
-// Forgot to import Cpu in the code block above
-import { Cpu } from 'lucide-react';
 
 export default Prizes;
