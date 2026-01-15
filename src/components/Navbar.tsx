@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, BatteryCharging } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { cn } from "../lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,9 +27,11 @@ const Navbar = () => {
       const sections = [
         "home",
         "about",
+        "coe",
+        "hardware",
+        "challenges",
         "themes",
         "timeline",
-        "sponsors",
         "contact",
       ];
       for (const section of sections) {
@@ -49,9 +52,11 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "#home" },
     { name: "About", path: "#about" },
+    { name: "COE", path: "#coe" },
+    { name: "Hardware", path: "#hardware" },
+    { name: "Challenges", path: "#challenges" },
     { name: "Themes", path: "#themes" },
     { name: "Timeline", path: "#timeline" },
-    { name: "Sponsors", path: "#sponsors" },
     { name: "Contact", path: "#contact" },
   ];
 
@@ -69,75 +74,99 @@ const Navbar = () => {
     >
       <div
         className={cn(
-          "w-full max-w-6xl transition-all duration-500 ease-in-out border border-brand-secondary/50",
+          "w-full max-w-7xl transition-all duration-500 ease-in-out border border-brand-secondary/50",
           scrolled
-            ? "bg-brand-primary/60 backdrop-blur-xl rounded-full px-6 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-brand-accent/20"
+            ? "bg-brand-primary/60 backdrop-blur-xl rounded-full px-4 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-brand-accent/20"
             : "bg-transparent rounded-2xl px-4 py-3 border-transparent"
         )}
       >
-        <div className="flex items-center justify-between h-14">
-          <div className="flex items-center">
-            <a href="#home" className="flex items-center space-x-2 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-brand-accent blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <BatteryCharging className="h-7 w-7 text-brand-accent relative z-10" />
-              </div>
-              <span className="text-xl font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors">
-                EV{" "}
-                <span className="hidden sm:inline">
-                  Battery Intelligence Challenge
-                </span>
-                <span className="sm:hidden">BIC</span>
-              </span>
-            </a>
+        <div className="flex items-center justify-between h-14 w-full gap-2 flex-nowrap">
+          {/* VSD Logo on Left */}
+          <div className="flex-shrink-0">
+            <Image
+              src="/images/vsd-logo.png"
+              alt="VSD"
+              width={40}
+              height={40}
+              className="h-8 w-auto hidden sm:block opacity-70 hover:opacity-100 transition-opacity"
+            />
           </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-1">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.path.substring(1);
-                return (
-                  <a
-                    key={item.name}
-                    href={item.path}
-                    className={cn(
-                      "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 relative",
-                      isActive
-                        ? "text-brand-accent"
-                        : "text-brand-muted hover:text-white"
-                    )}
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="navbar-indicator"
-                        className="absolute inset-0 bg-brand-secondary/40 rounded-full -z-10"
-                        transition={{
-                          type: "spring",
-                          bounce: 0.2,
-                          duration: 0.6,
-                        }}
-                      />
-                    )}
-                    {item.name}
-                  </a>
-                );
-              })}
-              <Button
-                asChild
-                className="ml-4 bg-brand-accent text-brand-dark px-5 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:shadow-[0_0_20px_-5px_rgba(0,220,130,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
-              >
-                <a href="#register">Register</a>
-              </Button>
+
+          {/* EV Battery Challenge in Center */}
+          <a href="#home" className="flex items-center gap-2 group flex-shrink-0 px-2">
+            <div className="relative flex-shrink-0">
+              <div className="absolute inset-0 bg-brand-accent blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <BatteryCharging className="h-5 w-5 text-brand-accent relative z-10" />
             </div>
+            <span className="text-base font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors whitespace-nowrap hidden md:inline">
+              EV Battery Challenge
+            </span>
+            <span className="text-base font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors md:hidden">
+              EV-BIC
+            </span>
+          </a>
+
+          {/* Desktop Navigation - Hidden on Mobile */}
+          <div className="hidden lg:flex items-center gap-1 flex-1 justify-center px-4">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.path.substring(1);
+              return (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  className={cn(
+                    "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 relative whitespace-nowrap",
+                    isActive
+                      ? "text-brand-accent"
+                      : "text-brand-muted hover:text-white"
+                  )}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute inset-0 bg-brand-secondary/40 rounded-full -z-10"
+                      transition={{
+                        type: "spring",
+                        bounce: 0.2,
+                        duration: 0.6,
+                      }}
+                    />
+                  )}
+                  {item.name}
+                </a>
+              );
+            })}
           </div>
-          <div className="-mr-2 flex md:hidden">
+
+          {/* Register Button - Hidden on Small Screens */}
+          <Button
+            asChild
+            className="hidden sm:flex flex-shrink-0 bg-brand-accent text-brand-dark px-4 py-1.5 rounded-full text-xs font-bold hover:bg-white hover:shadow-[0_0_20px_-5px_rgba(0,220,130,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
+          >
+            <a href="#register">Register</a>
+          </Button>
+
+          {/* CHRIST Logo on Extreme Right */}
+          <div className="flex-shrink-0">
+            <Image
+              src="/images/cu-logo.png"
+              alt="CHRIST University"
+              width={40}
+              height={40}
+              className="h-8 w-auto hidden md:block opacity-70 hover:opacity-100 transition-opacity"
+            />
+          </div>
+
+          {/* Mobile Menu - Hidden on Desktop */}
+          <div className="lg:hidden flex-shrink-0">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-brand-muted hover:text-white hover:bg-brand-secondary/50"
+                  className="text-brand-muted hover:text-white hover:bg-brand-secondary/50 h-8 w-8"
                 >
-                  <Menu className="block h-6 w-6" />
+                  <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent

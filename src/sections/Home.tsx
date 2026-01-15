@@ -100,7 +100,7 @@ const Home = () => {
               EV BATTERY
               <br />
               <span className="text-brand-accent relative inline-block">
-                INTELLIGENCE
+                INTELLIGENCE CHALLENGE
                 <span className="absolute -inset-1 bg-brand-accent/20 blur-xl opacity-50"></span>
               </span>
             </h1>

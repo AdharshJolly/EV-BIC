@@ -12,9 +12,14 @@ const Prizes = () => {
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl lg:text-center mb-20">
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-6 font-display">Prize Pool</h2>
-          <p className="text-xl text-brand-muted">
-            Total rewards worth <span className="text-brand-accent font-bold">₹2,15,000</span> awaiting the best innovators.
+          <motion.h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-6 font-display inline-block relative">
+            <span className="relative">
+              Prize Pool
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-accent/50"></span>
+            </span>
+          </motion.h2>
+          <p className="text-xl text-brand-muted mt-8">
+            Total rewards worth <span className="text-brand-accent font-bold text-2xl animate-pulse">₹2,15,000</span> awaiting the best innovators.
           </p>
         </div>
 
