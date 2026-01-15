@@ -12,15 +12,15 @@ const Home = () => {
     <div className="relative min-h-screen flex flex-col justify-center items-center bg-transparent overflow-hidden pt-32 lg:pt-40">
       {/* --- Immersive Background Environment --- */}
       {/* Dynamic Grid Floor with Perspective */}
-      <div className="absolute inset-0 [perspective:1000px] pointer-events-none">
-        <div className="absolute bottom-[-20%] left-[-20%] w-[140%] h-[80%] bg-[linear-gradient(transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px)] bg-[size:60px_60px] [transform:rotateX(60deg)] opacity-30 animate-[pulse_8s_ease-in-out_infinite]"></div>
+      <div className="absolute inset-0 perspective-[1000px] pointer-events-none">
+        <div className="absolute bottom-[-20%] left-[-20%] w-[140%] h-[80%] bg-[linear-gradient(transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px),linear-gradient(90deg,transparent_0%,rgba(204,255,0,0.05)_1px,transparent_1px)] bg-size-[60px_60px] transform-[rotateX(60deg)] opacity-30 animate-[pulse_8s_ease-in-out_infinite]"></div>
       </div>
 
       {/* Central "Reactor" Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       {/* Scanline Effect */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(204,255,0,0.02)_50%,transparent_51%)] bg-[length:100%_8px] pointer-events-none opacity-20"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(204,255,0,0.02)_50%,transparent_51%)] bg-size-[100%_8px] pointer-events-none opacity-20"></div>
 
       {/* --- Holographic Central Interface --- */}
       <div className="relative z-10 w-full max-w-7xl px-4 flex flex-col items-center">

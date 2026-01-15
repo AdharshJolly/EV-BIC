@@ -36,7 +36,6 @@ const CenterOfExcellence = () => {
     { src: "/images/COE-2.jpeg", alt: "Advanced Technologies", index: 2 },
     { src: "/images/COE-3.jpeg", alt: "Innovation Lab", index: 3 },
     { src: "/images/COE-4.jpeg", alt: "Team Collaboration", index: 4 },
-    { src: "/images/COE-5.jpeg", alt: "Sustainable Solutions", index: 5 },
   ];
 
   return (
@@ -117,7 +116,7 @@ const CenterOfExcellence = () => {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {imageCards.map((image, idx) => (
               <motion.div
                 key={idx}

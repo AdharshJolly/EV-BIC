@@ -30,7 +30,6 @@ const Navbar = () => {
         "coe",
         "hardware",
         "challenges",
-        "themes",
         "timeline",
         "contact",
       ];
@@ -54,8 +53,7 @@ const Navbar = () => {
     { name: "About", path: "#about" },
     { name: "COE", path: "#coe" },
     { name: "Hardware", path: "#hardware" },
-    { name: "Challenges", path: "#challenges" },
-    { name: "Themes", path: "#themes" },
+    { name: "Challenges", path: "#themes" },
     { name: "Timeline", path: "#timeline" },
     { name: "Contact", path: "#contact" },
   ];
@@ -80,33 +78,33 @@ const Navbar = () => {
             : "bg-transparent rounded-2xl px-4 py-3 border-transparent"
         )}
       >
-        <div className="flex items-center justify-between h-14 w-full gap-2 flex-nowrap">
-          {/* VSD Logo on Left */}
-          <div className="flex-shrink-0">
-            <Image
-              src="/images/vsd-logo.png"
-              alt="VSD"
-              width={40}
-              height={40}
-              className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
-            />
+        <div className="flex items-center justify-between h-14 w-full gap-2">
+          {/* Left Section: CHRIST Logo & Title */}
+          <div className="flex items-center gap-3">
+            <div className="shrink-0">
+              <Image
+                src="/images/cu-logo.png"
+                alt="CHRIST University"
+                width={40}
+                height={40}
+                className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            <a href="#home" className="flex items-center gap-2 group shrink-0">
+              <div className="relative shrink-0">
+                <div className="absolute inset-0 bg-brand-accent blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <BatteryCharging className="h-5 w-5 text-brand-accent relative z-10" />
+              </div>
+              <span className="text-base font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors whitespace-nowrap hidden md:inline">
+                EV Battery Challenge
+              </span>
+              <span className="text-base font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors md:hidden">
+                EV-BIC
+              </span>
+            </a>
           </div>
 
-          {/* EV Battery Challenge in Center */}
-          <a href="#home" className="flex items-center gap-2 group flex-shrink-0 px-2">
-            <div className="relative flex-shrink-0">
-              <div className="absolute inset-0 bg-brand-accent blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <BatteryCharging className="h-5 w-5 text-brand-accent relative z-10" />
-            </div>
-            <span className="text-base font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors whitespace-nowrap hidden md:inline">
-              EV Battery Challenge
-            </span>
-            <span className="text-base font-bold text-white tracking-wider group-hover:text-brand-accent transition-colors md:hidden">
-              EV-BIC
-            </span>
-          </a>
-
-          {/* Desktop Navigation - Hidden on Mobile */}
+          {/* Center Section: Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center px-4">
             {navItems.map((item) => {
               const isActive = activeSection === item.path.substring(1);
@@ -138,75 +136,76 @@ const Navbar = () => {
             })}
           </div>
 
-          {/* Register Button - Hidden on Small Screens */}
-          <Button
-            asChild
-            className="hidden sm:flex flex-shrink-0 bg-brand-accent text-brand-dark px-4 py-1.5 rounded-full text-xs font-bold hover:bg-white hover:shadow-[0_0_20px_-5px_rgba(0,220,130,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
-          >
-            <a href="#register">Register</a>
-          </Button>
+          {/* Right Section: Register, VSD Logo & Mobile Menu */}
+          <div className="flex items-center gap-3">
+            <Button
+              asChild
+              className="hidden sm:flex shrink-0 bg-brand-accent text-brand-dark px-4 py-1.5 rounded-full text-xs font-bold hover:bg-white hover:shadow-[0_0_20px_-5px_rgba(0,220,130,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
+            >
+              <a href="#register">Register</a>
+            </Button>
 
-          {/* CHRIST Logo on Extreme Right */}
-          <div className="flex-shrink-0">
-            <Image
-              src="/images/cu-logo.png"
-              alt="CHRIST University"
-              width={40}
-              height={40}
-              className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
-            />
-          </div>
+            <div className="shrink-0">
+              <Image
+                src="/images/vsd-logo.png"
+                alt="VSD"
+                width={40}
+                height={40}
+                className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
 
-          {/* Mobile Menu - Hidden on Desktop */}
-          <div className="lg:hidden flex-shrink-0">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-brand-muted hover:text-white hover:bg-brand-secondary/50 h-8 w-8"
-                >
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="top"
-                className="bg-brand-primary/95 backdrop-blur-2xl border-brand-secondary rounded-b-3xl"
-              >
-                <SheetTitle className="hidden">Navigation Menu</SheetTitle>
-                <SheetDescription className="hidden">
-                  Mobile navigation menu for EV BIC website
-                </SheetDescription>
-                <div className="px-2 pt-4 pb-6 space-y-2">
-                  {navItems.map((item) => {
-                    const isActive = activeSection === item.path.substring(1);
-                    return (
-                      <a
-                        key={item.name}
-                        href={item.path}
-                        onClick={() => handleNavClick()}
-                        className={cn(
-                          "block px-4 py-3 rounded-xl text-base font-medium transition-colors",
-                          isActive
-                            ? "text-brand-accent bg-brand-secondary/30"
-                            : "text-brand-muted hover:text-white hover:bg-brand-secondary/20"
-                        )}
-                      >
-                        {item.name}
-                      </a>
-                    );
-                  })}
+            <div className="lg:hidden shrink-0">
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger asChild>
                   <Button
-                    asChild
-                    className="w-full mt-6 bg-brand-accent text-brand-dark py-6 rounded-xl text-base font-bold hover:bg-white transition-colors"
+                    variant="ghost"
+                    size="icon"
+                    className="text-brand-muted hover:text-white hover:bg-brand-secondary/50 h-8 w-8"
                   >
-                    <a href="#register" onClick={() => handleNavClick()}>
-                      Register Now
-                    </a>
+                    <Menu className="h-5 w-5" />
                   </Button>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetTrigger>
+                <SheetContent
+                  side="top"
+                  className="bg-brand-primary/95 backdrop-blur-2xl border-brand-secondary rounded-b-3xl"
+                >
+                  {/* ... sheet content ... */}
+                  <SheetTitle className="hidden">Navigation Menu</SheetTitle>
+                  <SheetDescription className="hidden">
+                    Mobile navigation menu for EV BIC website
+                  </SheetDescription>
+                  <div className="px-2 pt-4 pb-6 space-y-2">
+                    {navItems.map((item) => {
+                      const isActive = activeSection === item.path.substring(1);
+                      return (
+                        <a
+                          key={item.name}
+                          href={item.path}
+                          onClick={() => handleNavClick()}
+                          className={cn(
+                            "block px-4 py-3 rounded-xl text-base font-medium transition-colors",
+                            isActive
+                              ? "text-brand-accent bg-brand-secondary/30"
+                              : "text-brand-muted hover:text-white hover:bg-brand-secondary/20"
+                          )}
+                        >
+                          {item.name}
+                        </a>
+                      );
+                    })}
+                    <Button
+                      asChild
+                      className="w-full mt-6 bg-brand-accent text-brand-dark py-6 rounded-xl text-base font-bold hover:bg-white transition-colors"
+                    >
+                      <a href="#register" onClick={() => handleNavClick()}>
+                        Register Now
+                      </a>
+                    </Button>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>

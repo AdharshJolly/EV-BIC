@@ -50,6 +50,9 @@ const COE = () => {
                             <div className="relative h-48 rounded-2xl overflow-hidden border border-brand-secondary/50">
                                 <Image src="/images/COE-4.jpeg" alt="COE Lab 4" fill className="object-cover hover:scale-105 transition-transform duration-500" />
                             </div>
+                            <div className="relative h-48 rounded-2xl overflow-hidden border border-brand-secondary/50">
+                                <Image src="/images/COE-5.jpeg" alt="COE Lab 5" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                            </div>
                         </div>
                     </motion.div>
                 </div>

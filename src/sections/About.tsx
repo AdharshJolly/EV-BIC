@@ -75,7 +75,7 @@ const About = () => {
                </motion.div>
 
                {/* The Solution */}
-               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="md:col-span-1 lg:col-span-2 bg-brand-secondary/10 border border-brand-secondary rounded-2xl p-6 hover:bg-brand-secondary/20 transition-colors border-brand-accent/20">
+               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="md:col-span-1 lg:col-span-2 bg-brand-secondary/10 border border-brand-secondary rounded-2xl p-6 hover:bg-brand-secondary/20 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
                      <Target className="w-5 h-5 text-brand-accent" />
                      <h3 className="text-lg font-bold text-white">The Solution</h3>
@@ -131,36 +131,71 @@ const About = () => {
                   Technology in Action
                </h3>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                  {[
-                     { src: "/images/G1.jpeg", alt: "Battery Analysis", title: "Real-time Monitoring" },
-                     { src: "/images/G2.jpeg", alt: "Hardware Integration", title: "Advanced Hardware" },
-                     { src: "/images/G3.jpeg", alt: "Data Processing", title: "Data Intelligence" },
-                     { src: "/images/G5.jpeg", alt: "Performance Metrics", title: "Performance Analytics" },
-                     { src: "/images/G6.jpeg", alt: "Innovation Lab", title: "Research & Development" },
-                  ].map((image, idx) => (
-                     <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: idx * 0.1, duration: 0.4 }}
-                        className="group relative overflow-hidden rounded-xl border border-brand-secondary/50 hover:border-brand-accent/50 transition-all duration-300 h-64"
-                     >
-                        <Image
-                           src={image.src}
-                           alt={image.alt}
-                           fill
-                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                           <div>
-                              <p className="text-brand-accent font-semibold text-sm tracking-widest uppercase mb-2">Featured</p>
-                              <p className="text-white font-bold text-lg">{image.title}</p>
-                           </div>
+               {/* Bento/Masonry Grid */}
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[250px] gap-6 max-w-7xl mx-auto">
+
+                  {/* Item 1: Large Featured (G1) */}
+                  <motion.div
+                     initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1 }}
+                     className="md:col-span-2 md:row-span-2 relative rounded-3xl overflow-hidden border border-brand-secondary/50 group"
+                  >
+                     <Image src="/images/G1.jpeg" alt="Real-time Monitoring" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                     <div className="absolute inset-0 bg-linear-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-8">
+                        <div>
+                           <Badge className="mb-3 bg-brand-accent text-brand-dark font-bold border-none">Featured Tech</Badge>
+                           <h4 className="text-2xl font-bold text-white mb-2">Real-time Battery Intelligence</h4>
+                           <p className="text-brand-muted line-clamp-2">Advanced sensors tracking voltage, current, and temperature in micro-second intervals.</p>
                         </div>
-                     </motion.div>
-                  ))}
+                     </div>
+                  </motion.div>
+
+                  {/* Item 2: Standard (G2) */}
+                  <motion.div
+                     initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
+                     className="relative rounded-3xl overflow-hidden border border-brand-secondary/50 group"
+                  >
+                     <Image src="/images/G2.jpeg" alt="Hardware Integration" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                     <div className="absolute inset-0 bg-linear-to-t from-brand-dark/90 via-black/20 to-transparent flex items-end p-6">
+                        <h4 className="text-lg font-bold text-white">Hardware Integration</h4>
+                     </div>
+                  </motion.div>
+
+                  {/* Item 3: Standard (G3) */}
+                  <motion.div
+                     initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
+                     className="relative rounded-3xl overflow-hidden border border-brand-secondary/50 group"
+                  >
+                     <Image src="/images/G3.jpeg" alt="Data Processing" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                     <div className="absolute inset-0 bg-linear-to-t from-brand-dark/90 via-black/20 to-transparent flex items-end p-6">
+                        <h4 className="text-lg font-bold text-white">Data Processing</h4>
+                     </div>
+                  </motion.div>
+
+                  {/* Item 4: Wide (G5) */}
+                  <motion.div
+                     initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4 }}
+                     className="md:col-span-2 relative rounded-3xl overflow-hidden border border-brand-secondary/50 group"
+                  >
+                     <Image src="/images/G5.jpeg" alt="Performance Analytics" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                     <div className="absolute inset-0 bg-linear-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-8">
+                        <div>
+                           <h4 className="text-xl font-bold text-white mb-1">Performance Analytics</h4>
+                           <p className="text-sm text-brand-muted">Deep insights into battery health and lifecycle.</p>
+                        </div>
+                     </div>
+                  </motion.div>
+
+                  {/* Item 5: Standard (G6) */}
+                  <motion.div
+                     initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 }}
+                     className="relative rounded-3xl overflow-hidden border border-brand-secondary/50 group"
+                  >
+                     <Image src="/images/G6.jpeg" alt="R&D Lab" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                     <div className="absolute inset-0 bg-linear-to-t from-brand-dark/90 via-black/20 to-transparent flex items-end p-6">
+                        <h4 className="text-lg font-bold text-white">Innovation Lab</h4>
+                     </div>
+                  </motion.div>
+
                </div>
             </motion.div>
          </div>
