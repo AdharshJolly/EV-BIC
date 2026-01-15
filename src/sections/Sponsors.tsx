@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Star, Shield, Award, Handshake } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { motion } from 'framer-motion';
+import { Star, Shield, Award } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Sponsors = () => {
   return (
