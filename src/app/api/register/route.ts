@@ -5,17 +5,19 @@ import {
   sendConfirmationEmail,
   KV_KEY,
   refreshAccessToken,
+  hmacHash,
 } from "@/lib/auth-helpers";
 import { JWTPayload } from "jose";
 
-interface VerifiedJwtPayload extends JWTPayload {
+interface OtpJwtPayload extends JWTPayload {
   email: string;
-  verified: boolean;
+  hash: string;
+  expiry: number;
 }
 
 interface RegisterBody {
   participant1Name: string;
-  participant2Name?: string;
+  participant2Name: string;
   email: string;
   phoneNumber: string;
   collegeName: string;
@@ -23,6 +25,7 @@ interface RegisterBody {
   city: string;
   isBangaloreBased: boolean;
   willAttendInPerson: boolean;
+  otp: string;
 }
 
 interface GoogleTokens {
@@ -54,21 +57,25 @@ type CloudflareEnv = {
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as RegisterBody;
-    const token = request.cookies.get("verified_token")?.value;
+    const token = request.cookies.get("access_token")?.value;
 
     if (!token) {
-      return NextResponse.json(
-        { error: "Not authorized. Please verify email first." },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
-    const payload = (await verifyJwt(token)) as VerifiedJwtPayload | null;
-    if (!payload || !payload.verified || payload.email !== body.email) {
-      return NextResponse.json(
-        { error: "Invalid verification token" },
-        { status: 401 }
-      );
+    const payload = (await verifyJwt(token)) as OtpJwtPayload | null;
+    if (!payload || payload.email !== body.email) {
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
+    // Verify OTP
+    if (Date.now() / 1000 > payload.expiry) {
+      return NextResponse.json({ error: "OTP expired" }, { status: 400 });
+    }
+
+    const computedHash = await hmacHash(body.email, body.otp, payload.expiry);
+    if (computedHash !== payload.hash) {
+      return NextResponse.json({ error: "Invalid OTP" }, { status: 400 });
     }
 
     let env: CloudflareEnv | undefined;
@@ -104,7 +111,7 @@ export async function POST(request: NextRequest) {
       )
       .bind(
         body.participant1Name,
-        body.participant2Name ?? null,
+        body.participant2Name,
         body.email,
         body.phoneNumber,
         body.collegeName,
@@ -116,6 +123,35 @@ export async function POST(request: NextRequest) {
       );
 
     await stmt.run();
+
+    // Submit to Google Form
+    try {
+      const formData = new URLSearchParams();
+      formData.append("entry.293269717", body.participant1Name);
+      formData.append("entry.1099032952", body.participant2Name);
+      formData.append("entry.1401420283", body.email);
+      formData.append("entry.701631980", body.phoneNumber);
+      formData.append("entry.399018039", body.collegeName);
+      formData.append("entry.386400877", body.state);
+      formData.append("entry.1502698996", body.city);
+      formData.append("entry.124030429", body.isBangaloreBased ? "Yes" : "No");
+      formData.append(
+        "entry.711559939",
+        body.willAttendInPerson ? "Yes" : "No"
+      );
+
+      await fetch(
+        "https://docs.google.com/forms/d/e/1FAIpQLSdFCo6FgN2zioLrt6GL6t1UtdLkoINViaTU-sN7v2oZlxh2Tw/formResponse",
+        {
+          method: "POST",
+          body: formData,
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        }
+      );
+    } catch (formErr) {
+      console.error("Google Form submission failed", formErr);
+      // Do not fail registration if form submission fails
+    }
 
     if (env.google_token) {
       try {
@@ -147,7 +183,7 @@ export async function POST(request: NextRequest) {
     }
 
     const response = NextResponse.json({ success: true });
-    response.cookies.delete("verified_token");
+    // Clear OTP session token after successful registration
     response.cookies.delete("access_token");
 
     return response;
