@@ -9,5 +9,21 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  "images": {
+    "binding": "IMAGES"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ev-bic-db",
+      "database_id": "e7b0c8e0-1c5c-4e8b-9c1a-8e2b7d5f0a3d"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "google_token",
+      "id": "8f3b2c1a-4d5e-6f7g-8h9i-0j1k2l3m4n5o"
+    }
+  ]
 }
