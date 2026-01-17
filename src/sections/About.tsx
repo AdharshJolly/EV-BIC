@@ -10,6 +10,9 @@ import {
   Globe,
   Target,
   Users,
+  Cloud,
+  Rocket,
+  BarChart3,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -169,40 +172,7 @@ const About = () => {
             </motion.div>
           ))}
 
-          {/* Who Can Participate - Full Width Bottom */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="md:col-span-2 lg:col-span-4 bg-brand-accent/5 border border-brand-accent/20 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-brand-accent/10 rounded-full">
-                <Users className="w-6 h-6 text-brand-accent" />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">
-                  Who Can Participate?
-                </h3>
-                <p className="text-sm text-brand-muted">
-                  Innovators ready to shape the future.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {["Students", "Researchers", "Start-ups (< 2 Years)"].map(
-                (p, i) => (
-                  <Badge
-                    key={i}
-                    variant="secondary"
-                    className="bg-brand-secondary text-brand-text border border-brand-secondary/50 px-4 py-1.5"
-                  >
-                    {p}
-                  </Badge>
-                )
-              )}
-            </div>
-          </motion.div>
+          
         </div>
       </div>
     </div>
