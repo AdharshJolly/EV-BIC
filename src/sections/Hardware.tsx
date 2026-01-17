@@ -2,18 +2,12 @@
 
 import { motion } from 'framer-motion';
 import Image from "next/image";
-import { Cpu, Users, Target } from "lucide-react";
+import { Cpu, Target } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const Hardware = () => {
-  const personnel = [
-    { name: "Kunal Ghosh", role: "Co-founder, VSD", initial: "KG" },
-    { name: "Steve Hoover", role: "Redwood EDA", initial: "SH" },
-    { name: "C-DAC Team", role: "VEGA Processor Architects", initial: "CD" },
-  ];
-
   const operations = [
     {
       title: "THEJAS32 Deployment",
@@ -84,7 +78,6 @@ const Hardware = () => {
             viewport={{ once: true }}
             className="relative max-w-md"
           >
-            <div className="absolute -inset-4 bg-brand-accent/10 rounded-[3rem] blur-3xl opacity-50"></div>
 
             <Card className="bg-brand-secondary/20 border-brand-secondary border-dashed p-8 relative overflow-hidden backdrop-blur-sm">
               <div className="absolute top-0 right-0 p-4 opacity-5">
@@ -99,7 +92,7 @@ const Hardware = () => {
                     fill
                     className="object-cover rounded-3xl"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    {/* <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div> */}
                 </div>
 
                 <div className="space-y-4 text-center">
@@ -132,38 +125,10 @@ const Hardware = () => {
           </motion.div>
         </div>
 
-        {/* Bottom Grid: Personnel & Operations */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
-          {/* Personnel */}
-          <Card className="bg-brand-secondary/10 border-brand-secondary/50 lg:col-span-1 h-full">
-            <CardHeader className="border-b border-brand-secondary/30">
-              <CardTitle className="text-white flex items-center gap-3 text-lg uppercase tracking-wide font-display">
-                <Users className="w-5 h-5 text-brand-accent" /> Key Personnel
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6 space-y-6">
-              {personnel.map((p, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <Avatar className="h-10 w-10 border border-brand-accent/30">
-                    <AvatarFallback className="bg-brand-secondary text-brand-accent font-bold text-xs">
-                      {p.initial}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <div className="text-sm font-bold text-white leading-none">
-                      {p.name}
-                    </div>
-                    <div className="text-xs text-brand-muted mt-1">
-                      {p.role}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-
+        {/* Bottom Grid: Operations */}
+        <div className="grid grid-cols-1 gap-8 mb-24">
           {/* Operations */}
-          <Card className="bg-brand-secondary/10 border-brand-secondary/50 lg:col-span-2">
+          <Card className="bg-brand-secondary/10 border-brand-secondary/50">
             <CardHeader className="border-b border-brand-secondary/30">
               <CardTitle className="text-white flex items-center gap-3 text-lg uppercase tracking-wide font-display">
                 <Target className="w-5 h-5 text-brand-accent" /> Notable

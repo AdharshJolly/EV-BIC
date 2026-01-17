@@ -2,29 +2,29 @@
 
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Globe, Lightbulb, Award } from 'lucide-react';
 
 const ExpectedOutcomes = () => {
   const outcomes = [
     {
-      icon: TrendingUp,
-      title: "Enhanced Battery Reliability",
-      desc: "Improved prediction of battery lifespan and performance degradation"
+      title: "Functional EV battery intelligence prototypes",
     },
     {
-      icon: Globe,
-      title: "Industry Advancement",
-      desc: "Development of indigenous EV battery intelligence solutions"
+      title: "Indigenous firmware and reference designs",
     },
     {
-      icon: Lightbulb,
-      title: "Innovation Ecosystem",
-      desc: "Fostering a community of skilled engineers in EV technology"
+      title: "Cloud dashboards demonstrating real-world battery insights",
     },
     {
-      icon: Award,
-      title: "Safety Standards",
-      desc: "Establishing new benchmarks for EV battery safety monitoring"
+      title: "A talent pool trained on Indian RISC-V processors and boards",
+    },
+    {
+      title: "Reduced dependence on imported BMS solutions",
+    },
+    {
+      title: "Faster innovation cycles through open, transparent platforms",
+    },
+    {
+      title: "A pathway to deploy Make-in-India electronics in future EV programs",
     }
   ];
 
@@ -46,13 +46,13 @@ const ExpectedOutcomes = () => {
               Expected Outcomes & <span className="text-brand-accent">Industry Impact</span>
             </h2>
             <p className="text-lg leading-relaxed text-brand-muted">
-              The EV Battery Intelligence Challenge aims to deliver transformative solutions that will shape the future of electric mobility in India and beyond.
+              This hackathon aims to create more than prototypes it seeks to seed a domestic EV electronics ecosystem.
             </p>
           </motion.div>
         </div>
 
         {/* Outcomes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {outcomes.map((outcome, i) => (
             <motion.div
               key={i}
@@ -61,9 +61,7 @@ const ExpectedOutcomes = () => {
               transition={{ delay: i * 0.1 }}
               className="bg-brand-secondary/10 border border-brand-secondary/30 rounded-2xl p-6 hover:bg-brand-secondary/20 transition-all group"
             >
-              <outcome.icon className="w-8 h-8 text-brand-muted group-hover:text-brand-accent transition-colors mb-4" />
               <h3 className="text-lg font-bold text-white mb-2">{outcome.title}</h3>
-              <p className="text-sm text-brand-muted">{outcome.desc}</p>
             </motion.div>
           ))}
         </div>

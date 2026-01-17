@@ -110,6 +110,10 @@ const Home = () => {
                 Powering the Future of E-Mobility with Indigenous Atmanirbhar
                 Compute
               </span>
+              <br />
+              <span className="text-brand-accent">
+                Powered by CDAC
+              </span>
             </p>
 
             {/* Interactive Countdown "Chip" */}
