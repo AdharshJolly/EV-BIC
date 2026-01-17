@@ -36,17 +36,11 @@ const Footer = () => {
 
           {/* Contact & Social */}
           <div>
-            <h3 className="text-white font-bold mb-6">Connect</h3>
-            <div className="flex space-x-4 mb-8">
-              <a href="#" className="bg-brand-secondary/50 p-2.5 rounded-lg text-brand-muted hover:text-white hover:bg-brand-accent/20 transition-all"><Github className="h-5 w-5" /></a>
-              <a href="#" className="bg-brand-secondary/50 p-2.5 rounded-lg text-brand-muted hover:text-white hover:bg-brand-accent/20 transition-all"><Twitter className="h-5 w-5" /></a>
-              <a href="#" className="bg-brand-secondary/50 p-2.5 rounded-lg text-brand-muted hover:text-white hover:bg-brand-accent/20 transition-all"><Linkedin className="h-5 w-5" /></a>
-              <a href="mailto:contact@evbic.com" className="bg-brand-secondary/50 p-2.5 rounded-lg text-brand-muted hover:text-white hover:bg-brand-accent/20 transition-all"><Mail className="h-5 w-5" /></a>
+            <h3 className="text-white font-bold mb-6">Partners</h3>
+            <div className="space-y-4">
+              <div className="text-brand-accent font-bold text-lg">C-DAC</div>
+              <div className="text-brand-muted text-sm">Centre for Development of Advanced Computing</div>
             </div>
-            <p className="text-sm text-brand-muted">
-              Have questions?<br />
-              <a href="mailto:info@evbic.com" className="text-brand-accent hover:underline">info@evbic.com</a>
-            </p>
           </div>
         </div>
 
