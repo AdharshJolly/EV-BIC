@@ -33,7 +33,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        <div className="grid grid-cols-1 gap-12 lg:gap-24 max-w-2xl mx-auto">
           {/* Contact Info & FAQ */}
           <div className="flex flex-col gap-12">
              <motion.div 
@@ -48,8 +48,8 @@ const Contact = () => {
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2">Email Us</h3>
                       <div className="space-y-1">
-                        <p className="text-brand-muted">General: <a href="mailto:info@evbic.com" className="text-white hover:text-brand-accent transition-colors">info@evbic.com</a></p>
-                        <p className="text-brand-muted">Support: <a href="mailto:support@evbic.com" className="text-white hover:text-brand-accent transition-colors">support@evbic.com</a></p>
+                        <p className="text-brand-muted">VSD: <a href="mailto:vsd@evbic.com" className="text-white hover:text-brand-accent transition-colors">vsd@evbic.com</a></p>
+                        <p className="text-brand-muted">Manoj: <a href="mailto:manoj@evbic.com" className="text-white hover:text-brand-accent transition-colors">manoj@evbic.com</a></p>
                       </div>
                     </div>
                   </CardContent>
@@ -71,84 +71,7 @@ const Contact = () => {
                   </CardContent>
                 </Card>
              </motion.div>
-
-             {/* Mini FAQ */}
-             <motion.div 
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-             >
-                <Card className="bg-brand-secondary/10 border-brand-secondary/30">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-3 mb-6">
-                      <MessageSquare className="w-5 h-5 text-brand-muted" />
-                      <h3 className="text-lg font-semibold text-white">Common Questions</h3>
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="text-sm font-bold text-white mb-1">Who can participate?</h4>
-                        <p className="text-sm text-brand-muted">Students, Researchers, and Start-ups (&lt;2 years old) in teams of 1-3.</p>
-                      </div>
-                      <div className="h-px bg-brand-secondary/30"></div>
-                      <div>
-                        <h4 className="text-sm font-bold text-white mb-1">Is hardware provided?</h4>
-                        <p className="text-sm text-brand-muted">Top 15 teams receive the VSDSquadron Ultra board; other components are reimbursed.</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-             </motion.div>
           </div>
-
-          {/* Contact Form */}
-          <motion.div 
-            initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.3 }}
-          >
-            <Card className="glass-panel border-brand-secondary/50 relative overflow-hidden bg-brand-secondary/30">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/10 rounded-full blur-2xl -z-10"></div>
-               
-               <CardContent className="p-8 sm:p-10">
-                 <h3 className="text-2xl font-bold text-white mb-8">Send a Message</h3>
-                 
-                 <form className="space-y-6">
-                   <div className="space-y-2">
-                     <Label htmlFor="name" className="text-brand-muted">Your Name</Label>
-                     <Input 
-                        type="text" 
-                        name="name" 
-                        id="name" 
-                        className="bg-brand-primary/50 border-brand-secondary focus-visible:ring-brand-accent text-white" 
-                        placeholder="John Doe" 
-                      />
-                   </div>
-                   
-                   <div className="space-y-2">
-                     <Label htmlFor="email" className="text-brand-muted">Email Address</Label>
-                     <Input 
-                        type="email" 
-                        name="email" 
-                        id="email" 
-                        className="bg-brand-primary/50 border-brand-secondary focus-visible:ring-brand-accent text-white" 
-                        placeholder="john@example.com" 
-                      />
-                   </div>
-                   
-                   <div className="space-y-2">
-                     <Label htmlFor="message" className="text-brand-muted">Message</Label>
-                     <Textarea 
-                        name="message" 
-                        id="message" 
-                        rows={4} 
-                        className="bg-brand-primary/50 border-brand-secondary focus-visible:ring-brand-accent text-white" 
-                        placeholder="How can we help you?" 
-                      />
-                   </div>
-                   
-                   <Button type="submit" className="w-full gap-2 bg-brand-accent text-brand-dark font-bold hover:bg-white hover:scale-[1.02] transition-all duration-200 py-6">
-                     Send Message <Send className="w-4 h-4" />
-                   </Button>
-                 </form>
-               </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </div>
     </div>

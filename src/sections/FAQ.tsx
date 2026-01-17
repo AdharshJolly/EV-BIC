@@ -11,7 +11,7 @@ const FAQ = () => {
   const items = [
     {
       q: "Who can participate in this hackathon?",
-      a: "The challenge is open to students, researchers, and early-stage start-ups (less than 2 years old). Teams can consist of 1 to 3 members."
+      a: "The challenge is open to students, researchers, and early-stage start-ups (less than 2 years old). Teams must consist of 2 members."
     },
     {
       q: "Is there a registration fee?",

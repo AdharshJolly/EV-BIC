@@ -1,16 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Cpu,
-  Users,
-  Target,
-  Box,
-  Battery,
-  Radio,
-} from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion } from 'framer-motion';
+import Image from "next/image";
+import { Cpu, Users, Target } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const Hardware = () => {
@@ -35,29 +29,6 @@ const Hardware = () => {
       title: "Sovereign Compute",
       desc: "Building a verifiable and secure hardware ecosystem for mission-critical apps.",
       status: "In Progress",
-    },
-  ];
-
-  const components = [
-    {
-      name: "VSDSquadron Ultra",
-      icon: Cpu,
-      desc: "High-performance RISC-V development board featuring the THEJAS32 core.",
-    },
-    {
-      name: "Sensor Suite",
-      icon: Radio,
-      desc: "High-precision thermal and voltage sensors for real-time monitoring.",
-    },
-    {
-      name: "Interface Hub",
-      icon: Box,
-      desc: "Custom cabling and breakout boards for seamless battery cell connection.",
-    },
-    {
-      name: "Power Module",
-      icon: Battery,
-      desc: "Dedicated power management unit for stable dev-board operation.",
     },
   ];
 
@@ -105,43 +76,13 @@ const Hardware = () => {
           </div>
         </div>
 
-        {/* Top Content: Components & The Kit Visual */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
-          {/* Left side: Components List */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <h3 className="text-2xl font-bold text-white uppercase tracking-widest font-display flex items-center gap-3">
-              <Box className="w-6 h-6 text-brand-accent" /> The Arsenal
-            </h3>
-            <div className="space-y-6">
-              {components.map((item, i) => (
-                <div key={i} className="flex gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-brand-secondary/50 border border-brand-accent/20 flex items-center justify-center flex-shrink-0 group-hover:border-brand-accent/50 transition-colors">
-                    <item.icon className="w-6 h-6 text-brand-accent" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold uppercase text-sm tracking-wide mb-1">
-                      {item.name}
-                    </h4>
-                    <p className="text-sm text-brand-muted leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right side: Hardware Visual Card */}
+        {/* VSDSquadron Visual */}
+        <div className="flex justify-center mb-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative max-w-md"
           >
             <div className="absolute -inset-4 bg-brand-accent/10 rounded-[3rem] blur-3xl opacity-50"></div>
 
@@ -151,25 +92,19 @@ const Hardware = () => {
               </div>
 
               <div className="relative z-10">
-                <div className="aspect-square max-w-xs mx-auto bg-brand-dark/50 rounded-3xl border border-brand-secondary flex items-center justify-center relative group mb-8">
+                <div className="aspect-square max-w-xs mx-auto bg-brand-dark/50 rounded-3xl border border-brand-secondary flex items-center justify-center relative group mb-8 overflow-hidden">
+                  <Image
+                    src="/images/vsd.jpeg"
+                    alt="VSDSquadron"
+                    fill
+                    className="object-cover rounded-3xl"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="text-center p-8">
-                    <Cpu className="w-20 h-20 text-brand-accent mx-auto mb-6 animate-pulse" />
-                    <div className="space-y-2">
-                      <div className="h-1 w-32 bg-brand-accent/20 rounded-full mx-auto overflow-hidden">
-                        <div className="h-full bg-brand-accent w-3/4"></div>
-                      </div>
-                      <div className="h-1 w-24 bg-brand-secondary rounded-full mx-auto"></div>
-                    </div>
-                    <p className="mt-8 text-[8px] font-mono text-brand-muted uppercase tracking-[0.3em]">
-                      THEJAS32 // RISC-V CORE
-                    </p>
-                  </div>
                 </div>
 
                 <div className="space-y-4 text-center">
                   <h3 className="text-xl font-bold text-white uppercase tracking-widest font-display">
-                    SQUADRON_ULTRA_KIT
+                    VSDSquadron
                   </h3>
                   <div className="flex flex-wrap justify-center gap-2">
                     <Badge
