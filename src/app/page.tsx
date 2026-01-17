@@ -4,12 +4,12 @@ import CenterOfExcellence from "../sections/CenterOfExcellence";
 import Hardware from "../sections/Hardware";
 import Themes from "../sections/Themes";
 import Timeline from '../sections/Timeline';
-import ExpectedOutcomes from '../sections/ExpectedOutcomes';
 import Prizes from "../sections/Prizes";
 import FAQ from '../sections/FAQ';
 import Register from '../sections/Register';
 import Contact from '../sections/Contact';
 import Marquee from '../sections/Marquee';
+import Sponsors from '../sections/Sponsors';
 
 
 export default function Page() {
@@ -30,9 +30,6 @@ export default function Page() {
       <section id="timeline" className="relative z-10">
         <Timeline />
       </section>
-      <section id="expected-outcomes" className="relative z-10">
-        <ExpectedOutcomes />
-      </section>
       <section id="hardware" className="relative z-10">
         <Hardware />
       </section>
@@ -45,11 +42,14 @@ export default function Page() {
       <section id="register" className="relative z-10">
         <Register />
       </section>
+      <section id="contact" className="relative z-10">
+        <Contact />
+      </section>
       <section id="faq" className="relative z-10">
         <FAQ />
       </section>
-      <section id="contact" className="relative z-10">
-        <Contact />
+      <section id="sponsors" className="relative z-10">
+        <Sponsors />
       </section>
     </>
   );
