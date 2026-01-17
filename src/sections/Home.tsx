@@ -105,15 +105,13 @@ const Home = () => {
               </span>
             </h1>
 
-            <p className="max-w-xl mx-auto text-lg sm:text-xl text-brand-muted/80 font-medium leading-relaxed mb-8">
+            <p className="max-w-xl mx-auto text-lg lg:whitespace-nowrap sm:text-xl text-brand-muted/80 font-medium leading-relaxed mb-8">
               <span className="text-white">
                 Powering the Future of E-Mobility with Indigenous Atmanirbhar
                 Compute
               </span>
               <br />
-              <span className="text-brand-accent">
-                Powered by CDAC
-              </span>
+              <span className="text-brand-accent">Powered by CDAC</span>
             </p>
 
             {/* Interactive Countdown "Chip" */}

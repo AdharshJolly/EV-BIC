@@ -27,10 +27,10 @@ const Navbar = () => {
       const sections = [
         "home",
         "about",
-        "coe",
-        "hardware",
         "challenges",
         "timeline",
+        "coe",
+        "hardware",
         "contact",
       ];
       for (const section of sections) {
@@ -51,10 +51,10 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "#home" },
     { name: "About", path: "#about" },
-    { name: "COE", path: "#coe" },
-    { name: "Hardware", path: "#hardware" },
-    { name: "Challenges", path: "#themes" },
+    { name: "Challenges", path: "#challenges" },
     { name: "Timeline", path: "#timeline" },
+    { name: "Hardware", path: "#hardware" },
+    { name: "COE", path: "#coe" },
     { name: "Contact", path: "#contact" },
   ];
 

@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { Cpu, Target } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const Hardware = () => {
   const operations = [
@@ -33,7 +32,7 @@ const Hardware = () => {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10 items-end">
           <div>
             <Badge className="bg-brand-accent text-brand-dark mb-4 px-4 py-1 uppercase tracking-widest text-xs font-mono">
               Hardware Ecosystem
@@ -53,37 +52,8 @@ const Hardware = () => {
               </span>
             </p>
           </div>
-          <div className="flex justify-start lg:justify-end">
-            <div className="bg-brand-secondary/20 border border-brand-secondary p-4 rounded-2xl flex items-center gap-4 backdrop-blur-md">
-              <div className="w-12 h-12 bg-brand-accent/10 rounded-xl flex items-center justify-center">
-                <Cpu className="text-brand-accent w-6 h-6" />
-              </div>
-              <div>
-                <div className="text-xs font-mono text-brand-muted uppercase tracking-widest">
-                  Platform_Status
-                </div>
-                <div className="text-white font-bold uppercase tracking-tight">
-                  Ready_For_Shortlist
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* VSDSquadron Visual */}
-        <div className="flex justify-center mb-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative max-w-md"
-          >
-
+          <div className="flex justify-center">
             <Card className="bg-brand-secondary/20 border-brand-secondary border-dashed p-8 relative overflow-hidden backdrop-blur-sm">
-              <div className="absolute top-0 right-0 p-4 opacity-5">
-                <Cpu className="w-64 h-64 text-brand-accent" />
-              </div>
-
               <div className="relative z-10">
                 <div className="aspect-square max-w-xs mx-auto bg-brand-dark/50 rounded-3xl border border-brand-secondary flex items-center justify-center relative group mb-8 overflow-hidden">
                   <Image
@@ -92,7 +62,6 @@ const Hardware = () => {
                     fill
                     className="object-cover rounded-3xl"
                   />
-                    {/* <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div> */}
                 </div>
 
                 <div className="space-y-4 text-center">
@@ -122,7 +91,17 @@ const Hardware = () => {
                 </div>
               </div>
             </Card>
-          </motion.div>
+          </div>
+        </div>
+
+        {/* VSDSquadron Visual */}
+        <div className="flex justify-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative max-w-md"
+          ></motion.div>
         </div>
 
         {/* Bottom Grid: Operations */}
