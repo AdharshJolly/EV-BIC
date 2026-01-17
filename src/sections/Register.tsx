@@ -17,6 +17,13 @@ const Register = () => {
     setTimeout(() => setSubmitted(true), 1000);
   };
 
+  const handleBangaloreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const questionDiv = document.getElementById('in-person-question');
+    if (questionDiv) {
+      questionDiv.style.display = e.target.value === 'yes' ? 'block' : 'none';
+    }
+  };
+
   if (submitted) {
     return (
       <div className="min-h-screen bg-transparent flex items-center justify-center p-6">
@@ -84,58 +91,41 @@ const Register = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                   <div className="col-span-1 space-y-2">
-                    <Label htmlFor="first-name" className="text-brand-text">First name</Label>
+                    <Label htmlFor="participant1-name" className="text-brand-text">Participant 1 Name</Label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <User className="h-5 w-5 text-brand-muted" />
                       </div>
                       <Input
                         type="text"
-                        name="first-name"
-                        id="first-name"
+                        name="participant1-name"
+                        id="participant1-name"
                         required
                         className="pl-10 bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
-                        placeholder="John"
+                        placeholder="John Doe"
                       />
                     </div>
                   </div>
                   
                   <div className="col-span-1 space-y-2">
-                    <Label htmlFor="last-name" className="text-brand-text">Last name</Label>
+                    <Label htmlFor="participant2-name" className="text-brand-text">Participant 2 Name</Label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <User className="h-5 w-5 text-brand-muted" />
                       </div>
                       <Input
                         type="text"
-                        name="last-name"
-                        id="last-name"
+                        name="participant2-name"
+                        id="participant2-name"
                         required
                         className="pl-10 bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
-                        placeholder="Doe"
+                        placeholder="Jane Smith"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-2 space-y-2">
-                    <Label htmlFor="company" className="text-brand-text">College / Organization</Label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Building className="h-5 w-5 text-brand-muted" />
-                      </div>
-                      <Input
-                        type="text"
-                        name="company"
-                        id="company"
-                        required
-                        className="pl-10 bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
-                        placeholder="University Name or Company"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-2 space-y-2">
-                    <Label htmlFor="email" className="text-brand-text">Email</Label>
+                    <Label htmlFor="email" className="text-brand-text">Email ID</Label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <Mail className="h-5 w-5 text-brand-muted" />
@@ -146,44 +136,100 @@ const Register = () => {
                         id="email"
                         required
                         className="pl-10 bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
-                        placeholder="john@example.com"
+                        placeholder="team@example.com"
                       />
                     </div>
                   </div>
 
                   <div className="sm:col-span-2 space-y-2">
-                    <Label htmlFor="team-name" className="text-brand-text">Team Name</Label>
+                    <Label htmlFor="phone" className="text-brand-text">Phone Number</Label>
+                    <Input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      required
+                      className="bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
+                      placeholder="+91 9876543210"
+                    />
+                  </div>
+
+                  <div className="sm:col-span-2 space-y-2">
+                    <Label htmlFor="college" className="text-brand-text">College Name</Label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Users className="h-5 w-5 text-brand-muted" />
+                        <Building className="h-5 w-5 text-brand-muted" />
                       </div>
                       <Input
                         type="text"
-                        name="team-name"
-                        id="team-name"
+                        name="college"
+                        id="college"
                         required
                         className="pl-10 bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
-                        placeholder="The Innovators"
+                        placeholder="Christ University"
                       />
                     </div>
                   </div>
-                  
+
+                  <div className="col-span-1 space-y-2">
+                    <Label htmlFor="state" className="text-brand-text">State</Label>
+                    <Input
+                      type="text"
+                      name="state"
+                      id="state"
+                      required
+                      className="bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
+                      placeholder="Karnataka"
+                    />
+                  </div>
+
+                  <div className="col-span-1 space-y-2">
+                    <Label htmlFor="city" className="text-brand-text">City</Label>
+                    <Input
+                      type="text"
+                      name="city"
+                      id="city"
+                      required
+                      className="bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
+                      placeholder="Bangalore"
+                    />
+                  </div>
+
                   <div className="sm:col-span-2 space-y-2">
-                     <Label htmlFor="theme" className="text-brand-text">Preferred Theme</Label>
-                     <div className="relative">
-                        <select
-                          id="theme"
-                          name="theme"
-                          className="flex h-10 w-full rounded-md border border-brand-secondary bg-brand-primary/60 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-white appearance-none"
-                        >
-                          <option>Predictive Battery Health Analytics</option>
-                          <option>Intelligent Thermal Anomaly Detection</option>
-                          <option>Fleet-Level Battery Performance Dashboard</option>
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-muted">
-                          <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
-                        </div>
-                     </div>
+                    <Label htmlFor="bangalore-based" className="text-brand-text">Are you Bangalore based?</Label>
+                    <div className="relative">
+                      <select
+                        id="bangalore-based"
+                        name="bangalore-based"
+                        required
+                        onChange={handleBangaloreChange}
+                        className="flex h-10 w-full rounded-md border border-brand-secondary bg-brand-primary/60 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-white appearance-none"
+                      >
+                        <option value="">Select option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-muted">
+                        <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-2 space-y-2" id="in-person-question" style={{display: 'none'}}>
+                    <Label htmlFor="attend-in-person" className="text-brand-text">Would you like to attend the session in person? (First 250 positive responses get invitation to offline session)</Label>
+                    <div className="relative">
+                      <select
+                        id="attend-in-person"
+                        name="attend-in-person"
+                        className="flex h-10 w-full rounded-md border border-brand-secondary bg-brand-primary/60 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-white appearance-none"
+                      >
+                        <option value="">Select option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-muted">
+                        <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
