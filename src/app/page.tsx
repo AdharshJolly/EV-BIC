@@ -3,14 +3,14 @@ import About from "../sections/About";
 import CenterOfExcellence from "../sections/CenterOfExcellence";
 import Hardware from "../sections/Hardware";
 import Themes from "../sections/Themes";
-import Timeline from '../sections/Timeline';
+import Timeline from "../sections/Timeline";
 import Prizes from "../sections/Prizes";
-import FAQ from '../sections/FAQ';
-import Register from '../sections/Register';
-import Contact from '../sections/Contact';
-import Marquee from '../sections/Marquee';
-import Sponsors from '../sections/Sponsors';
-
+import FAQ from "../sections/FAQ";
+import Register from "../sections/Register";
+import Contact from "../sections/Contact";
+import Marquee from "../sections/Marquee";
+import Sponsors from "../sections/Sponsors";
+import TechnologyInAction from "@/sections/TechnologyInAction";
 
 export default function Page() {
   return (
@@ -24,7 +24,7 @@ export default function Page() {
       <section id="about" className="relative z-10">
         <About />
       </section>
-      <section id="themes" className="relative z-10">
+      <section id="challenges" className="relative z-10">
         <Themes />
       </section>
       <section id="timeline" className="relative z-10">
@@ -35,6 +35,9 @@ export default function Page() {
       </section>
       <section id="coe" className="relative z-10">
         <CenterOfExcellence />
+      </section>
+      <section id="technology-in-action" className="relative z-10">
+        <TechnologyInAction />
       </section>
       <section id="prizes" className="relative z-10">
         <Prizes />
