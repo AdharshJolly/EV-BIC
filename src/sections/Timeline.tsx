@@ -78,8 +78,8 @@ const Timeline = () => {
   ];
 
   return (
-    <div className="bg-transparent py-24 sm:py-32 relative">
-      <div className="absolute left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-brand-secondary/20 to-transparent -z-10"></div>
+    <div className="bg-transparent py-24 relative">
+      <div className="absolute left-0 bottom-0 w-full h-1/2 bg-linear-to-t from-brand-secondary/20 to-transparent -z-10"></div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center mb-16">
@@ -165,7 +165,7 @@ const Timeline = () => {
             {outcomes.map(({ title, Icon }, i) => (
               <div
                 key={i}
-                className="rounded-2xl p-[1px] bg-gradient-to-b from-brand-accent/40 to-brand-secondary/40"
+                className="rounded-2xl p-px bg-linear-to-b from-brand-accent/40 to-brand-secondary/40"
               >
                 <div className="rounded-2xl bg-brand-secondary/10 border border-brand-secondary/30 p-6 h-full transition-all duration-200 hover:bg-brand-secondary/20 hover:shadow-xl hover:shadow-brand-accent/10">
                   <div className="flex items-start gap-4">
@@ -214,7 +214,7 @@ const Timeline = () => {
                 >
                   {p}
                 </Badge>
-              )
+              ),
             )}
           </div>
         </motion.div>

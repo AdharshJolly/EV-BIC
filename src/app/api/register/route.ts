@@ -6,6 +6,7 @@ import {
   KV_KEY,
   refreshAccessToken,
   hmacHash,
+  CloudflareEnv,
 } from "@/lib/auth-helpers";
 import { JWTPayload } from "jose";
 
@@ -34,26 +35,6 @@ interface GoogleTokens {
   access_token_expires_at: number;
 }
 
-type KvNamespaceJson = {
-  get<T = unknown>(key: string, type: "json"): Promise<T | null>;
-  put(key: string, value: string): Promise<void>;
-};
-
-type D1PreparedStatement = {
-  bind: (...values: (string | number | boolean | null)[]) => {
-    run: () => Promise<unknown>;
-  };
-};
-
-type D1DatabaseLike = {
-  prepare: (query: string) => D1PreparedStatement;
-};
-
-type CloudflareEnv = {
-  DB?: D1DatabaseLike;
-  google_token?: KvNamespaceJson;
-};
-
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as RegisterBody;
@@ -63,7 +44,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
-    const payload = (await verifyJwt(token)) as OtpJwtPayload | null;
+    // Get Cloudflare context
+    let env: CloudflareEnv | undefined;
+    try {
+      const ctx = await getCloudflareContext();
+      env = ctx.env as CloudflareEnv;
+    } catch (_e) {
+      console.warn("Could not get Cloudflare context (local dev?)", _e);
+    }
+
+    const payload = (await verifyJwt(token, env)) as OtpJwtPayload | null;
     if (!payload || payload.email !== body.email) {
       return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
@@ -73,23 +63,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "OTP expired" }, { status: 400 });
     }
 
-    const computedHash = await hmacHash(body.email, body.otp, payload.expiry);
+    const computedHash = await hmacHash(
+      body.email,
+      body.otp,
+      payload.expiry,
+      env,
+    );
     if (computedHash !== payload.hash) {
       return NextResponse.json({ error: "Invalid OTP" }, { status: 400 });
-    }
-
-    let env: CloudflareEnv | undefined;
-    try {
-      const ctx = await getCloudflareContext();
-      env = ctx.env as CloudflareEnv;
-    } catch {
-      console.warn("No Cloudflare context");
     }
 
     if (!env || !env.DB) {
       return NextResponse.json(
         { error: "Database unavailable" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -107,7 +94,7 @@ export async function POST(request: NextRequest) {
           is_bangalore_based,
           will_attend_in_person,
           created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
       .bind(
         body.participant1Name,
@@ -119,7 +106,7 @@ export async function POST(request: NextRequest) {
         body.city,
         body.isBangaloreBased ? 1 : 0,
         body.willAttendInPerson ? 1 : 0,
-        Date.now()
+        Date.now(),
       );
 
     await stmt.run();
@@ -137,7 +124,7 @@ export async function POST(request: NextRequest) {
       formData.append("entry.124030429", body.isBangaloreBased ? "Yes" : "No");
       formData.append(
         "entry.711559939",
-        body.willAttendInPerson ? "Yes" : "No"
+        body.willAttendInPerson ? "Yes" : "No",
       );
 
       await fetch(
@@ -146,7 +133,7 @@ export async function POST(request: NextRequest) {
           method: "POST",
           body: formData,
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        }
+        },
       );
     } catch (formErr) {
       console.error("Google Form submission failed", formErr);
@@ -162,7 +149,7 @@ export async function POST(request: NextRequest) {
           let access_token = stored.access_token;
           let access_token_expires_at = stored.access_token_expires_at;
           if (Date.now() > access_token_expires_at - 60 * 1000) {
-            const newTokens = await refreshAccessToken(refresh_token);
+            const newTokens = await refreshAccessToken(refresh_token, env);
             access_token = newTokens.access_token;
             access_token_expires_at = Date.now() + newTokens.expires_in * 1000;
             await kv.put(
@@ -171,7 +158,7 @@ export async function POST(request: NextRequest) {
                 access_token,
                 refresh_token,
                 access_token_expires_at,
-              })
+              }),
             );
           }
           await sendConfirmationEmail(access_token, body.email);
@@ -194,7 +181,7 @@ export async function POST(request: NextRequest) {
     if (errorMessage.includes("UNIQUE constraint failed")) {
       return NextResponse.json(
         { error: "Email already registered" },
-        { status: 409 }
+        { status: 409 },
       );
     }
     return NextResponse.json({ error: errorMessage }, { status: 500 });

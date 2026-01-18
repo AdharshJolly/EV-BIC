@@ -1,0 +1,83 @@
+{
+  "name": "EV Battery Intelligence Challenge",
+  "short_name": "EV-BIC",
+  "description": "Powering the Future of E-Mobility with Indigenous Compute. A national hackathon challenge for EV battery intelligence and innovation.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#05100a",
+  "theme_color": "#ccff00",
+  "categories": ["technology", "education", "hackathon"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-1.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshot-2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Register for Challenge",
+      "short_name": "Register",
+      "description": "Quick access to event registration",
+      "url": "/#register",
+      "icons": [
+        {
+          "src": "/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "View Challenges",
+      "short_name": "Challenges",
+      "description": "Explore the three problem statements",
+      "url": "/#challenges",
+      "icons": [
+        {
+          "src": "/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

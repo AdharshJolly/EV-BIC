@@ -1,0 +1,16 @@
+# robots.txt for EV Battery Intelligence Challenge
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+Crawl-delay: 1
+
+# Google-specific directives
+User-agent: Googlebot
+Allow: /
+
+# Bing-specific directives
+User-agent: Bingbot
+Allow: /

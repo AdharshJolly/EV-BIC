@@ -3,27 +3,31 @@
   "main": ".open-next/worker.js",
   "name": "ev-bic",
   "compatibility_date": "2026-01-14",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
   },
   "images": {
-    "binding": "IMAGES"
+    "binding": "IMAGES",
   },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "ev-bic-db",
-      "database_id": "e7b0c8e0-1c5c-4e8b-9c1a-8e2b7d5f0a3d"
-    }
+      "database_id": "e7b0c8e0-1c5c-4e8b-9c1a-8e2b7d5f0a3d",
+    },
   ],
   "kv_namespaces": [
     {
       "binding": "google_token",
-      "id": "8f3b2c1a-4d5e-6f7g-8h9i-0j1k2l3m4n5o"
-    }
-  ]
+      "id": "8f3b2c1a-4d5e-6f7g-8h9i-0j1k2l3m4n5o",
+    },
+  ],
+  "vars": {
+    "JWT_SECRET": "Y7Cy5hMyO6SKu-DYwEr1CAlRGfU-NcCdmivPcNH71Ir5-DYfnRSXyH-fO7I54kEU",
+    "HMAC_SECRET": "f2ae0e48b32babdb25f09cc37d79c1165b3dc74d661ee93192eb99e3b81decde",
+    "GOOGLE_CLIENT_ID": "your-google-client-id",
+    "GOOGLE_CLIENT_SECRET": "your-google-client-secret",
+  },
 }

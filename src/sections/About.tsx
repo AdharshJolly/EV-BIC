@@ -37,7 +37,7 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-transparent py-24 sm:py-32 border-t border-brand-secondary/30 relative overflow-hidden">
+    <div className="bg-transparent py-24 border-t border-brand-secondary/30 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         {/* Header - Original Text */}
         <div className="mx-auto max-w-3xl lg:text-center mb-20">
@@ -167,8 +167,6 @@ const About = () => {
               <p className="text-xs text-brand-muted">{obj.desc}</p>
             </motion.div>
           ))}
-
-          
         </div>
       </div>
     </div>

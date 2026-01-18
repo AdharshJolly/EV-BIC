@@ -1,14 +1,14 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Star, Shield, Award } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
+import { motion } from "framer-motion";
+import { Star, Shield, Award } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Sponsors = () => {
   return (
     <div
-      className="bg-transparent py-24 sm:py-32 relative overflow-hidden"
+      className="bg-transparent py-24 relative overflow-hidden"
       id="sponsors"
     >
       {/* Background Decorative Elements */}
@@ -57,7 +57,7 @@ const Sponsors = () => {
               >
                 <Card className="h-48 bg-brand-secondary/20 border-brand-accent/20 rounded-2xl flex items-center justify-center relative overflow-hidden group-hover:border-brand-accent/50 transition-all duration-500">
                   <div className="absolute inset-0 bg-brand-accent/5 group-hover:bg-brand-accent/10 transition-colors"></div>
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-brand-accent to-teal-500 opacity-0 group-hover:opacity-20 blur transition duration-500"></div>
+                  <div className="absolute -inset-0.5 bg-linear-to-r from-brand-accent to-teal-500 opacity-0 group-hover:opacity-20 blur transition duration-500"></div>
                   <CardContent className="p-0 flex items-center justify-center relative z-10">
                     <span className="text-2xl font-black text-white tracking-widest uppercase font-display opacity-40 group-hover:opacity-100 transition-opacity">
                       PARTNER_0{i}
