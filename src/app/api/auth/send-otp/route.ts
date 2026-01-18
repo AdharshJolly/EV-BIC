@@ -7,6 +7,7 @@ import {
   sendOtpEmail,
   refreshAccessToken,
   KV_KEY,
+  CloudflareEnv,
 } from "@/lib/auth-helpers";
 
 interface GoogleTokens {
@@ -14,26 +15,6 @@ interface GoogleTokens {
   refresh_token: string;
   access_token_expires_at: number;
 }
-
-type KvNamespaceJson = {
-  get<T = unknown>(key: string, type: "json"): Promise<T | null>;
-  put(key: string, value: string): Promise<void>;
-};
-
-type D1PreparedStatement = {
-  bind: (...values: (string | number | boolean | null)[]) => {
-    first: <T = unknown>() => Promise<T | null>;
-  };
-};
-
-type D1DatabaseLike = {
-  prepare: (query: string) => D1PreparedStatement;
-};
-
-type CloudflareEnv = {
-  DB?: D1DatabaseLike;
-  google_token?: KvNamespaceJson;
-};
 
 export async function POST(request: NextRequest) {
   try {
@@ -54,7 +35,7 @@ export async function POST(request: NextRequest) {
     // Check if email already registered
     if (env?.DB) {
       const existing = await env.DB.prepare(
-        "SELECT email FROM registrations WHERE email = ?"
+        "SELECT email FROM registrations WHERE email = ?",
       )
         .bind(email)
         .first<{ email: string }>();
@@ -62,7 +43,7 @@ export async function POST(request: NextRequest) {
       if (existing) {
         return NextResponse.json(
           { error: "Email already registered" },
-          { status: 409 }
+          { status: 409 },
         );
       }
     }
@@ -70,8 +51,8 @@ export async function POST(request: NextRequest) {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     const expiry = Math.floor(Date.now() / 1000) + 600; // 10 mins
 
-    const hash = await hmacHash(email, otp, expiry);
-    const jwt = await signJwt({ email, expiry, hash });
+    const hash = await hmacHash(email, otp, expiry, env);
+    const jwt = await signJwt({ email, expiry, hash }, env);
 
     // Handle KV for Email (reuse env from earlier)
     if (env?.google_token) {
@@ -86,7 +67,7 @@ export async function POST(request: NextRequest) {
         // Refresh if needed
         if (Date.now() > access_token_expires_at - 60 * 1000) {
           try {
-            const newTokens = await refreshAccessToken(refresh_token);
+            const newTokens = await refreshAccessToken(refresh_token, env);
             access_token = newTokens.access_token;
             // Update expiry (assuming expires_in is seconds)
             access_token_expires_at = Date.now() + newTokens.expires_in * 1000;
@@ -97,13 +78,13 @@ export async function POST(request: NextRequest) {
                 access_token,
                 refresh_token, // Keep old refresh token if not returned
                 access_token_expires_at,
-              })
+              }),
             );
           } catch (err) {
             console.error("Token refresh failed", err);
             return NextResponse.json(
               { error: "Email service unavailable" },
-              { status: 500 }
+              { status: 500 },
             );
           }
         }
@@ -112,7 +93,7 @@ export async function POST(request: NextRequest) {
           await sendOtpEmail(access_token, email, otp);
         } catch {
           console.warn(
-            "Could not send email (check credentials), logging OTP to console instead."
+            "Could not send email (check credentials), logging OTP to console instead.",
           );
           console.log(`\n--- [LOCAL DEV] OTP FOR ${email}: ${otp} ---\n`);
         }

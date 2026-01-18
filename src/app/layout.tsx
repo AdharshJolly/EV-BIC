@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BackgroundElements from "../components/BackgroundElements";
 import { Inter, Space_Grotesk, Outfit } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({
@@ -11,6 +11,12 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "EV Battery Intelligence Challenge - National Hackathon 2026",
@@ -75,7 +81,6 @@ export const metadata: Metadata = {
   },
 
   // Additional metadata
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
   formatDetection: {
     telephone: true,
     email: true,
@@ -157,8 +162,18 @@ export default function RootLayout({
         {/* Manifest and PWA */}
         <link rel="manifest" href="/manifest.json" />
 
-        {/* DNS Prefetch for performance */}
+        {/* Preconnect and DNS Prefetch for optimization */}
+        {/* eslint-disable-next-line @next/next/google-font-preconnect */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* eslint-disable-next-line @next/next/google-font-preconnect */}
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        {/* eslint-disable-next-line @next/next/google-font-preconnect */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        {/* eslint-disable-next-line @next/next/google-font-preconnect */}
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
         {/* JSON-LD Structured Data */}

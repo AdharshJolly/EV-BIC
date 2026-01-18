@@ -30,13 +30,6 @@ const Hardware = () => {
     },
   ];
 
-  const metrics = {
-    soc: 85,
-    temp: 32, // °C
-    packV: 400, // V
-    current: 120, // A
-  };
-
   return (
     <div
       className="bg-transparent py-24 relative z-10 border-t border-brand-secondary/30"

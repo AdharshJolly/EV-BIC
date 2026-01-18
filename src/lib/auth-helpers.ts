@@ -1,30 +1,86 @@
 import { SignJWT, jwtVerify, JWTPayload } from "jose";
 
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || "your-jwt-signing-secret-should-be-in-env"
-);
-const HMAC_SECRET = new TextEncoder().encode(
-  process.env.HMAC_SECRET || "your-hmac-secret-should-be-in-env"
-);
+// Type definition for Cloudflare environment variables
+export interface CloudflareEnv {
+  JWT_SECRET?: string;
+  HMAC_SECRET?: string;
+  GOOGLE_CLIENT_ID?: string;
+  GOOGLE_CLIENT_SECRET?: string;
+  DB?: {
+    prepare: (query: string) => {
+      bind: (...values: (string | number | boolean | null)[]) => {
+        first: <T = unknown>() => Promise<T | null>;
+        run: () => Promise<unknown>;
+      };
+    };
+  };
+  google_token?: {
+    get<T = unknown>(key: string, type: "json"): Promise<T | null>;
+    put(key: string, value: string): Promise<void>;
+  };
+}
+
+// These will be provided via Cloudflare context at runtime
+// For server-side operations, we'll access them from the Cloudflare context
+// For now, provide fallbacks for development
+const getJwtSecret = (env?: CloudflareEnv): Uint8Array => {
+  const secret =
+    env?.JWT_SECRET ||
+    process.env.JWT_SECRET ||
+    "your-jwt-signing-secret-should-be-in-env";
+  return new TextEncoder().encode(secret);
+};
+
+const getHmacSecret = (env?: CloudflareEnv): Uint8Array => {
+  const secret =
+    env?.HMAC_SECRET ||
+    process.env.HMAC_SECRET ||
+    "your-hmac-secret-should-be-in-env";
+  return new TextEncoder().encode(secret);
+};
+
+const getGoogleClientId = (env?: CloudflareEnv): string => {
+  return (
+    env?.GOOGLE_CLIENT_ID ||
+    process.env.GOOGLE_CLIENT_ID ||
+    "your-google-client-id"
+  );
+};
+
+const getGoogleClientSecret = (env?: CloudflareEnv): string => {
+  return (
+    env?.GOOGLE_CLIENT_SECRET ||
+    process.env.GOOGLE_CLIENT_SECRET ||
+    "your-google-client-secret"
+  );
+};
 
 export const KV_KEY = "google_tokens";
-export const GOOGLE_CLIENT_ID =
-  process.env.GOOGLE_CLIENT_ID || "your-google-client-id"; // Should be env
-export const GOOGLE_CLIENT_SECRET =
-  process.env.GOOGLE_CLIENT_SECRET || "your-google-client-secret"; // Should be env
+
+// Export functions to get secrets that accept CloudflareEnv
+export function getSecrets(env?: CloudflareEnv) {
+  return {
+    JWT_SECRET: getJwtSecret(env),
+    HMAC_SECRET: getHmacSecret(env),
+    GOOGLE_CLIENT_ID: getGoogleClientId(env),
+    GOOGLE_CLIENT_SECRET: getGoogleClientSecret(env),
+  };
+}
 
 export async function hmacHash(
   email: string,
   otp: string,
-  expiry: number
+  expiry: number,
+  env?: CloudflareEnv,
 ): Promise<string> {
+  const HMAC_SECRET = getHmacSecret(env);
   const data = new TextEncoder().encode(`${email}|${otp}|${expiry}`);
   const key = await crypto.subtle.importKey(
     "raw",
-    HMAC_SECRET,
+    HMAC_SECRET as unknown as ArrayBuffer,
     { name: "HMAC", hash: "SHA-256" },
     false,
-    ["sign"]
+    ["sign"],
   );
   const sig = await crypto.subtle.sign("HMAC", key, data);
   return Buffer.from(sig).toString("hex");
@@ -37,7 +93,12 @@ export function encodeBase64(str: string) {
     .replace(/=+$/, "");
 }
 
-export async function refreshAccessToken(refresh_token: string) {
+export async function refreshAccessToken(
+  refresh_token: string,
+  env?: CloudflareEnv,
+) {
+  const GOOGLE_CLIENT_ID = getGoogleClientId(env);
+  const GOOGLE_CLIENT_SECRET = getGoogleClientSecret(env);
   const res = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -55,7 +116,7 @@ export async function refreshAccessToken(refresh_token: string) {
 export async function sendOtpEmail(
   access_token: string,
   email: string,
-  otp: string
+  otp: string,
 ) {
   const rawEmail = [
     `From: VSDIAT <vsdiat@vlsisystemdesign.com>`,
@@ -77,7 +138,7 @@ export async function sendOtpEmail(
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ raw: encodedMessage }),
-    }
+    },
   );
 
   if (!res.ok) {
@@ -87,14 +148,16 @@ export async function sendOtpEmail(
   }
 }
 
-export async function signJwt(payload: JWTPayload) {
+export async function signJwt(payload: JWTPayload, env?: CloudflareEnv) {
+  const JWT_SECRET = getJwtSecret(env);
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setExpirationTime("10m")
     .sign(JWT_SECRET);
 }
 
-export async function verifyJwt(token: string) {
+export async function verifyJwt(token: string, env?: CloudflareEnv) {
+  const JWT_SECRET = getJwtSecret(env);
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
     return payload;
@@ -105,7 +168,7 @@ export async function verifyJwt(token: string) {
 
 export async function sendConfirmationEmail(
   access_token: string,
-  email: string
+  email: string,
 ) {
   const rawEmail = [
     `From: VSDIAT <vsdiat@vlsisystemdesign.com>`,
@@ -127,7 +190,7 @@ export async function sendConfirmationEmail(
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ raw: encodedMessage }),
-    }
+    },
   );
 
   if (!res.ok) {

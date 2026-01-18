@@ -9,6 +9,46 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
+const INDIAN_STATES = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  // Union Territories
+  "Andaman and Nicobar Islands",
+  "Chandigarh",
+  "Dadra and Nagar Haveli and Daman and Diu",
+  "Lakshadweep",
+  "Delhi",
+  "Puducherry",
+  "Ladakh",
+  "Jammu and Kashmir",
+];
+
 const Register = () => {
   const [step, setStep] = useState<0 | 1 | 2>(0);
   const [loading, setLoading] = useState(false);
@@ -217,6 +257,7 @@ const Register = () => {
                             value={formData.participant1Name}
                             onChange={handleChange}
                             className="bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
+                            placeholder="John Doe"
                           />
                         </div>
                       </div>
@@ -226,15 +267,17 @@ const Register = () => {
                           htmlFor="participant2Name"
                           className="text-brand-text"
                         >
-                          Participant 2 Name
+                          Participant 2 Name *
                         </Label>
                         <div className="relative">
                           <Input
                             type="text"
                             name="participant2Name"
+                            required
                             value={formData.participant2Name}
                             onChange={handleChange}
                             className="bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
+                            placeholder="Jane Smith"
                           />
                         </div>
                       </div>
@@ -257,6 +300,7 @@ const Register = () => {
                             value={formData.phoneNumber}
                             onChange={handleChange}
                             className="pl-10 bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
+                            placeholder="+91 98765 43210"
                           />
                         </div>
                       </div>
@@ -279,6 +323,7 @@ const Register = () => {
                             value={formData.collegeName}
                             onChange={handleChange}
                             className="pl-10 bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
+                            placeholder="Christ University"
                           />
                         </div>
                       </div>
@@ -287,14 +332,45 @@ const Register = () => {
                         <Label htmlFor="state" className="text-brand-text">
                           State *
                         </Label>
-                        <Input
-                          type="text"
-                          name="state"
-                          required
-                          value={formData.state}
-                          onChange={handleChange}
-                          className="bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
-                        />
+                        <div className="relative group">
+                          <select
+                            name="state"
+                            id="state"
+                            required
+                            value={formData.state}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                state: e.target.value,
+                              })
+                            }
+                            className="w-full px-4 py-2.5 pr-10 bg-brand-primary/60 border border-brand-secondary rounded-md text-white appearance-none cursor-pointer transition-all duration-300 hover:border-brand-accent/50 hover:bg-brand-primary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:border-brand-accent focus-visible:bg-brand-primary/80"
+                          >
+                            <option
+                              value=""
+                              className="bg-brand-primary text-white"
+                            >
+                              Select a state
+                            </option>
+                            {INDIAN_STATES.map((state) => (
+                              <option
+                                key={state}
+                                value={state}
+                                className="bg-brand-primary text-white"
+                              >
+                                {state}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-brand-muted group-hover:text-brand-accent/70 group-focus-within:text-brand-accent transition-colors duration-300">
+                            <svg
+                              className="h-5 w-5 fill-current"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                          </div>
+                        </div>
                       </div>
 
                       <div className="col-span-1 space-y-2">
@@ -308,6 +384,7 @@ const Register = () => {
                           value={formData.city}
                           onChange={handleChange}
                           className="bg-brand-primary/60 border-brand-secondary focus-visible:ring-brand-accent text-white"
+                          placeholder="Bangalore"
                         />
                       </div>
 
@@ -333,56 +410,98 @@ const Register = () => {
                         </div>
                       </div>
 
-                      <div className="sm:col-span-2 pt-4 space-y-4">
+                      <div className="sm:col-span-2 pt-4 space-y-6">
                         <Separator className="bg-brand-secondary/50" />
-                        <div className="flex items-center space-x-2">
-                          <input
-                            type="checkbox"
-                            id="isBangaloreBased"
-                            name="isBangaloreBased"
-                            checked={formData.isBangaloreBased}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                isBangaloreBased: e.target.checked,
-                              })
-                            }
-                            className="w-4 h-4 rounded border-brand-secondary bg-brand-primary/60 text-brand-accent focus:ring-brand-accent"
-                          />
-                          <Label
-                            htmlFor="isBangaloreBased"
-                            className="text-brand-text cursor-pointer"
-                          >
-                            Are you based in Bangalore?
+
+                        {/* Bangalore Based Question */}
+                        <div className="space-y-3">
+                          <Label className="text-brand-text">
+                            Are you based in Bangalore? *
                           </Label>
+                          <div className="flex gap-3">
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setFormData({
+                                  ...formData,
+                                  isBangaloreBased: true,
+                                  willAttendInPerson: false,
+                                })
+                              }
+                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
+                                formData.isBangaloreBased
+                                  ? "bg-brand-accent text-brand-dark"
+                                  : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
+                              }`}
+                            >
+                              Yes
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setFormData({
+                                  ...formData,
+                                  isBangaloreBased: false,
+                                  willAttendInPerson: false,
+                                })
+                              }
+                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
+                                !formData.isBangaloreBased
+                                  ? "bg-brand-accent text-brand-dark"
+                                  : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
+                              }`}
+                            >
+                              No
+                            </button>
+                          </div>
                         </div>
 
+                        {/* In-Person Attendance Question - Only show if Bangalore based */}
                         {formData.isBangaloreBased && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
-                            className="flex items-center space-x-2 pl-6"
+                            exit={{ opacity: 0, height: 0 }}
+                            className="space-y-3"
                           >
-                            <input
-                              type="checkbox"
-                              id="willAttendInPerson"
-                              name="willAttendInPerson"
-                              checked={formData.willAttendInPerson}
-                              onChange={(e) =>
-                                setFormData({
-                                  ...formData,
-                                  willAttendInPerson: e.target.checked,
-                                })
-                              }
-                              className="w-4 h-4 rounded border-brand-secondary bg-brand-primary/60 text-brand-accent focus:ring-brand-accent"
-                            />
-                            <Label
-                              htmlFor="willAttendInPerson"
-                              className="text-brand-text cursor-pointer"
-                            >
+                            <Label className="text-brand-text">
                               Would you like to attend the session in person?
-                              (First 250 responses get an invite)
+                              (First 250 responses get an invite) *
                             </Label>
+                            <div className="flex gap-3">
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setFormData({
+                                    ...formData,
+                                    willAttendInPerson: true,
+                                  })
+                                }
+                                className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
+                                  formData.willAttendInPerson
+                                    ? "bg-brand-accent text-brand-dark"
+                                    : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
+                                }`}
+                              >
+                                Yes
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setFormData({
+                                    ...formData,
+                                    willAttendInPerson: false,
+                                  })
+                                }
+                                className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
+                                  !formData.willAttendInPerson
+                                    ? "bg-brand-accent text-brand-dark"
+                                    : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
+                                }`}
+                              >
+                                No
+                              </button>
+                            </div>
                           </motion.div>
                         )}
                       </div>
