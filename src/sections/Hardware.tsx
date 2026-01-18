@@ -18,11 +18,6 @@ const Hardware = () => {
       desc: "Achieving 10x efficiency in real-time battery health localized inference.",
       status: "Completed",
     },
-    {
-      title: "Sovereign Compute",
-      desc: "Building a verifiable and secure hardware ecosystem for mission-critical apps.",
-      status: "In Progress",
-    },
   ];
 
   return (
@@ -38,7 +33,7 @@ const Hardware = () => {
               Hardware Ecosystem
             </Badge>
             <h2 className="text-4xl sm:text-6xl font-black text-white font-display uppercase tracking-tighter leading-none mb-6">
-              VSD Squadron{" "}
+              VSDSquadron{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-white">
                 ULTRA
               </span>
@@ -53,14 +48,14 @@ const Hardware = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <Card className="bg-brand-secondary/20 border-brand-secondary border-dashed p-8 relative overflow-hidden backdrop-blur-sm">
+            <Card className="bg-brand-secondary/20 border-brand-secondary border-dashed p-4 relative overflow-hidden backdrop-blur-sm">
               <div className="relative z-10">
-                <div className="aspect-square max-w-xs mx-auto bg-brand-dark/50 rounded-3xl border border-brand-secondary flex items-center justify-center relative group mb-8 overflow-hidden">
+                <div className="aspect-square h-80 max-w-xs mx-auto bg-brand-dark/50 rounded-3xl border border-brand-secondary flex items-center justify-center relative group mb-2 overflow-hidden">
                   <Image
                     src="/images/vsd.jpeg"
                     alt="VSDSquadron"
                     fill
-                    className="object-cover rounded-3xl"
+                    className="object-contain rounded-3xl"
                   />
                 </div>
 
@@ -114,7 +109,7 @@ const Hardware = () => {
                 Operations
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent className="pt-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {operations.map((op, i) => (
                   <div
@@ -134,11 +129,6 @@ const Hardware = () => {
                     </p>
                   </div>
                 ))}
-                <div className="p-4 rounded-xl border border-dashed border-brand-secondary flex items-center justify-center opacity-50">
-                  <span className="text-[10px] font-mono text-brand-muted uppercase">
-                    Initializing_Next...
-                  </span>
-                </div>
               </div>
             </CardContent>
           </Card>
