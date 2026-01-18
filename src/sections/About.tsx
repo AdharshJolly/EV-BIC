@@ -9,10 +9,6 @@ import {
   Cpu,
   Globe,
   Target,
-  Users,
-  Cloud,
-  Rocket,
-  BarChart3,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 

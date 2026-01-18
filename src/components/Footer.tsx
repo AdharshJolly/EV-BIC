@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Mail, BatteryCharging } from 'lucide-react';
+import { BatteryCharging } from 'lucide-react';
 
 const Footer = () => {
   return (
