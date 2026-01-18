@@ -2,7 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Cpu, Target } from "lucide-react";
+import {
+  Target,
+  Cpu,
+  CheckCircle2,
+  Network,
+  BarChart3,
+  AlertTriangle,
+  Monitor,
+  ArrowRight,
+  GraduationCap,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -18,12 +28,14 @@ const Hardware = () => {
       desc: "Achieving 10x efficiency in real-time battery health localized inference.",
       status: "Completed",
     },
-    {
-      title: "Sovereign Compute",
-      desc: "Building a verifiable and secure hardware ecosystem for mission-critical apps.",
-      status: "In Progress",
-    },
   ];
+
+  const metrics = {
+    soc: 85,
+    temp: 32, // °C
+    packV: 400, // V
+    current: 120, // A
+  };
 
   return (
     <div
@@ -38,7 +50,7 @@ const Hardware = () => {
               Hardware Ecosystem
             </Badge>
             <h2 className="text-4xl sm:text-6xl font-black text-white font-display uppercase tracking-tighter leading-none mb-6">
-              VSD Squadron{" "}
+              VSDSquadron{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-white">
                 ULTRA
               </span>
@@ -53,14 +65,14 @@ const Hardware = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <Card className="bg-brand-secondary/20 border-brand-secondary border-dashed p-8 relative overflow-hidden backdrop-blur-sm">
+            <Card className="bg-brand-secondary/20 border-brand-secondary border-dashed p-4 relative overflow-hidden backdrop-blur-sm">
               <div className="relative z-10">
-                <div className="aspect-square max-w-xs mx-auto bg-brand-dark/50 rounded-3xl border border-brand-secondary flex items-center justify-center relative group mb-8 overflow-hidden">
+                <div className="aspect-square h-80 max-w-xs mx-auto bg-brand-dark/50 rounded-3xl border border-brand-secondary flex items-center justify-center relative group mb-2 overflow-hidden">
                   <Image
                     src="/images/vsd.jpeg"
                     alt="VSDSquadron"
                     fill
-                    className="object-cover rounded-3xl"
+                    className="object-contain rounded-3xl"
                   />
                 </div>
 
@@ -104,7 +116,7 @@ const Hardware = () => {
           ></motion.div>
         </div>
 
-        {/* Bottom Grid: Operations */}
+        {/* Notable Operations */}
         <div className="grid grid-cols-1 gap-8 mb-24">
           {/* Operations */}
           <Card className="bg-brand-secondary/10 border-brand-secondary/50">
@@ -114,7 +126,7 @@ const Hardware = () => {
                 Operations
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent className="pt-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {operations.map((op, i) => (
                   <div
@@ -134,15 +146,144 @@ const Hardware = () => {
                     </p>
                   </div>
                 ))}
-                <div className="p-4 rounded-xl border border-dashed border-brand-secondary flex items-center justify-center opacity-50">
-                  <span className="text-[10px] font-mono text-brand-muted uppercase">
-                    Initializing_Next...
-                  </span>
-                </div>
               </div>
             </CardContent>
           </Card>
         </div>
+
+        {/* VSDSquadron Use Case (Enhanced) */}
+        <Card className="bg-brand-secondary/10 border-brand-secondary/50 mb-12">
+          <CardHeader className="border-b border-brand-secondary/30">
+            <CardTitle className="text-white flex items-center gap-3 text-lg uppercase tracking-wide font-display">
+              <Cpu className="w-5 h-5 text-brand-accent" /> VSDSquadron:
+              Real-time Battery Analytics
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-brand-muted leading-relaxed">
+              Edge monitoring for Li-ion packs: live BMS data via CAN, decoded
+              and analyzed on indigenous RISC‑V VSDSquadron. Delivers alerts,
+              logs, and visuals for diagnostics and research.
+            </p>
+
+            {/* Pipeline Flow */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 flex-wrap"
+            >
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <Network className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">CAN (BMS)</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand-muted" />
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <Cpu className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">Decode</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand-muted" />
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <BarChart3 className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">Analytics</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand-muted" />
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <AlertTriangle className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">Alerts</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand-muted" />
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <Monitor className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">Logs & Viz</span>
+              </div>
+            </motion.div>
+
+            {/* Feature List */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Real-time CAN frame decoding
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Health & performance analytics
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Threshold-based alerts & fault detection
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Logging & visualization support
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Academic Ambassador: Christ University */}
+        <Card className="bg-brand-secondary/10 border-brand-secondary/50 mb-24">
+          <CardHeader className="border-b border-brand-secondary/30">
+            <CardTitle className="text-white flex items-center gap-3 text-lg uppercase tracking-wide font-display">
+              <GraduationCap className="w-5 h-5 text-brand-accent" /> Academic
+              Ambassador: Christ University
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-brand-muted leading-relaxed">
+              Christ University leads the academic and applied research
+              initiatives on the indigenous RISC‑V VSDSquadron for e‑mobility.
+              They validate the platform across electric vehicles, energy
+              storage, and smart battery technologies—bridging hardware
+              innovation with real‑world mobility applications.
+            </p>
+
+            {/* Highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  EV & e‑mobility validation initiatives
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Battery diagnostics lab workflows
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Curriculum & capstone integration
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Industry–academia collaboration & research outputs
+                </span>
+              </div>
+            </div>
+
+            {/* Program Callout */}
+            <div className="p-3 rounded-xl bg-brand-accent/10 border border-brand-accent/40 text-xs text-white">
+              Ambassador Program: advancing indigenous RISC‑V hardware for
+              e‑mobility with rigorous validation, teaching modules, and applied
+              research.
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Bottom Grid: Operations */}
       </div>
     </div>
   );

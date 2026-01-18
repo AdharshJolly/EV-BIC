@@ -13,6 +13,7 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +68,7 @@ const Navbar = () => {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex justify-center px-4",
-        scrolled ? "pt-4" : "pt-6"
+        scrolled ? "pt-4" : "pt-6",
       )}
     >
       <div
@@ -75,20 +76,26 @@ const Navbar = () => {
           "w-full max-w-7xl transition-all duration-500 ease-in-out border border-brand-secondary/50",
           scrolled
             ? "bg-brand-primary/60 backdrop-blur-xl rounded-full px-4 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-brand-accent/20"
-            : "bg-transparent rounded-2xl px-4 py-3 border-transparent"
+            : "bg-transparent rounded-2xl px-4 py-3 border-transparent",
         )}
       >
         <div className="flex items-center justify-between h-14 w-full gap-2">
           {/* Left Section: CHRIST Logo & Title */}
           <div className="flex items-center gap-3">
             <div className="shrink-0">
-              <Image
-                src="/images/cu-logo.png"
-                alt="CHRIST University"
-                width={40}
-                height={40}
-                className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
-              />
+              <Link
+                href="https://christuniversity.in"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/images/cu-logo.png"
+                  alt="CHRIST University"
+                  width={40}
+                  height={40}
+                  className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
+                />
+              </Link>
             </div>
             <a href="#home" className="flex items-center gap-2 group shrink-0">
               <div className="relative shrink-0">
@@ -116,7 +123,7 @@ const Navbar = () => {
                     "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 relative whitespace-nowrap",
                     isActive
                       ? "text-brand-accent"
-                      : "text-brand-muted hover:text-white"
+                      : "text-brand-muted hover:text-white",
                   )}
                 >
                   {isActive && (
@@ -146,13 +153,19 @@ const Navbar = () => {
             </Button>
 
             <div className="shrink-0">
-              <Image
-                src="/images/vsd-logo.png"
-                alt="VSD"
-                width={40}
-                height={40}
-                className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
-              />
+              <Link
+                href="https://www.vlsisystemdesign.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/images/vsd-logo.png"
+                  alt="VSD"
+                  width={40}
+                  height={40}
+                  className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
+                />
+              </Link>
             </div>
 
             <div className="lg:hidden shrink-0">
@@ -187,7 +200,7 @@ const Navbar = () => {
                             "block px-4 py-3 rounded-xl text-base font-medium transition-colors",
                             isActive
                               ? "text-brand-accent bg-brand-secondary/30"
-                              : "text-brand-muted hover:text-white hover:bg-brand-secondary/20"
+                              : "text-brand-muted hover:text-white hover:bg-brand-secondary/20",
                           )}
                         >
                           {item.name}
