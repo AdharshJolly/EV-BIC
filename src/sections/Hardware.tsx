@@ -2,7 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Target } from "lucide-react";
+import {
+  Target,
+  Cpu,
+  CheckCircle2,
+  Network,
+  BarChart3,
+  AlertTriangle,
+  Monitor,
+  ArrowRight,
+  GraduationCap,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -19,6 +29,13 @@ const Hardware = () => {
       status: "Completed",
     },
   ];
+
+  const metrics = {
+    soc: 85,
+    temp: 32, // °C
+    packV: 400, // V
+    current: 120, // A
+  };
 
   return (
     <div
@@ -99,7 +116,7 @@ const Hardware = () => {
           ></motion.div>
         </div>
 
-        {/* Bottom Grid: Operations */}
+        {/* Notable Operations */}
         <div className="grid grid-cols-1 gap-8 mb-24">
           {/* Operations */}
           <Card className="bg-brand-secondary/10 border-brand-secondary/50">
@@ -133,6 +150,270 @@ const Hardware = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* VSDSquadron Use Case (Enhanced) */}
+        <Card className="bg-brand-secondary/10 border-brand-secondary/50 mb-12">
+          <CardHeader className="border-b border-brand-secondary/30">
+            <CardTitle className="text-white flex items-center gap-3 text-lg uppercase tracking-wide font-display">
+              <Cpu className="w-5 h-5 text-brand-accent" /> VSDSquadron:
+              Real-time Battery Analytics
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-brand-muted leading-relaxed">
+              Edge monitoring for Li-ion packs: live BMS data via CAN, decoded
+              and analyzed on indigenous RISC‑V VSDSquadron. Delivers alerts,
+              logs, and visuals for diagnostics and research.
+            </p>
+
+            {/* Pipeline Flow */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 flex-wrap"
+            >
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <Network className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">CAN (BMS)</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand-muted" />
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <Cpu className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">Decode</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand-muted" />
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <BarChart3 className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">Analytics</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand-muted" />
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <AlertTriangle className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">Alerts</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-brand-muted" />
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-brand-primary/40 border border-brand-secondary">
+                <Monitor className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs text-white">Logs & Viz</span>
+              </div>
+            </motion.div>
+
+            {/* Feature List */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Real-time CAN frame decoding
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Health & performance analytics
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Threshold-based alerts & fault detection
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Logging & visualization support
+                </span>
+              </div>
+            </div>
+
+            {/* KPI Bars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <div className="flex justify-between text-[10px] text-brand-muted mb-1">
+                  <span>SoC</span>
+                  <span>{metrics.soc}%</span>
+                </div>
+                <div className="h-2 rounded bg-brand-secondary/30">
+                  <div
+                    className="h-2 rounded bg-brand-accent"
+                    style={{ width: `${metrics.soc}%` }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-[10px] text-brand-muted mb-1">
+                  <span>Temperature</span>
+                  <span>{metrics.temp}°C</span>
+                </div>
+                <div className="h-2 rounded bg-brand-secondary/30">
+                  <div
+                    className="h-2 rounded bg-brand-accent"
+                    style={{ width: `${Math.min(metrics.temp, 100)}%` }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-[10px] text-brand-muted mb-1">
+                  <span>Pack Voltage</span>
+                  <span>{metrics.packV}V</span>
+                </div>
+                <div className="h-2 rounded bg-brand-secondary/30">
+                  <div
+                    className="h-2 rounded bg-brand-accent"
+                    style={{
+                      width: `${Math.min((metrics.packV / 500) * 100, 100)}%`,
+                    }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-[10px] text-brand-muted mb-1">
+                  <span>Current</span>
+                  <span>{metrics.current}A</span>
+                </div>
+                <div className="h-2 rounded bg-brand-secondary/30">
+                  <div
+                    className="h-2 rounded bg-brand-accent"
+                    style={{
+                      width: `${Math.min((metrics.current / 200) * 100, 100)}%`,
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Params & Ambassador */}
+            <div className="flex flex-wrap gap-2 pt-1">
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                Cell V
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                Pack V
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                Current
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                Temperature
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                SoC
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                Fault flags
+              </Badge>
+              <Badge className="bg-brand-accent text-brand-dark text-[8px]">
+                Christ University — Ambassador
+              </Badge>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Academic Ambassador: Christ University */}
+        <Card className="bg-brand-secondary/10 border-brand-secondary/50 mb-24">
+          <CardHeader className="border-b border-brand-secondary/30">
+            <CardTitle className="text-white flex items-center gap-3 text-lg uppercase tracking-wide font-display">
+              <GraduationCap className="w-5 h-5 text-brand-accent" /> Academic
+              Ambassador: Christ University
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <p className="text-sm text-brand-muted leading-relaxed">
+              Christ University leads the academic and applied research
+              initiatives on the indigenous RISC‑V VSDSquadron for e‑mobility.
+              They validate the platform across electric vehicles, energy
+              storage, and smart battery technologies—bridging hardware
+              innovation with real‑world mobility applications.
+            </p>
+
+            {/* Highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  EV & e‑mobility validation initiatives
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Battery diagnostics lab workflows
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Curriculum & capstone integration
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-accent mt-0.5" />
+                <span className="text-xs text-white">
+                  Industry–academia collaboration & research outputs
+                </span>
+              </div>
+            </div>
+
+            {/* Domains & Tags */}
+            <div className="flex flex-wrap gap-2">
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                Electric Vehicles
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                Energy Storage
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                Smart Battery Tech
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-brand-secondary text-brand-muted text-[8px]"
+              >
+                RISC‑V
+              </Badge>
+              <Badge className="bg-brand-accent text-brand-dark text-[8px]">
+                Official Ambassador
+              </Badge>
+            </div>
+
+            {/* Program Callout */}
+            <div className="p-3 rounded-xl bg-brand-accent/10 border border-brand-accent/40 text-xs text-white">
+              Ambassador Program: advancing indigenous RISC‑V hardware for
+              e‑mobility with rigorous validation, teaching modules, and applied
+              research.
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Bottom Grid: Operations */}
       </div>
     </div>
   );
