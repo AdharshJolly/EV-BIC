@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const Team = () => {
   const christMembers = [
@@ -12,20 +12,20 @@ const Team = () => {
       name: "Dr Joseph Rodrigues",
       role: "Head - Industry Institute Interaction Cell",
       org: "CHRIST University",
-      image: "/images/joseph.jpg"
+      image: "/images/joseph.jpg",
     },
     {
       name: "Dr Parag Jose",
       role: "Head - CoE of E-mobility",
       org: "CHRIST University",
-      image: "/images/parag.jpg"
+      image: "/images/parag.jpg",
     },
     {
       name: "M Manoj Reddy",
       role: "Student Coordinator - Industry Institute Interaction Cell",
       org: "CHRIST University",
-      image: "/images/Manoj.jpg"
-    }
+      image: "/images/Manoj.jpg",
+    },
   ];
 
   const vsdMembers = [
@@ -33,14 +33,14 @@ const Team = () => {
       name: "Kunal Ghosh",
       role: "Co-founder, VSD",
       org: "VSD",
-      initial: "KG"
+      initial: "KG",
     },
     {
       name: "Anagha Ghosh",
       role: "Co-founder, VSD",
       org: "VSD",
-      initial: "AG"
-    }
+      initial: "AG",
+    },
   ];
 
   const containerVariants = {
@@ -49,9 +49,9 @@ const Team = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -59,12 +59,12 @@ const Team = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   return (
-    <div className="bg-transparent py-24 sm:py-32 border-t border-brand-secondary/30 relative overflow-hidden">
+    <div className="bg-transparent py-24 border-t border-brand-secondary/30 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="mx-auto max-w-3xl lg:text-center mb-20">
@@ -73,14 +73,18 @@ const Team = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="outline" className="mb-4 text-brand-accent border-brand-accent/30 bg-brand-accent/5 uppercase tracking-widest">
+            <Badge
+              variant="outline"
+              className="mb-4 text-brand-accent border-brand-accent/30 bg-brand-accent/5 uppercase tracking-widest"
+            >
               Leadership
             </Badge>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 font-display">
               The Team Behind <span className="text-brand-accent">EV BIC</span>
             </h2>
             <p className="text-lg leading-relaxed text-brand-muted">
-              The collaborative force from CHRIST (Deemed to be University) and VSD, dedicated to fostering the next generation of EV innovators.
+              The collaborative force from CHRIST (Deemed to be University) and
+              VSD, dedicated to fostering the next generation of EV innovators.
             </p>
           </motion.div>
         </div>
@@ -95,7 +99,9 @@ const Team = () => {
             className="space-y-6 flex flex-col items-center"
           >
             <div className="flex items-center justify-center gap-3 mb-6">
-              <h3 className="text-2xl font-bold text-white uppercase tracking-wide font-display border-b-2 border-brand-accent pb-1">VSD</h3>
+              <h3 className="text-2xl font-bold text-white uppercase tracking-wide font-display border-b-2 border-brand-accent pb-1">
+                VSD
+              </h3>
             </div>
 
             <motion.div
@@ -115,9 +121,16 @@ const Team = () => {
                         </AvatarFallback>
                       </Avatar>
                       <div className="flex-1">
-                        <h4 className="text-lg font-bold text-white mb-2">{member.name}</h4>
-                        <p className="text-sm text-brand-muted mb-3">{member.role}</p>
-                        <Badge variant="secondary" className="bg-brand-secondary/40 text-brand-accent text-xs">
+                        <h4 className="text-lg font-bold text-white mb-2">
+                          {member.name}
+                        </h4>
+                        <p className="text-sm text-brand-muted mb-3">
+                          {member.role}
+                        </p>
+                        <Badge
+                          variant="secondary"
+                          className="bg-brand-secondary/40 text-brand-accent text-xs"
+                        >
                           {member.org}
                         </Badge>
                       </div>
@@ -136,7 +149,9 @@ const Team = () => {
             className="space-y-6 flex flex-col items-center"
           >
             <div className="flex items-center justify-center gap-3 mb-6">
-              <h3 className="text-2xl font-bold text-white uppercase tracking-wide font-display border-b-2 border-brand-accent pb-1">CHRIST University</h3>
+              <h3 className="text-2xl font-bold text-white uppercase tracking-wide font-display border-b-2 border-brand-accent pb-1">
+                CHRIST University
+              </h3>
             </div>
 
             <motion.div
@@ -159,9 +174,16 @@ const Team = () => {
                         />
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg font-bold text-white mb-2">{member.name}</h4>
-                        <p className="text-sm text-brand-muted mb-3">{member.role}</p>
-                        <Badge variant="secondary" className="bg-brand-secondary/40 text-brand-accent text-xs">
+                        <h4 className="text-lg font-bold text-white mb-2">
+                          {member.name}
+                        </h4>
+                        <p className="text-sm text-brand-muted mb-3">
+                          {member.role}
+                        </p>
+                        <Badge
+                          variant="secondary"
+                          className="bg-brand-secondary/40 text-brand-accent text-xs"
+                        >
                           {member.org}
                         </Badge>
                       </div>

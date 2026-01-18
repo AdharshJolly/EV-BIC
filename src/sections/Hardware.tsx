@@ -39,7 +39,7 @@ const Hardware = () => {
 
   return (
     <div
-      className="bg-transparent py-24 sm:py-32 relative z-10 border-t border-brand-secondary/30"
+      className="bg-transparent py-24 relative z-10 border-t border-brand-secondary/30"
       id="hardware"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -51,7 +51,7 @@ const Hardware = () => {
             </Badge>
             <h2 className="text-4xl sm:text-6xl font-black text-white font-display uppercase tracking-tighter leading-none mb-6">
               VSDSquadron{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-white">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-accent to-white">
                 ULTRA
               </span>
             </h2>
@@ -230,7 +230,7 @@ const Hardware = () => {
         </Card>
 
         {/* Academic Ambassador: Christ University */}
-        <Card className="bg-brand-secondary/10 border-brand-secondary/50 mb-24">
+        <Card className="bg-brand-secondary/10 border-brand-secondary/50">
           <CardHeader className="border-b border-brand-secondary/30">
             <CardTitle className="text-white flex items-center gap-3 text-lg uppercase tracking-wide font-display">
               <GraduationCap className="w-5 h-5 text-brand-accent" /> Academic

@@ -27,7 +27,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-transparent py-24 sm:py-32 overflow-hidden">
+    <div className="relative min-h-screen bg-transparent py-24 overflow-hidden">
       {/* Enhanced Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-secondary/20 rounded-full blur-3xl opacity-50"></div>

@@ -13,7 +13,8 @@ const CenterOfExcellence = () => {
       title: "Innovation Hub",
       description:
         "The Centre of Excellence in E-Mobility at Christ University, Kengeri Campus, plays a critical role in shaping the future of transportation and addressing global challenges related to sustainability and energy efficiency.",
-      focus: "Energy Storage Systems, Advanced Powertrain Technologies, Software-Driven Vehicles",
+      focus:
+        "Energy Storage Systems, Advanced Powertrain Technologies, Software-Driven Vehicles",
     },
     {
       icon: Zap,
@@ -39,9 +40,9 @@ const CenterOfExcellence = () => {
   ];
 
   return (
-    <div className="bg-transparent py-24 sm:py-32 relative overflow-hidden">
+    <div className="bg-transparent py-24 relative overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-brand-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         {/* Header Section */}
@@ -132,8 +133,10 @@ const CenterOfExcellence = () => {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <p className="text-white font-semibold text-sm">{image.alt}</p>
+                <div className="absolute inset-0 bg-linear-to-t from-brand-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <p className="text-white font-semibold text-sm">
+                    {image.alt}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -151,7 +154,7 @@ const CenterOfExcellence = () => {
             <div className="absolute top-0 left-0 w-full h-1 bg-brand-accent"></div>
             <CardContent className="p-8">
               <div className="flex items-start gap-4">
-                <Target className="w-8 h-8 text-brand-accent flex-shrink-0 mt-1" />
+                <Target className="w-8 h-8 text-brand-accent shrink-0 mt-1" />
                 <div>
                   <h4 className="text-xl font-bold text-white mb-3">
                     Dedicated to Excellence
