@@ -62,13 +62,7 @@ const Footer = () => {
 
           {/* Contact & Social */}
           <div>
-            <h3 className="text-white font-bold mb-6">Partners</h3>
-            <div className="space-y-4">
-              <div className="text-brand-accent font-bold text-lg">C-DAC</div>
-              <div className="text-brand-muted text-sm">
-                Centre for Development of Advanced Computing
-              </div>
-            </div>
+            {/* Partners section removed */}
           </div>
         </div>
 
