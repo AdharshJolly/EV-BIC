@@ -117,6 +117,78 @@ const Sponsors = () => {
             </div>
           </div>
         </div>
+
+        {/* Call for Sponsorship */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-24 relative"
+        >
+          <div className="absolute inset-0 bg-brand-accent/5 blur-3xl rounded-full -z-10"></div>
+          <Card className="bg-brand-secondary/10 border-brand-accent/20 backdrop-blur-sm overflow-hidden border-2">
+            <CardContent className="p-8 md:p-12">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                <div className="lg:col-span-1 text-center lg:text-left">
+                  <Badge className="mb-4 bg-brand-accent text-brand-dark hover:bg-brand-accent/80 font-bold px-4 py-1">
+                    OPPORTUNITY
+                  </Badge>
+                  <h3 className="text-3xl font-black text-white mb-4 uppercase tracking-tighter font-display leading-tight">
+                    Sponsor <br />
+                    <span className="text-brand-accent">The Future</span>
+                  </h3>
+                  <p className="text-brand-muted text-sm leading-relaxed">
+                    Elevate your brand and connect with India&apos;s top engineering talent. Join us in shaping the EV semiconductor landscape.
+                  </p>
+                </div>
+
+                <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* VSD Contact */}
+                  <motion.a
+                    href="mailto:vsd@vlsisystemdesign.com"
+                    whileHover={{ y: -5 }}
+                    className="group block p-6 rounded-2xl bg-brand-primary/40 border border-brand-secondary hover:border-brand-accent/50 transition-all duration-300"
+                  >
+                    <div className="flex flex-col h-full">
+                      <span className="text-xs font-bold text-brand-accent mb-4 tracking-[0.2em] uppercase">VSD Team</span>
+                      <h4 className="text-white font-bold text-lg mb-1 group-hover:text-brand-accent transition-colors">vsd@vlsisystemdesign.com</h4>
+                      <object>
+                        <a href="tel:+918548037643" className="text-brand-muted hover:text-white transition-colors text-sm">
+                          +91 85480 37643
+                        </a>
+                      </object>
+                      <div className="mt-4 flex items-center text-brand-accent text-xs font-bold gap-2">
+                        <span>SEND INQUIRY</span>
+                        <div className="h-px w-8 bg-brand-accent/50 group-hover:w-12 transition-all"></div>
+                      </div>
+                    </div>
+                  </motion.a>
+
+                  {/* Christ University Contact */}
+                  <motion.a
+                    href="mailto:joseph.rodrigues@btech.christuniversity.in"
+                    whileHover={{ y: -5 }}
+                    className="group block p-6 rounded-2xl bg-brand-primary/40 border border-brand-secondary hover:border-brand-accent/50 transition-all duration-300"
+                  >
+                    <div className="flex flex-col h-full">
+                      <span className="text-xs font-bold text-brand-accent mb-4 tracking-[0.2em] uppercase">Academic Lead</span>
+                      <h4 className="text-white font-bold text-base mb-1 group-hover:text-brand-accent transition-colors truncate">Dr. Joseph Rodrigues</h4>
+                      <object>
+                        <a href="tel:+919420594564" className="text-brand-muted hover:text-white transition-colors text-sm">
+                          +91 94205 94564
+                        </a>
+                      </object>
+                      <div className="mt-4 flex items-center text-brand-accent text-xs font-bold gap-2">
+                        <span>CONNECT VIA EMAIL</span>
+                        <div className="h-px w-8 bg-brand-accent/50 group-hover:w-12 transition-all"></div>
+                      </div>
+                    </div>
+                  </motion.a>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </div>
   );

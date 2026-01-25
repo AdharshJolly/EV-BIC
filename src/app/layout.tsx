@@ -27,7 +27,6 @@ export const metadata: Metadata = {
     "battery challenge",
     "electric vehicle",
     "indigenous compute",
-    "C-DAC",
     "CHRIST University",
     "innovation challenge",
     "sustainable technology",
@@ -121,11 +120,6 @@ export default function RootLayout({
     founder: {
       "@type": "Organization",
       name: "CHRIST University",
-    },
-    partner: {
-      "@type": "Organization",
-      name: "C-DAC",
-      url: "https://www.cdac.in",
     },
   };
 

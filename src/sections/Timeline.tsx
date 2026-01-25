@@ -16,12 +16,7 @@ import {
 
 const Timeline = () => {
   const dates = [
-    {
-      event: "Registration Phase",
-      date: "26 Jan - 10 Feb 2026",
-      status: "Active",
-      desc: "Team registration and idea submission.",
-    },
+
     {
       event: "Inauguration",
       date: "11 Feb 2026",

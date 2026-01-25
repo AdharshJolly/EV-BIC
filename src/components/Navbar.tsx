@@ -80,17 +80,17 @@ const Navbar = () => {
         )}
       >
         <div className="flex items-center justify-between h-14 w-full gap-2">
-          {/* Left Section: CHRIST Logo & Title */}
+          {/* Left Section: VSD Logo & Title */}
           <div className="flex items-center gap-3">
             <div className="shrink-0">
               <Link
-                href="https://christuniversity.in"
+                href="https://www.vlsisystemdesign.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/images/cu-logo.png"
-                  alt="CHRIST University"
+                  src="/images/vsd-logo.png"
+                  alt="VSD"
                   width={40}
                   height={40}
                   className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
@@ -143,7 +143,7 @@ const Navbar = () => {
             })}
           </div>
 
-          {/* Right Section: Register, VSD Logo & Mobile Menu */}
+          {/* Right Section: Register, CHRIST Logo & Mobile Menu */}
           <div className="flex items-center gap-3">
             <Button
               asChild
@@ -154,13 +154,13 @@ const Navbar = () => {
 
             <div className="shrink-0">
               <Link
-                href="https://www.vlsisystemdesign.com/"
+                href="https://christuniversity.in"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/images/vsd-logo.png"
-                  alt="VSD"
+                  src="/images/cu-logo.png"
+                  alt="CHRIST University"
                   width={40}
                   height={40}
                   className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
