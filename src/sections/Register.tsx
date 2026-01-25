@@ -44,6 +44,7 @@ const INDIAN_STATES = [
   "Dadra and Nagar Haveli and Daman and Diu",
   "Lakshadweep",
   "Delhi",
+  "New Delhi",
   "Puducherry",
   "Ladakh",
   "Jammu and Kashmir",
@@ -63,8 +64,7 @@ const Register = () => {
     collegeName: "",
     state: "",
     city: "",
-    isBangaloreBased: false,
-    willAttendInPerson: false,
+    willAttendOnline: false,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -413,10 +413,10 @@ const Register = () => {
                       <div className="sm:col-span-2 pt-4 space-y-6">
                         <Separator className="bg-brand-secondary/50" />
 
-                        {/* Bangalore Based Question */}
+                        {/* Online Attendance Question */}
                         <div className="space-y-3">
                           <Label className="text-brand-text">
-                            Are you based in Bangalore? *
+                            Would you attend the session online? *
                           </Label>
                           <div className="flex gap-3">
                             <button
@@ -424,15 +424,13 @@ const Register = () => {
                               onClick={() =>
                                 setFormData({
                                   ...formData,
-                                  isBangaloreBased: true,
-                                  willAttendInPerson: false,
+                                  willAttendOnline: true,
                                 })
                               }
-                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
-                                formData.isBangaloreBased
+                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${formData.willAttendOnline
                                   ? "bg-brand-accent text-brand-dark"
                                   : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
-                              }`}
+                                }`}
                             >
                               Yes
                             </button>
@@ -441,69 +439,20 @@ const Register = () => {
                               onClick={() =>
                                 setFormData({
                                   ...formData,
-                                  isBangaloreBased: false,
-                                  willAttendInPerson: false,
+                                  willAttendOnline: false,
                                 })
                               }
-                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
-                                !formData.isBangaloreBased
+                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${!formData.willAttendOnline
                                   ? "bg-brand-accent text-brand-dark"
                                   : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
-                              }`}
+                                }`}
                             >
                               No
                             </button>
                           </div>
                         </div>
 
-                        {/* In-Person Attendance Question - Only show if Bangalore based */}
-                        {formData.isBangaloreBased && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="space-y-3"
-                          >
-                            <Label className="text-brand-text">
-                              Would you like to attend the session in person?
-                              (First 250 responses get an invite) *
-                            </Label>
-                            <div className="flex gap-3">
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  setFormData({
-                                    ...formData,
-                                    willAttendInPerson: true,
-                                  })
-                                }
-                                className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
-                                  formData.willAttendInPerson
-                                    ? "bg-brand-accent text-brand-dark"
-                                    : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
-                                }`}
-                              >
-                                Yes
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  setFormData({
-                                    ...formData,
-                                    willAttendInPerson: false,
-                                  })
-                                }
-                                className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
-                                  !formData.willAttendInPerson
-                                    ? "bg-brand-accent text-brand-dark"
-                                    : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
-                                }`}
-                              >
-                                No
-                              </button>
-                            </div>
-                          </motion.div>
-                        )}
+
                       </div>
                     </div>
 

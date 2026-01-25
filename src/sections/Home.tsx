@@ -26,6 +26,9 @@ const Home = () => {
       {/* --- Holographic Central Interface --- */}
       <div className="relative z-10 w-full max-w-7xl px-4 flex flex-col items-center">
         {/* Organized By Header */}
+        {/* Organized By Header - CHRIST Logo Top Right */}
+
+
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,7 +38,7 @@ const Home = () => {
           <span className="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em]">
             Presented By
           </span>
-          <div className="flex items-center sm:gap-12 gap-4 -mt-10 -mb-8 ">
+          <div className="flex items-center sm:gap-12 gap-4 -mt-6 mb-2">
             {/* CHRIST Logo */}
             <div className="flex items-center justify-center transition-all duration-300 hover:scale-105">
               <Link
@@ -123,8 +126,6 @@ const Home = () => {
                 Powering the Future of E-Mobility with Indigenous Atmanirbhar
                 Compute
               </span>
-              <br />
-              <span className="text-brand-accent">Powered by CDAC</span>
             </p>
 
             {/* Interactive Countdown "Chip" */}
