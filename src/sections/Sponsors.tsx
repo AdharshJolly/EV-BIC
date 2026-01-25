@@ -138,7 +138,7 @@ const Sponsors = () => {
                     <span className="text-brand-accent">The Future</span>
                   </h3>
                   <p className="text-brand-muted text-sm leading-relaxed">
-                    Elevate your brand and connect with India's top engineering talent. Join us in shaping the EV semiconductor landscape.
+                    Elevate your brand and connect with India&apos;s top engineering talent. Join us in shaping the EV semiconductor landscape.
                   </p>
                 </div>
 
