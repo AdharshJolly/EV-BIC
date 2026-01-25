@@ -28,7 +28,6 @@ const Home = () => {
         {/* Organized By Header */}
         {/* Organized By Header - CHRIST Logo Top Right */}
 
-
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -39,26 +38,6 @@ const Home = () => {
             Presented By
           </span>
           <div className="flex items-center sm:gap-12 gap-4 -mt-6 mb-2">
-            {/* CHRIST Logo */}
-            <div className="flex items-center justify-center transition-all duration-300 hover:scale-105">
-              <Link
-                href="https://christuniversity.in"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/images/cu-logo.png"
-                  alt="CHRIST University"
-                  width={600}
-                  height={600}
-                  className="object-contain opacity-90 hover:opacity-100 transition-opacity w-56 h-32 sm:w-80 sm:h-48"
-                  priority
-                />
-              </Link>
-            </div>
-
-            <div className="h-10 w-px bg-white/10"></div>
-
             {/* VSD Logo */}
             <div className="flex items-center justify-center transition-all duration-300 hover:scale-105">
               <Link
@@ -72,6 +51,26 @@ const Home = () => {
                   width={600}
                   height={600}
                   className="object-contain opacity-90 hover:opacity-100 transition-opacity w-40 h-24 sm:w-60 sm:h-36"
+                  priority
+                />
+              </Link>
+            </div>
+
+            <div className="h-10 w-px bg-white/10"></div>
+
+            {/* CHRIST Logo */}
+            <div className="flex items-center justify-center transition-all duration-300 hover:scale-105">
+              <Link
+                href="https://christuniversity.in"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/images/cu-logo.png"
+                  alt="CHRIST University"
+                  width={600}
+                  height={600}
+                  className="object-contain opacity-90 hover:opacity-100 transition-opacity w-56 h-32 sm:w-80 sm:h-48"
                   priority
                 />
               </Link>

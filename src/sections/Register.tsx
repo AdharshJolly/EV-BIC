@@ -43,7 +43,6 @@ const INDIAN_STATES = [
   "Chandigarh",
   "Dadra and Nagar Haveli and Daman and Diu",
   "Lakshadweep",
-  "Delhi",
   "New Delhi",
   "Puducherry",
   "Ladakh",
@@ -64,7 +63,7 @@ const Register = () => {
     collegeName: "",
     state: "",
     city: "",
-    willAttendOnline: false,
+    willAttendInPerson: false,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -413,10 +412,11 @@ const Register = () => {
                       <div className="sm:col-span-2 pt-4 space-y-6">
                         <Separator className="bg-brand-secondary/50" />
 
-                        {/* Online Attendance Question */}
+                        {/* Inauguration Attendance Question */}
                         <div className="space-y-3">
                           <Label className="text-brand-text">
-                            Would you attend the session online? *
+                            Would you like to attend the inauguration event on
+                            the 11th of Feb offline? *
                           </Label>
                           <div className="flex gap-3">
                             <button
@@ -424,13 +424,14 @@ const Register = () => {
                               onClick={() =>
                                 setFormData({
                                   ...formData,
-                                  willAttendOnline: true,
+                                  willAttendInPerson: true,
                                 })
                               }
-                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${formData.willAttendOnline
+                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
+                                formData.willAttendInPerson
                                   ? "bg-brand-accent text-brand-dark"
                                   : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
-                                }`}
+                              }`}
                             >
                               Yes
                             </button>
@@ -439,20 +440,19 @@ const Register = () => {
                               onClick={() =>
                                 setFormData({
                                   ...formData,
-                                  willAttendOnline: false,
+                                  willAttendInPerson: false,
                                 })
                               }
-                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${!formData.willAttendOnline
+                              className={`flex-1 px-4 py-2.5 rounded-md font-medium transition-all duration-200 ${
+                                !formData.willAttendInPerson
                                   ? "bg-brand-accent text-brand-dark"
                                   : "bg-brand-primary/60 border border-brand-secondary text-white hover:border-brand-accent/50"
-                                }`}
+                              }`}
                             >
                               No
                             </button>
                           </div>
                         </div>
-
-
                       </div>
                     </div>
 

@@ -24,8 +24,7 @@ interface RegisterBody {
   collegeName: string;
   state: string;
   city: string;
-  isBangaloreBased: boolean;
-  willAttendOnline: boolean;
+  willAttendInPerson: boolean;
   otp: string;
 }
 
@@ -91,10 +90,9 @@ export async function POST(request: NextRequest) {
           college_name,
           state,
           city,
-          is_bangalore_based,
           will_attend_in_person,
           created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
       .bind(
         body.participant1Name,
@@ -104,8 +102,7 @@ export async function POST(request: NextRequest) {
         body.collegeName,
         body.state,
         body.city,
-        0, // is_bangalore_based (removed question, defaulting to 0)
-        body.willAttendOnline ? 0 : 1, // will_attend_in_person (mapping online:true to in_person:false)
+        body.willAttendInPerson ? 1 : 0, // will_attend_in_person
         Date.now(),
       );
 
@@ -121,10 +118,9 @@ export async function POST(request: NextRequest) {
       formData.append("entry.399018039", body.collegeName);
       formData.append("entry.386400877", body.state);
       formData.append("entry.1502698996", body.city);
-      formData.append("entry.124030429", "No"); // isBangaloreBased removed
       formData.append(
         "entry.711559939",
-        body.willAttendOnline ? "No" : "Yes", // willAttendInPerson mapping
+        body.willAttendInPerson ? "Yes" : "No", // willAttendInPerson mapping
       );
 
       await fetch(
