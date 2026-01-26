@@ -1,6 +1,5 @@
 import "./globals.css";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import BackgroundElements from "../components/BackgroundElements";
 import { Inter, Space_Grotesk, Outfit } from "next/font/google";
 import type { Metadata, Viewport } from "next";
@@ -190,7 +189,6 @@ export default function RootLayout({
         <BackgroundElements />
         <Navbar />
         <main className="grow">{children}</main>
-        <Footer />
       </body>
     </html>
   );

@@ -32,7 +32,7 @@ const Navbar = () => {
         "timeline",
         "coe",
         "hardware",
-        "contact",
+        "sponsors",
       ];
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -56,7 +56,7 @@ const Navbar = () => {
     { name: "Timeline", path: "#timeline" },
     { name: "Hardware", path: "#hardware" },
     { name: "COE", path: "#coe" },
-    { name: "Contact", path: "#contact" },
+    { name: "Sponsors", path: "#sponsors" },
   ];
 
   const handleNavClick = () => {

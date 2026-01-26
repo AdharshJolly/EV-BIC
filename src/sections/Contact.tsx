@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin, Send, Building } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -76,7 +76,7 @@ const Contact = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto"
         >
           {/* Email Card */}
           <motion.div variants={itemVariants}>
@@ -158,50 +158,6 @@ const Contact = () => {
                 </CardContent>
               </Card>
             </Link>
-          </motion.div>
-
-          {/* Sponsorship Card */}
-          <motion.div variants={itemVariants} className="md:col-span-2 lg:col-span-1">
-            <Card className="group relative h-full glass-panel border border-brand-accent/20 hover:border-brand-accent/50 bg-linear-to-br from-brand-secondary/40 to-brand-secondary/20 transition-all duration-500 overflow-hidden">
-              <div className="absolute inset-0 bg-linear-to-br from-brand-accent/0 to-brand-accent/0 group-hover:from-brand-accent/5 group-hover:to-brand-accent/5 transition-all duration-500"></div>
-              <CardContent className="p-8 flex flex-col h-full relative z-10">
-                <div className="mb-6">
-                  <div className="inline-block p-4 rounded-2xl bg-linear-to-br from-brand-accent/20 to-brand-secondary/20 group-hover:from-brand-accent/30 group-hover:to-brand-secondary/30 transition-all duration-500 transform group-hover:scale-110">
-                    <Building className="h-8 w-8 text-brand-accent" />
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-1">Sponsorship</h3>
-                <p className="text-sm text-brand-muted mb-6">
-                  Interested in sponsoring?
-                </p>
-                <div className="space-y-4 grow">
-                  <div>
-                    <p className="text-xs text-brand-muted uppercase tracking-wider mb-1">
-                      Anagha Ghosh
-                    </p>
-                    <a
-                      href="mailto:vsd@vlsisystemdesign.com"
-                      className="text-white font-medium hover:text-brand-accent transition-colors duration-300 flex items-center gap-2 group/link"
-                    >
-                      vsd@vlsisystemdesign.com
-                      <Send className="h-4 w-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
-                    </a>
-                  </div>
-                  <div>
-                    <p className="text-xs text-brand-muted uppercase tracking-wider mb-1">
-                      Joseph Rodrigues
-                    </p>
-                    <a
-                      href="mailto:joseph.rodrigues@christuniversity.in"
-                      className="text-white font-medium hover:text-brand-accent transition-colors duration-300 flex items-center gap-2 group/link"
-                    >
-                      joseph.rodrigues@christuniversity.in
-                      <Send className="h-4 w-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </motion.div>
         </motion.div>
 

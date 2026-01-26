@@ -1,11 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Shield, Award } from "lucide-react";
+import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 const Sponsors = () => {
+  const partners = [
+    { name: "Christ University", logo: "/images/cu-logo.png" },
+    { name: "VSD", logo: "/images/vsd-logo.png" },
+  ];
+
   return (
     <div
       className="bg-transparent py-24 relative overflow-hidden"
@@ -46,7 +52,7 @@ const Sponsors = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[1, 2].map((i) => (
+            {partners.map((partner, i) => (
               <motion.div
                 key={i}
                 initial={{ scale: 0.9, opacity: 0 }}
@@ -58,63 +64,19 @@ const Sponsors = () => {
                 <Card className="h-48 bg-brand-secondary/20 border-brand-accent/20 rounded-2xl flex items-center justify-center relative overflow-hidden group-hover:border-brand-accent/50 transition-all duration-500">
                   <div className="absolute inset-0 bg-brand-accent/5 group-hover:bg-brand-accent/10 transition-colors"></div>
                   <div className="absolute -inset-0.5 bg-linear-to-r from-brand-accent to-teal-500 opacity-0 group-hover:opacity-20 blur transition duration-500"></div>
-                  <CardContent className="p-0 flex items-center justify-center relative z-10">
-                    <span className="text-2xl font-black text-white tracking-widest uppercase font-display opacity-40 group-hover:opacity-100 transition-opacity">
-                      PARTNER_0{i}
-                    </span>
+                  <CardContent className="p-0 flex items-center justify-center relative z-10 w-full h-full">
+                    <div className="relative w-full h-32 px-8">
+                      <Image
+                        src={partner.logo}
+                        alt={partner.name}
+                        fill
+                        className="object-contain transition-all duration-500 opacity-90 group-hover:opacity-100"
+                      />
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
-          </div>
-        </div>
-
-        {/* Gold & Silver Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
-          {/* Gold Sponsors */}
-          <div>
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
-              <Award className="w-6 h-6 text-brand-accent" />
-              <h3 className="text-xl font-bold text-white uppercase tracking-widest font-display">
-                Gold Sponsors
-              </h3>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.02 }}
-                  className="h-32 bg-brand-secondary/10 border border-brand-secondary rounded-xl flex items-center justify-center hover:border-brand-accent/30 hover:bg-brand-secondary/20 transition-all cursor-pointer"
-                >
-                  <span className="text-brand-muted font-mono text-sm uppercase tracking-wider">
-                    Gold_Sponsor_0{i}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Silver Sponsors */}
-          <div>
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
-              <Shield className="w-6 h-6 text-teal-400" />
-              <h3 className="text-xl font-bold text-white uppercase tracking-widest font-display">
-                Silver Sponsors
-              </h3>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.02 }}
-                  className="h-32 bg-brand-secondary/10 border border-brand-secondary rounded-xl flex items-center justify-center hover:border-teal-500/30 hover:bg-brand-secondary/20 transition-all cursor-pointer"
-                >
-                  <span className="text-brand-muted font-mono text-sm uppercase tracking-wider">
-                    Silver_Sponsor_0{i}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
 

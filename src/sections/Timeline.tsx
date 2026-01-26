@@ -15,36 +15,67 @@ import {
 } from "lucide-react";
 
 const Timeline = () => {
-  const dates = [
+  // Function to parse date string and determine status
+  const getEventStatus = (dateString: string): string => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
+    // Parse date range (e.g., "26 Jan - 10 Feb 2026") or single date (e.g., "11 Feb 2026")
+    const parts = dateString.split(" - ");
+    let startDate: Date;
+    let endDate: Date;
+
+    if (parts.length === 2) {
+      // Date range
+      const [startStr, endStr] = parts;
+      const year =
+        endStr.match(/\d{4}/)?.[0] || new Date().getFullYear().toString();
+      startDate = new Date(`${startStr} ${year}`);
+      endDate = new Date(endStr);
+    } else {
+      // Single date
+      startDate = new Date(dateString);
+      endDate = new Date(dateString);
+    }
+
+    if (endDate < today) {
+      return "Past";
+    } else if (startDate <= today && today <= endDate) {
+      return "Active";
+    } else {
+      return "Upcoming";
+    }
+  };
+
+  const dates = [
+    {
+      event: "Registration Phase",
+      date: "26 Jan - 10 Feb 2026",
+      desc: "Team registration and idea submission.",
+    },
     {
       event: "Inauguration",
       date: "11 Feb 2026",
-      status: "Upcoming",
       desc: "Official launch at CHRIST (Deemed to be University), Bangalore.",
     },
     {
       event: "Proposal Submission",
       date: "11 Feb - 13 Feb 2026",
-      status: "Upcoming",
       desc: "Detailed technical proposal submission.",
     },
     {
       event: "Video & GitHub",
       date: "16 Feb - 26 Feb 2026",
-      status: "Upcoming",
       desc: "Submission of prototype video and code repository.",
     },
     {
       event: "Shortlisting",
       date: "27 Feb - 28 Feb 2026",
-      status: "Upcoming",
       desc: "Announcement of Top 10 teams.",
     },
     {
       event: "Grand Finale",
       date: "10 Mar - 11 Mar 2026",
-      status: "Upcoming",
       desc: "Physical demonstration and hackathon finale.",
     },
   ];
@@ -90,47 +121,52 @@ const Timeline = () => {
           {/* Vertical Line */}
           <div className="absolute left-8 top-0 bottom-0 w-px bg-brand-secondary/50 md:left-1/2 md:-ml-px"></div>
 
-          {dates.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className={`relative mb-12 last:mb-0 md:flex md:justify-between ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
-            >
-              {/* Dot */}
-              <div className="absolute left-8 -ml-3 w-6 h-6 rounded-full border-4 border-brand-primary bg-brand-accent md:left-1/2 md:-ml-3 z-10 shadow-[0_0_10px_rgba(204,255,0,0.5)]"></div>
+          {dates.map((item, index) => {
+            const status = getEventStatus(item.date);
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className={`relative mb-12 last:mb-0 md:flex md:justify-between ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+              >
+                {/* Dot */}
+                <div className="absolute left-8 -ml-3 w-6 h-6 rounded-full border-4 border-brand-primary bg-brand-accent md:left-1/2 md:-ml-3 z-10 shadow-[0_0_10px_rgba(204,255,0,0.5)]"></div>
 
-              <div className="ml-20 md:ml-0 md:w-[45%]">
-                <Card className="bg-brand-secondary/30 border-brand-secondary/50 hover:border-brand-accent/30 transition-all">
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <Badge
-                        variant={
-                          item.status === "Active" ? "default" : "secondary"
-                        }
-                        className={
-                          item.status === "Active"
-                            ? "bg-brand-accent text-brand-dark"
-                            : "bg-brand-secondary text-brand-muted"
-                        }
-                      >
-                        {item.status}
-                      </Badge>
-                      <div className="flex items-center text-xs font-bold text-brand-muted uppercase tracking-wider">
-                        <Calendar className="w-3 h-3 mr-1" />
-                        {item.date}
+                <div className="ml-20 md:ml-0 md:w-[45%]">
+                  <Card className="bg-brand-secondary/30 border-brand-secondary/50 hover:border-brand-accent/30 transition-all">
+                    <CardContent className="p-6">
+                      <div className="flex justify-between items-start mb-2">
+                        <Badge
+                          variant={
+                            status === "Active" ? "default" : "secondary"
+                          }
+                          className={
+                            status === "Active"
+                              ? "bg-brand-accent text-brand-dark"
+                              : status === "Past"
+                                ? "bg-gray-600 text-gray-300"
+                                : "bg-brand-secondary text-brand-muted"
+                          }
+                        >
+                          {status}
+                        </Badge>
+                        <div className="flex items-center text-xs font-bold text-brand-muted uppercase tracking-wider">
+                          <Calendar className="w-3 h-3 mr-1" />
+                          {item.date}
+                        </div>
                       </div>
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-1">
-                      {item.event}
-                    </h3>
-                    <p className="text-sm text-brand-muted">{item.desc}</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
-          ))}
+                      <h3 className="text-lg font-bold text-white mb-1">
+                        {item.event}
+                      </h3>
+                      <p className="text-sm text-brand-muted">{item.desc}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.div
