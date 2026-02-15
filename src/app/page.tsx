@@ -45,14 +45,14 @@ export default function Page() {
       <section id="register" className="relative z-10">
         <Register />
       </section>
-      <section id="contact" className="relative z-10">
-        <Contact />
-      </section>
       <section id="faq" className="relative z-10">
         <FAQ />
       </section>
       <section id="sponsors" className="relative z-10">
         <Sponsors />
+      </section>
+      <section id="contact" className="relative z-10">
+        <Contact />
       </section>
     </>
   );

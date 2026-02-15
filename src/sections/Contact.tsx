@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin, Send, Building } from "lucide-react";
+import { Mail, MapPin, Send, Linkedin, Youtube, Instagram, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -76,7 +76,7 @@ const Contact = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-8 max-w-6xl mx-auto"
         >
           {/* Email Card */}
           <motion.div variants={itemVariants}>
@@ -160,44 +160,59 @@ const Contact = () => {
             </Link>
           </motion.div>
 
-          {/* Sponsorship Card */}
-          <motion.div variants={itemVariants} className="md:col-span-2 lg:col-span-1">
+          {/* Social Card */}
+          <motion.div variants={itemVariants}>
             <Card className="group relative h-full glass-panel border border-brand-accent/20 hover:border-brand-accent/50 bg-linear-to-br from-brand-secondary/40 to-brand-secondary/20 transition-all duration-500 overflow-hidden">
               <div className="absolute inset-0 bg-linear-to-br from-brand-accent/0 to-brand-accent/0 group-hover:from-brand-accent/5 group-hover:to-brand-accent/5 transition-all duration-500"></div>
               <CardContent className="p-8 flex flex-col h-full relative z-10">
                 <div className="mb-6">
                   <div className="inline-block p-4 rounded-2xl bg-linear-to-br from-brand-accent/20 to-brand-secondary/20 group-hover:from-brand-accent/30 group-hover:to-brand-secondary/30 transition-all duration-500 transform group-hover:scale-110">
-                    <Building className="h-8 w-8 text-brand-accent" />
+                    <Share2 className="h-8 w-8 text-brand-accent" />
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-1">Sponsorship</h3>
+                <h3 className="text-2xl font-bold text-white mb-1">Follow Us</h3>
                 <p className="text-sm text-brand-muted mb-6">
-                  Interested in sponsoring?
+                  Stay updated on social media
                 </p>
                 <div className="space-y-4 grow">
-                  <div>
-                    <p className="text-xs text-brand-muted uppercase tracking-wider mb-1">
-                      Anagha Ghosh
-                    </p>
-                    <a
-                      href="mailto:vsd@vlsisystemdesign.com"
-                      className="text-white font-medium hover:text-brand-accent transition-colors duration-300 flex items-center gap-2 group/link"
-                    >
-                      vsd@vlsisystemdesign.com
-                      <Send className="h-4 w-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
-                    </a>
+                  {/* VSD Zone */}
+                  <div className="p-4 rounded-xl bg-black/20 border border-white/5 hover:border-brand-accent/20 transition-all duration-300">
+                     <h4 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-brand-accent"></span>
+                        VSD
+                     </h4>
+                     <div className="grid grid-cols-2 gap-2">
+                        <a href="https://www.linkedin.com/company/vlsi-system-design/" target="_blank" rel="noopener noreferrer" 
+                           className="flex items-center justify-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-brand-accent/10 border border-white/5 hover:border-brand-accent/30 transition-all duration-300 group/btn">
+                            <Linkedin className="h-4 w-4 text-brand-muted group-hover/btn:text-brand-accent transition-colors" />
+                            <span className="text-xs font-medium text-brand-muted group-hover/btn:text-white transition-colors">LinkedIn</span>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UC8xyENEltc3DXGbARgbC38A" target="_blank" rel="noopener noreferrer" 
+                           className="flex items-center justify-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-brand-accent/10 border border-white/5 hover:border-brand-accent/30 transition-all duration-300 group/btn">
+                            <Youtube className="h-4 w-4 text-brand-muted group-hover/btn:text-brand-accent transition-colors" />
+                            <span className="text-xs font-medium text-brand-muted group-hover/btn:text-white transition-colors">YouTube</span>
+                        </a>
+                     </div>
                   </div>
-                  <div>
-                    <p className="text-xs text-brand-muted uppercase tracking-wider mb-1">
-                      Joseph Rodrigues
-                    </p>
-                    <a
-                      href="mailto:joseph.rodrigues@christuniversity.in"
-                      className="text-white font-medium hover:text-brand-accent transition-colors duration-300 flex items-center gap-2 group/link"
-                    >
-                      joseph.rodrigues@christuniversity.in
-                      <Send className="h-4 w-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
-                    </a>
+
+                  {/* CHRIST Zone */}
+                  <div className="p-4 rounded-xl bg-black/20 border border-white/5 hover:border-brand-accent/20 transition-all duration-300">
+                     <h4 className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-brand-accent"></span>
+                        CHRIST University
+                     </h4>
+                     <div className="grid grid-cols-2 gap-2">
+                        <a href="https://www.linkedin.com/school/christ-university-bangalore/" target="_blank" rel="noopener noreferrer" 
+                           className="flex items-center justify-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-brand-accent/10 border border-white/5 hover:border-brand-accent/30 transition-all duration-300 group/btn">
+                            <Linkedin className="h-4 w-4 text-brand-muted group-hover/btn:text-brand-accent transition-colors" />
+                            <span className="text-xs font-medium text-brand-muted group-hover/btn:text-white transition-colors">LinkedIn</span>
+                        </a>
+                        <a href="https://www.instagram.com/christ_university_bangalore/?hl=en" target="_blank" rel="noopener noreferrer" 
+                           className="flex items-center justify-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-brand-accent/10 border border-white/5 hover:border-brand-accent/30 transition-all duration-300 group/btn">
+                            <Instagram className="h-4 w-4 text-brand-muted group-hover/btn:text-brand-accent transition-colors" />
+                            <span className="text-xs font-medium text-brand-muted group-hover/btn:text-white transition-colors">Instagram</span>
+                        </a>
+                     </div>
                   </div>
                 </div>
               </CardContent>

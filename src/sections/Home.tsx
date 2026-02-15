@@ -1,9 +1,8 @@
 "use client";
 
-import { ArrowRight, Cpu, Zap, ChevronRight, Trophy } from "lucide-react";
+import { Cpu, Zap, ChevronRight, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Countdown from "@/components/Countdown";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -127,33 +126,25 @@ const Home = () => {
               </span>
             </p>
 
-            {/* Interactive Countdown "Chip" */}
-            <div className="inline-flex flex-col items-center bg-brand-secondary/30 backdrop-blur-md border border-brand-accent/20 rounded-2xl p-6 sm:px-10 shadow-[0_0_40px_-10px_rgba(204,255,0,0.1)] mb-10 group-hover:border-brand-accent/40 transition-colors duration-500">
-              <div className="text-[10px] font-mono text-brand-accent/60 mb-2 tracking-widest uppercase">
-                Time Remaining To Register
-              </div>
-              <Countdown />
-            </div>
-
             {/* Primary Actions */}
             <div className="flex flex-col sm:flex-row items-center gap-6 justify-center">
               <Button
                 asChild
                 className="h-14 px-8 text-lg font-bold bg-brand-accent text-brand-dark hover:bg-white hover:scale-105 transition-all duration-300 rounded-none skew-x-[-10deg] border-0 relative overflow-hidden group"
               >
-                <a href="#register">
+                <a href="#about">
                   <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
                   <span className="skew-x-10 flex items-center gap-2">
-                    INITIATE_REGISTRATION <ArrowRight className="w-5 h-5" />
+                    EXPLORE_CHALLENGE <ChevronRight className="w-5 h-5" />
                   </span>
                 </a>
               </Button>
 
               <a
-                href="#about"
+                href="#timeline"
                 className="group flex items-center gap-2 text-brand-muted hover:text-white transition-colors text-sm font-mono tracking-widest uppercase"
               >
-                <span>Explore_Data</span>
+                <span>View_Timeline</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
