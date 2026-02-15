@@ -1,9 +1,8 @@
 "use client";
 
-import { ArrowRight, Cpu, Zap, ChevronRight, Trophy } from "lucide-react";
+import { Cpu, Zap, ChevronRight, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Countdown from "@/components/Countdown";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

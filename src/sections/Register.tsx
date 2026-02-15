@@ -76,7 +76,7 @@ const Register = () => {
 
                 <div className="pt-8 flex flex-col items-center">
                   <p className="text-brand-accent font-mono text-sm uppercase tracking-tighter mb-4">
-                    // REGISTRATION_STATUS: LOCKED
+                    {"// REGISTRATION_STATUS: LOCKED"}
                   </p>
                   <div className="w-full max-w-md h-px bg-linear-to-r from-transparent via-brand-secondary to-transparent"></div>
                 </div>
