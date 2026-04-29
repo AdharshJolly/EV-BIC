@@ -23,41 +23,42 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+// Simple scroll spy
+const sections = [
+  "home",
+  "about",
+  "challenges",
+  "timeline",
+  "winners",
+  "hardware",
+  "coe",
+  "sponsors",
+];
+for (const section of sections) {
+  const element = document.getElementById(section);
+  if (element) {
+    const rect = element.getBoundingClientRect();
+    if (rect.top <= 100 && rect.bottom >= 100) {
+      setActiveSection(section);
+      break;
+    }
+  }
+}
+};
+window.addEventListener("scroll", handleScroll);
+return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
-      // Simple scroll spy
-      const sections = [
-        "home",
-        "about",
-        "challenges",
-        "timeline",
-        "coe",
-        "hardware",
-        "sponsors",
-      ];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const navItems = [
-    { name: "Home", path: "#home" },
-    { name: "About", path: "#about" },
-    { name: "Challenges", path: "#challenges" },
-    { name: "Timeline", path: "#timeline" },
-    { name: "Hardware", path: "#hardware" },
-    { name: "COE", path: "#coe" },
-    { name: "Sponsors", path: "#sponsors" },
-  ];
+const navItems = [
+{ name: "Home", path: "#home" },
+{ name: "About", path: "#about" },
+{ name: "Challenges", path: "#challenges" },
+{ name: "Timeline", path: "#timeline" },
+{ name: "Winners", path: "#winners" },
+{ name: "Hardware", path: "#hardware" },
+{ name: "COE", path: "#coe" },
+{ name: "Sponsors", path: "#sponsors" },
+];
 
   const handleNavClick = () => {
     setIsOpen(false);

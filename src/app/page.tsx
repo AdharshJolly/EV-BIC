@@ -5,6 +5,7 @@ import Hardware from "../sections/Hardware";
 import Themes from "../sections/Themes";
 import Timeline from "../sections/Timeline";
 import Prizes from "../sections/Prizes";
+import Winners from "../sections/Winners";
 import FAQ from "../sections/FAQ";
 import Register from "../sections/Register";
 import Contact from "../sections/Contact";
@@ -29,6 +30,9 @@ export default function Page() {
       </section>
       <section id="timeline" className="relative z-10">
         <Timeline />
+      </section>
+      <section id="winners" className="relative z-10">
+        <Winners />
       </section>
       <section id="hardware" className="relative z-10">
         <Hardware />
