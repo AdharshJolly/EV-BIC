@@ -10,6 +10,7 @@ const Sponsors = () => {
   const partners = [
     { name: "Christ University", logo: "/images/cu-logo.png" },
     { name: "VSD", logo: "/images/vsd-logo.png" },
+    { name: "C-DAC", logo: "/images/CDAC logo.png" },
   ];
 
   return (
@@ -51,7 +52,7 @@ const Sponsors = () => {
             <div className="h-px w-12 bg-brand-accent/30"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {partners.map((partner, i) => (
               <motion.div
                 key={i}
@@ -70,7 +71,7 @@ const Sponsors = () => {
                         src={partner.logo}
                         alt={partner.name}
                         fill
-                        className="object-contain transition-all duration-500 opacity-90 group-hover:opacity-100"
+                        className={`object-contain transition-all duration-500 opacity-90 group-hover:opacity-100 ${partner.name === "C-DAC" ? "brightness-0 invert" : ""}`}
                       />
                     </div>
                   </CardContent>

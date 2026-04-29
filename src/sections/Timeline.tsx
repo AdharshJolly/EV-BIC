@@ -23,13 +23,14 @@ import {
   Zap,
 } from "lucide-react";
 
-const topTeams = [
+const finalTeams = [
   {
     name: "NeuroMotive",
     p1: "Abisek S",
     p2: "Dhakshana Bala S",
     university: "Vellore institute of Technology",
     desc: "NeuroMotive is a TinyML-powered, federated learning battery safety system on VSDSquadron ULTRA that predicts thermal anomalies in EV cells and autonomously prevents thermal runaway through closed-loop control",
+    finalist: true,
   },
   {
     name: "Guradian Grid",
@@ -37,6 +38,7 @@ const topTeams = [
     p2: "Tushar Vats",
     university: "Jaypee Institute of Information Technology",
     desc: "ThermaGuard-RISC is a hybrid edge-cloud EV battery safety system that uses a physics-based digital twin on VSDSquadron ULTRA with FPGA fail-safe backup to detect and prevent thermal runaway in real time while predicting long-term battery faults via cloud ML",
+    finalist: false,
   },
   {
     name: "For Tomorrow",
@@ -44,6 +46,7 @@ const topTeams = [
     p2: "M Manoj Reddy",
     university: "CHRIST (Deemed to be University), Bangalore Kengeri Campus",
     desc: "A cloud-edge EV battery analytics system using a PINN-based estimator on VSDSquadron ULTRA to deliver sub-2% SoC accuracy, RUL prediction, and intelligent range estimation with real-time safety monitoring",
+    finalist: false,
   },
   {
     name: "Ante Meridiem",
@@ -51,6 +54,7 @@ const topTeams = [
     p2: "A Athul Krishna",
     university: "Chennai Institute of Technology",
     desc: "SentinEL-V is an edge AI-based thermal runaway prediction system on VSDSquadron ULTRA that fuses thermal acceleration and VOC gas sensing using a Decision Tree classifier to autonomously trigger SCRAM-level safety actions before catastrophic battery failure",
+    finalist: false,
   },
   {
     name: "Battery Sentinals",
@@ -58,6 +62,7 @@ const topTeams = [
     p2: "Palaniraj M",
     university: "Chennai Institue of Technology",
     desc: "A multi-timeframe EV battery safety system using VSDSquadron ULTRA to detect early thermal runaway through temperature divergence, swelling sensing, and thermal fingerprint analysis with real-time alert fusion and cloud visualization",
+    finalist: false,
   },
   {
     name: "The invincibles",
@@ -65,6 +70,7 @@ const topTeams = [
     p2: "Nalinkumar S",
     university: "Madras institute of technology",
     desc: "ThermalGuard is a multi-algorithm RISC-V edge-based EV battery safety system on VSDSquadron Ultra that fuses physics validation, statistical anomaly detection, and time-to-critical prediction to generate a real-time Thermal Safety Score with sub-500ms latency",
+    finalist: true,
   },
   {
     name: "VoltGuard",
@@ -73,6 +79,7 @@ const topTeams = [
     university:
       "Punjab Engineering College (Deemed to be University) Chandigarh",
     desc: "An embedded-plus-cloud predictive battery health analytics system on VSDSquadron ULTRA that extracts physics-aware features and runs lightweight ML on-board for real-time SoH estimation, while leveraging advanced cloud models for high-accuracy SoH and RUL prediction under Indian EV duty cycles",
+    finalist: false,
   },
   {
     name: "GenEV",
@@ -80,6 +87,7 @@ const topTeams = [
     p2: "Joseph Mangaly",
     university: "Christ University",
     desc: "Battery Anatomy is a dual-layer physics-aware and behavior-driven EV battery monitoring system on VSDSquadron ULTRA that estimates internal resistance in real time, generates a unified health score, and predicts early degradation and thermal anomalies weeks in advance",
+    finalist: false,
   },
   {
     name: "TEAM FIRE EV",
@@ -87,6 +95,7 @@ const topTeams = [
     p2: "Harshdeep Sharma",
     university: "Christ University - Kengeri",
     desc: "An edge-intelligent EV battery analytics and digital passport system on VSDSquadron ULTRA that performs SOC/SoH estimation, thermal risk prediction, and secure QR-based battery health certification with zero real-time cloud dependency",
+    finalist: true,
   },
   {
     name: "EVOLVE.3X",
@@ -94,6 +103,7 @@ const topTeams = [
     p2: "Shivraj by",
     university: "KLE Technological university hubli",
     desc: "An Edge-AI enabled distributed EV fleet intelligence platform powered by THEJAS32 RISC-V that performs real-time battery analytics at vehicle level, synchronizes with cloud-based Digital Twins, and optimizes fleet-wide charging, maintenance, and energy costs autonomously",
+    finalist: true,
   },
   {
     name: "BattSafe",
@@ -101,6 +111,7 @@ const topTeams = [
     p2: "Shakeb Sarwar",
     university: "Energy Institute Bengaluru, RGIPT",
     desc: "An edge-based multi-modal thermal runaway prevention system on VSDSquadron ULTRA that fuses electrical, thermal, gas, pressure, and swelling signals using a 3-speed monitoring loop and correlation engine to autonomously disconnect the battery before catastrophic failure",
+    finalist: false,
   },
   {
     name: "VOLTIQ",
@@ -108,6 +119,7 @@ const topTeams = [
     p2: "Aarush Kumar",
     university: "Christ University, Kengeri",
     desc: "A fleet-level EV battery intelligence system using VSDSquadron ULTRA as the on-vehicle edge brain to perform real-time battery analytics, event detection, and feature extraction, while enabling cloud-based SoH/RUL prediction and fleet optimization dashboards",
+    finalist: true,
   },
   {
     name: "SentinelX",
@@ -115,6 +127,7 @@ const topTeams = [
     p2: "Syed Abdul Mateen",
     university: "SR UNIVERSITY",
     desc: "A quad-modal sensor fusion BMS on VSDSquadron ULTRA that combines chemical, mechanical, thermal, and electrical residual analysis to detect early battery faults and autonomously isolate faulty cells via MOSFET bypass for limp-home operation",
+    finalist: true,
   },
   {
     name: "Fumblers",
@@ -122,6 +135,7 @@ const topTeams = [
     p2: "Arin Bhuyan",
     university: "Dibrugarh University",
     desc: "Indra-BMS is a physics-informed edge battery diagnostics system on VSDSquadron ULTRA that performs real-time differential capacity analysis (dQ/dV) on RISC-V to identify specific degradation modes (LLI, LAM) and transmit compact health vectors for bandwidth-efficient, transparent EV battery intelligence",
+    finalist: true,
   },
   {
     name: "RV-Intelligence",
@@ -129,6 +143,7 @@ const topTeams = [
     p2: "Thirumalai.V",
     university: "Government College of Technology ,Coimbatore",
     desc: "A real-time predictive battery analytics system on VSDSquadron ULTRA that runs an Adaptive Extended Kalman Filter (AEKF) to estimate SOC, SOH, SOP, and internal resistance with <2% error, enabling edge-based health monitoring and intelligent EV safety alerts",
+    finalist: false,
   },
 ];
 
@@ -182,14 +197,19 @@ const Timeline = () => {
       desc: "Detailed technical proposal submission.",
     },
     {
+      event: "Shortlisting",
+      date: "16 Feb 2026",
+      desc: "Announcement of Top 15 teams.",
+    },
+    {
       event: "Video & GitHub",
       date: "16 Feb - 26 Feb 2026",
       desc: "Submission of prototype video and code repository.",
     },
     {
-      event: "Shortlisting",
+      event: "Final Shortlisting",
       date: "27 Feb - 28 Feb 2026",
-      desc: "Announcement of Top 15 teams.",
+      desc: "Announcement of Top 7 teams for finals.",
     },
     {
       event: "Grand Finale",
@@ -301,7 +321,7 @@ const Timeline = () => {
                               </DialogTitle>
                             </DialogHeader>
                             <div className="space-y-4 sm:space-y-6 py-2">
-                              {topTeams.map((team, idx) => (
+                              {finalTeams.map((team, idx) => (
                                 <div
                                   key={idx}
                                   className="group p-4 sm:p-5 rounded-xl bg-brand-secondary/20 border border-brand-secondary/40 hover:border-brand-accent/50 transition-all duration-300"
@@ -350,6 +370,81 @@ const Timeline = () => {
                                   </div>
                                 </div>
                               ))}
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      )}
+
+                      {item.event === "Final Shortlisting" && (
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="w-full bg-brand-accent/10 border-brand-accent/30 text-brand-accent hover:bg-brand-accent hover:text-brand-dark transition-all duration-300"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              View Top 7 Finalist Teams
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="w-[95vw] sm:max-w-4xl max-h-[90vh] overflow-y-auto bg-brand-dark border-brand-secondary/50 text-white p-4 sm:p-6">
+                            <DialogHeader>
+                              <DialogTitle className="text-xl sm:text-2xl font-bold text-brand-accent mb-4 pr-6">
+                                Top 7 Finalist Teams
+                              </DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-4 sm:space-y-6 py-2">
+                              {finalTeams
+                                .filter((team) => team.finalist)
+                                .map((team, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="group p-4 sm:p-5 rounded-xl bg-brand-secondary/20 border border-brand-secondary/40 hover:border-brand-accent/50 transition-all duration-300"
+                                  >
+                                    <div className="flex flex-col gap-3 mb-4">
+                                      <div className="flex items-start gap-3">
+                                        <div className="flex-shrink-0 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-accent text-brand-dark font-bold text-xs sm:text-sm mt-0.5">
+                                          {idx + 1}
+                                        </div>
+                                        <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-brand-accent transition-colors leading-tight">
+                                          {team.name}
+                                        </h4>
+                                      </div>
+                                      <Badge
+                                        variant="outline"
+                                        className="w-fit text-[10px] sm:text-xs border-brand-accent/30 text-brand-accent bg-brand-accent/5 py-0.5 sm:py-1"
+                                      >
+                                        {team.university}
+                                      </Badge>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
+                                      <div className="flex items-center gap-2 text-xs sm:text-sm text-brand-muted">
+                                        <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-accent" />
+                                        <span className="font-semibold text-white">
+                                          P1:
+                                        </span>{" "}
+                                        {team.p1}
+                                      </div>
+                                      <div className="flex items-center gap-2 text-xs sm:text-sm text-brand-muted">
+                                        <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-accent" />
+                                        <span className="font-semibold text-white">
+                                          P2:
+                                        </span>{" "}
+                                        {team.p2}
+                                      </div>
+                                    </div>
+
+                                    <div className="mt-4 p-3 sm:p-4 rounded-lg bg-brand-primary/50 border border-brand-secondary/30">
+                                      <h5 className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-brand-accent mb-2">
+                                        Project Description
+                                      </h5>
+                                      <p className="text-xs sm:text-sm leading-relaxed text-brand-text/90">
+                                        {team.desc}
+                                      </p>
+                                    </div>
+                                  </div>
+                                ))}
                             </div>
                           </DialogContent>
                         </Dialog>
